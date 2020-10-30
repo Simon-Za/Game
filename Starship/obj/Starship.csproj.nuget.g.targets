@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)fusee.engine.core\0.8.2\build\Fusee.Engine.Core.targets" Condition="Exists('$(NuGetPackageRoot)fusee.engine.core\0.8.2\build\Fusee.Engine.Core.targets')" />
+    <Import Project="$(NuGetPackageRoot)fusee.engine.gui\0.8.2\build\Fusee.Engine.GUI.targets" Condition="Exists('$(NuGetPackageRoot)fusee.engine.gui\0.8.2\build\Fusee.Engine.GUI.targets')" />
+  </ImportGroup>
+</Project>
