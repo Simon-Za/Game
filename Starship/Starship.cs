@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
 using Fusee.Xirkit;
+using System.Text;
 
 namespace FuseeApp
 {
@@ -37,6 +38,13 @@ namespace FuseeApp
         private bool start;
 
 
+        bool left;
+        bool mid = true;
+        bool right;
+
+        bool up;
+        bool normal = true;
+        bool down;
 
 
 
@@ -57,6 +65,8 @@ namespace FuseeApp
             RC.ClearColor = new float4(0, 0, 0, 0);
 
             _starshipScene = AssetStorage.Get<SceneContainer>("StarshipProtoSeparateTrenches.fus");
+
+            //Trench0; 1, 2, 3
 
             _sceneRenderer = new SceneRendererForward(_starshipScene);
 
@@ -103,8 +113,13 @@ namespace FuseeApp
             List<SceneNode> TrenchList = _starshipScene.Children.FindNodes(node => node.Name.Contains("Trench")).ToList();
             TrenchList.RemoveAt(1);
             TrenchList.RemoveAt(1);
-            //TrenchList.RemoveAt(2);
-            //TrenchList.RemoveAt(2);
+
+            if (TrenchList.Count() > 1)
+            {
+                TrenchList.RemoveAt(2);
+                TrenchList.RemoveAt(2);
+            }
+
 
 
             //System.Console.WriteLine(TrenchList.Count);
@@ -135,83 +150,174 @@ namespace FuseeApp
             }
 
 
-
             //System.Console.WriteLine(start);
 
 
 
             //Steuerung links/rechts
-
-            if (Keyboard.LeftRightAxis != 0)
-            {               
-                if (Keyboard.LeftRightAxis > 0) //rechts
+            if (Keyboard.IsKeyDown(KeyCodes.Left))
+            {
+                if (left)
                 {
-                     _starshipTrans.Translation.x += 10 * DeltaTime * Keyboard.LeftRightAxis;
+                    //do nothing
+                    mid = false;
+                }
+                else if (mid)
+                {
+                    _starshipTrans.Translation.x -= 3;
+                    mid = false;
+                    left = true;
+                    
+                }
+                else if (right)
+                {
+                    _starshipTrans.Translation.x -= 3;
+                    right = false;
+                    mid = true;
+                }
+                _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
+            }
+            if (Keyboard.IsKeyDown(KeyCodes.Right))
+            {
+                if (left)
+                {
+                    _starshipTrans.Translation.x += 3;
+                    left = false;
+                    mid = true;
+                }
+                else if (mid)
+                {
+                    _starshipTrans.Translation.x += 3;
+                    mid = false;
+                    right = true;
+                }
+                else if (right)
+                {
+                    //do nothing
+                    mid = false;
+                }
+                _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
+            }
 
-                    //leichter tilt nach links
-                    _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
-
-
-                    //Bewegungsgrenze rechts
-                    if (_starshipTrans.Translation.x >= 3.8f)
-                    {
-                        _starshipTrans.Translation.x -= 10 * DeltaTime * Keyboard.LeftRightAxis;
-                    }
+            //oben / unten
+            if (Keyboard.IsKeyDown(KeyCodes.Up))
+            {
+                if (up)
+                {
+                    //do nothing
+                    normal = false;
+                }
+                else if (normal)
+                {
+                    _starshipTrans.Translation.y += 2.5f;
+                    normal = false;
+                    up = true;
 
                 }
-                else if (Keyboard.LeftRightAxis < 0)  //links
+                else if (down)
                 {
-                    _starshipTrans.Translation.x += 10 * DeltaTime * Keyboard.LeftRightAxis;
-
-                    //leichter tilt nach rechts
-                    _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
-
-
-                    //Bewegungsgrenze links
-                    if (_starshipTrans.Translation.x <= -3.8f)
-                    {
-                        _starshipTrans.Translation.x -= 10 * DeltaTime * Keyboard.LeftRightAxis;
-                    }
+                    _starshipTrans.Translation.y += 2.5f;
+                    down = false;
+                    normal = true;
                 }
-                //Console.WriteLine(_starshipTrans.Translation.x);
+                _starshipTrans.Rotation.z = + 0.083f;
+            }
+            if (Keyboard.IsKeyDown(KeyCodes.Down))
+            {
+                if (up)
+                {
+                    _starshipTrans.Translation.y -= 2.5f;
+                    up = false;
+                    normal = true;
+                }
+                else if (normal)
+                {
+                    _starshipTrans.Translation.y -= 2.5f;
+                    normal = false;
+                    down = true;
+                }
+                else if (down)
+                {
+                    //do nothing
+                    normal = false;
+                }
+                _starshipTrans.Rotation.z = -0.083f;
             }
 
 
 
+
+
+
+            //flüssige Steuerung
+
+            //if (Keyboard.LeftRightAxis != 0)
+            //{               
+            //    if (Keyboard.LeftRightAxis > 0) //rechts
+            //    {
+            //         _starshipTrans.Translation.x += 10 * DeltaTime * Keyboard.LeftRightAxis;
+
+            //        //leichter tilt nach links
+            //        _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
+
+
+            //        //Bewegungsgrenze rechts
+            //        if (_starshipTrans.Translation.x >= 3.8f)
+            //        {
+            //            _starshipTrans.Translation.x -= 10 * DeltaTime * Keyboard.LeftRightAxis;
+            //        }
+
+            //    }
+            //    else if (Keyboard.LeftRightAxis < 0)  //links
+            //    {
+            //        _starshipTrans.Translation.x += 10 * DeltaTime * Keyboard.LeftRightAxis;
+
+            //        //leichter tilt nach rechts
+            //        _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
+
+
+            //        //Bewegungsgrenze links
+            //        if (_starshipTrans.Translation.x <= -3.8f)
+            //        {
+            //            _starshipTrans.Translation.x -= 10 * DeltaTime * Keyboard.LeftRightAxis;
+            //        }
+            //    }
+            //    //Console.WriteLine(_starshipTrans.Translation.x);
+            //}
 
             //Steuerung oben/unten
 
-            if (Keyboard.UpDownAxis != 0)
-            {
-                if (Keyboard.UpDownAxis > 0) //oben
-                {
-                    _starshipTrans.Translation.y += 7 * DeltaTime * Keyboard.UpDownAxis;
+            //if (Keyboard.UpDownAxis != 0)
+            //{
+            //    if (Keyboard.UpDownAxis > 0) //oben
+            //    {
+            //        _starshipTrans.Translation.y += 7 * DeltaTime * Keyboard.UpDownAxis;
 
-                    //leichter tilt nach oben
-                    _starshipTrans.Rotation.z = -Keyboard.UpDownAxis * 0.083f;
+            //        //leichter tilt nach oben
+            //        _starshipTrans.Rotation.z = -Keyboard.UpDownAxis * 0.083f;
 
 
-                    //Bewegungsgrenze oben
-                    if (_starshipTrans.Translation.y >= 4.5f)
-                    {
-                        _starshipTrans.Translation.y -= 7 * DeltaTime * Keyboard.UpDownAxis;
-                    }
-                }
-                else if (Keyboard.UpDownAxis < 0) //unten
-                {
-                    _starshipTrans.Translation.y += 7 * DeltaTime * Keyboard.UpDownAxis;
+            //        //Bewegungsgrenze oben
+            //        if (_starshipTrans.Translation.y >= 4.5f)
+            //        {
+            //            _starshipTrans.Translation.y -= 7 * DeltaTime * Keyboard.UpDownAxis;
+            //        }
+            //    }
+            //    else if (Keyboard.UpDownAxis < 0) //unten
+            //    {
+            //        _starshipTrans.Translation.y += 7 * DeltaTime * Keyboard.UpDownAxis;
 
-                    //leichter tilt nach unten
-                    _starshipTrans.Rotation.z = -Keyboard.UpDownAxis * 0.083f;
+            //        //leichter tilt nach unten
+            //        _starshipTrans.Rotation.z = -Keyboard.UpDownAxis * 0.083f;
 
-                   
-                    //Bewegungsgrenze unten
-                    if (_starshipTrans.Translation.y <= -0.3f)
-                    {
-                    _starshipTrans.Translation.y -= 7 * DeltaTime * Keyboard.UpDownAxis;
-                    }
-                }
-            }
+
+            //        //Bewegungsgrenze unten
+            //        if (_starshipTrans.Translation.y <= -0.3f)
+            //        {
+            //        _starshipTrans.Translation.y -= 7 * DeltaTime * Keyboard.UpDownAxis;
+            //        }
+            //    }
+            //}
 
 
 
@@ -220,13 +326,14 @@ namespace FuseeApp
             //Hier Startbutton / Menü einfügen
 
 
-
+           
 
             if (Keyboard.IsKeyDown(KeyCodes.Space))  //wenn die Leertaste gedrückt wird, wird die Zeit seit dem Drücken in playTime gespeichert
             {
                 start = true;
                 appStartTime = RealTimeSinceStart;
-                _starshipScene.Children.Add(AssetStorage.Get<SceneNode>("StarshipProtoTrench1.fus"));
+                var irgendwas = AssetStorage.Get<SceneContainer>("Trench 1.fus").ToSceneNode();
+                    _starshipScene.Children.Add(irgendwas);
             }
 
 
@@ -265,7 +372,7 @@ namespace FuseeApp
     
 
         //Timer wird gestartet
-        private static float StartTimer(float appStartTime)
+        private float StartTimer(float appStartTime)
         {
 
             return RealTimeSinceStart - appStartTime;    
@@ -275,20 +382,20 @@ namespace FuseeApp
         
         
         //Trench Class
-        private static void Trench(AABBf shipHitbox, AABBf cubeHitbox,bool start, double speed, float playTime)
+        private void Trench(AABBf shipHitbox, AABBf cubeHitbox,bool start, double speed, float playTime)
         {
    
             if (shipHitbox.Intersects(cubeHitbox))
             {
                 Console.WriteLine("Boom!");
-                Death(start);
+                Death();
             }  
         }
 
 
 
 
-        private static void Death(bool start)
+        private void Death()
         {
             start = false;
         }

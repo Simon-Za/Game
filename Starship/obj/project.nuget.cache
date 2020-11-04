@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UT6cR8kSs2GE7lz3X7Ticg3rMz0Tm2ki7OcQYBdt+6ATW4o8a7QGVDXjrDumVItTXCxifBlMkWWHllTmVhLYmg==",
+  "dgSpecHash": "2M3ToN9e5YB8NN/L1HJjE+yaMPg0VOdu+FsFPMNoJ3J0PcbFQzdqH2JvEccr1443Jqe4efN6cZidqSuBZ8RHhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\symz1\\Documents\\FUSEE\\Starship\\Starship.csproj",
+  "projectFilePath": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\symz1\\.nuget\\packages\\fusee.base.common\\0.8.2\\fusee.base.common.0.8.2.nupkg.sha512",
     "C:\\Users\\symz1\\.nuget\\packages\\fusee.base.core\\0.8.2\\fusee.base.core.0.8.2.nupkg.sha512",

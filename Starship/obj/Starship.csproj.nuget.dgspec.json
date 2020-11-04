@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\symz1\\Documents\\FUSEE\\Starship\\Starship.csproj": {}
+    "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj": {}
   },
   "projects": {
-    "C:\\Users\\symz1\\Documents\\FUSEE\\Starship\\Starship.csproj": {
+    "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\symz1\\Documents\\FUSEE\\Starship\\Starship.csproj",
+        "projectUniqueName": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj",
         "projectName": "Starship",
-        "projectPath": "C:\\Users\\symz1\\Documents\\FUSEE\\Starship\\Starship.csproj",
+        "projectPath": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj",
         "packagesPath": "C:\\Users\\symz1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\symz1\\Documents\\FUSEE\\Starship\\obj\\",
+        "outputPath": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
