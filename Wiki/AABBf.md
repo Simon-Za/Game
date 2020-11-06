@@ -46,7 +46,7 @@ Components ###
 
 Building your own Bounding Box ### H3
 
-You can use the constructor 'AABBf' to build your own Bounding Box: ##### H5
+##### You can use the constructor 'AABBf' to build your own Bounding Box: 
 
 
 ```
@@ -61,7 +61,7 @@ AABBf bb1 = new AABBf
 ```
 
 
-There is also a way to get the Bounding Box of an Asset or Object in the scene: ##### H5
+##### There is also a way to get the Bounding Box of an Asset or Object in the scene: 
 
 
 ```
@@ -73,14 +73,14 @@ bb2 = SphereMesh.BoundingBox;
 ```
 
 
-If (at least) one of your object moves you can multiplicate it with the Matrix of the moving Object: ##### H5
+##### If (at least) one of your object moves you can multiplicate it with the Matrix of the moving Object: 
 
 ```
 AABBf movingBb = bb2 * SphereTrans.Matrix();
 ```
 
 
-Now if you want to check for a collision between these two Bounding Boxes, you can use the Intersect Method: ##### H5
+##### Now if you want to check for a collision between these two Bounding Boxes, you can use the Intersect Method: 
 
 ```
 if(bb1.Intersects(bb2))
