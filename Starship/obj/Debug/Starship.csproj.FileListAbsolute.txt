@@ -44,3 +44,6 @@ C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 1.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Starship.deps.json
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Starship.dll
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Starship.pdb
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 3.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 1.1.fus
