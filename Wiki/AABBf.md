@@ -7,7 +7,8 @@ A Bounding Box forms itself out of the minimal and the maximal x, y, z coordinat
 The min and max values of a cube in the center of a scene may look like this:
 
 ```min = (-1, -1, -1); 
-max = (1, 1, 1);```
+max = (1, 1, 1);
+```
 
 A Bounding Box draws a cuboid as tightly as possible around the targeted object.
 A sphere with radius 1 would have the same Bounding Box as the cube in the example above.
@@ -26,7 +27,9 @@ Components ###
 
 | Type          | Name                             |        Description                                                             |
 |:-------------:|:--------------------------------:| ------------------------------------------------------------------------------:|
-| ```AABBf```   | AABBf()                          | Creates a new axis aligned bounding box                                        |
+| ```AABBf
+```   
+| AABBf()                          | Creates a new axis aligned bounding box                                        |
 | ```bool```    | Equals(B)                        | Indicates whether this plane is equal to another object                        |
 | ```bool```    | Intersects(B)                    | Checks if this AABB intersects with another                                    |
 | ```AABBf```   | ReferenceEquals(A, C)            | Determines whether the specified object instances are the same isntance        |
