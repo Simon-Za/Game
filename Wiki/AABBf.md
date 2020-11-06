@@ -6,7 +6,8 @@ The Axis-Aligned Bounding Box is an efficient tool for collision detection.
 A Bounding Box forms itself out of the minimal and the maximal x, y, z coordinates of an object.
 The min and max values of a cube in the center of a scene may look like this:
 
-```min = (-1, -1, -1); 
+```
+min = (-1, -1, -1); 
 max = (1, 1, 1);
 ```
 
@@ -43,12 +44,13 @@ Components ###
 |  ``float3``   | max                              | The maximum value of the axis aligned bounding box in x, y and z direction     |
 
 
-Building your own Bounding Box ###
+Building your own Bounding Box ### H3
 
-You can use the constructor 'AABBf' to build your own Bounding Box: #####
+You can use the constructor 'AABBf' to build your own Bounding Box: ##### H5
 
 
-```_min = new float3(-1, -1, -1);
+```
+_min = new float3(-1, -1, -1);
 _max = new float3(1, 1, 1):
 
 AABBf bb1 = new AABBf
@@ -59,10 +61,11 @@ AABBf bb1 = new AABBf
 ```
 
 
-There is also a way to get the Bounding Box of an Asset or Object in the scene: #####
+There is also a way to get the Bounding Box of an Asset or Object in the scene: ##### H5
 
 
-```private Transform SphereTrans;
+```
+private Transform SphereTrans;
 private Mesh SphereMesh;
 
 SphereMesh = Scene.Children.FindNodes(node =>node.Name == "Sphere")?.FirstOrDefault()?.GetMesh();
@@ -70,15 +73,17 @@ bb2 = SphereMesh.BoundingBox;
 ```
 
 
-If (at least) one of your object moves you can multiplicate it with the Matrix of the moving Object: #####
+If (at least) one of your object moves you can multiplicate it with the Matrix of the moving Object: ##### H5
 
-```AABBf movingBb = bb2 * SphereTrans.Matrix();
+```
+AABBf movingBb = bb2 * SphereTrans.Matrix();
 ```
 
 
-Now if you want to check for a collision between these two Bounding Boxes, you can use the Intersect Method: #####
+Now if you want to check for a collision between these two Bounding Boxes, you can use the Intersect Method: ##### H5
 
-```if(bb1.Intersects(bb2))
+```
+if(bb1.Intersects(bb2))
 {
     Console.WriteLine(Oh? You're intersecting me?);
 }
