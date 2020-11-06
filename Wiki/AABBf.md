@@ -47,14 +47,14 @@ Building your own Bounding Box ###
 You can use the constructor 'AABBf' to build your own Bounding Box: #####
 
 
-'_min = new float3(-1, -1, -1);
+`_min = new float3(-1, -1, -1);
 _max = new float3(1, 1, 1):
 
 AABBf bb1 = new AABBf
 (
     _min,
     _max 
-);'
+);`
 
 
 There is also a way to get the Bounding Box of an Asset or Object in the scene: #####
