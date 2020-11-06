@@ -18,6 +18,7 @@ using System.Text;
 using System.Security.Cryptography;
 using OpenTK.Graphics.OpenGL;
 using System.Threading;
+using OpenTK.Graphics.ES20;
 
 namespace FuseeApp
 {
@@ -326,11 +327,14 @@ namespace FuseeApp
 
             //Bounding Boxes 
 
-            //Boundind Box des Schiffs
+            //Boundind Box des Schiffs  
             _shipBox = _starShipMesh.BoundingBox;
 
-
-
+            AABBf BoundingBox = new AABBf
+            (
+                new float3(1, 1, 1),
+                new float3(-1, -1, -1)
+            );
 
             if (start)
             { 
@@ -434,7 +438,6 @@ namespace FuseeApp
         {
             start = false;
         }
-
 
 
 
