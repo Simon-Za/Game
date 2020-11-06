@@ -1,4 +1,4 @@
-AABBf 
+# AABBf 
 
 Work in progress
 
@@ -24,7 +24,7 @@ Therefore the AABB is most useful when the objects principal axes are roughly al
 When two Bounding Boxes are tested for a collision, the minimum values of one box are compared to the maximum of the other and vice versa (A.min.y & B.max.y,..., A.max.z & B.min.z,...). So if a minimum value is greater than a maximum value / a maximum value is lesser than a minimum value, a collision occurs.
 
 
-Components ###
+### Components
 
 | Type          | Name                             |        Description                                                             |
 |:-------------:|:--------------------------------:| ------------------------------------------------------------------------------:|
@@ -44,7 +44,7 @@ Components ###
 |  ``float3``   | max                              | The maximum value of the axis aligned bounding box in x, y and z direction     |
 
 
-Building your own Bounding Box ### H3
+### Building your own Bounding Box
 
 ##### You can use the constructor 'AABBf' to build your own Bounding Box: 
 
