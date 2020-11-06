@@ -27,22 +27,20 @@ Components ###
 
 | Type          | Name                             |        Description                                                             |
 |:-------------:|:--------------------------------:| ------------------------------------------------------------------------------:|
-| ```AABBf
-```   
-| AABBf()                          | Creates a new axis aligned bounding box                                        |
-| ```bool```    | Equals(B)                        | Indicates whether this plane is equal to another object                        |
-| ```bool```    | Intersects(B)                    | Checks if this AABB intersects with another                                    |
-| ```AABBf```   | ReferenceEquals(A, C)            | Determines whether the specified object instances are the same isntance        |
-| ```AABBf```   | Union(A, B)                      | Calculates the bounding box around two exosting bounding boxes                 |
-| ```int```     | GetHashCode()                    | Returns the hash code for this instance                                        |
-| ```Type```    | GetType()                        | Gets the Type of the current instance                                          |
-| ```bool```    | InsideOrIntersectingFrustrum()   | Checks if a viewing frustrum lies within or intersects this AABB               |
-| ```bool```    | InsideOrIntersectingPlane()      | Checks if a viewing plane lies within or intersects this AABB                  |
-| ```string```  | ToString()                       | Returns the fully qualified type name of this instance                         |
-| ```float3```  | Size                             | Returns the width, height and depth of the box in x, y and z                   |
-| ```float3```  | Center                           | Returns the center of the bounding box                                         |
-| ```float3```  | min                              | The minimum value of the axis aligned bounding box in x, y and z direction     |
-| ```float3```  | max                              | The maximum value of the axis aligned bounding box in x, y and z direction     |
+| ``AABBf``     | AABBf()                          | Creates a new axis aligned bounding box                                        |
+|  ``bool``     | Equals(B)                        | Indicates whether this plane is equal to another object                        |
+|  ``bool``     | Intersects(B)                    | Checks if this AABB intersects with another                                    |
+|  ``AABBf``    | ReferenceEquals(A, C)            | Determines whether the specified object instances are the same isntance        |
+|  ``AABBf``    | Union(A, B)                      | Calculates the bounding box around two exosting bounding boxes                 |
+|  ``int``      | GetHashCode()                    | Returns the hash code for this instance                                        |
+|  ``Type``     | GetType()                        | Gets the Type of the current instance                                          |
+|  ``bool``     | InsideOrIntersectingFrustrum()   | Checks if a viewing frustrum lies within or intersects this AABB               |
+|  ``bool``     | InsideOrIntersectingPlane()      | Checks if a viewing plane lies within or intersects this AABB                  |
+|  ``string``   | ToString()                       | Returns the fully qualified type name of this instance                         |
+|  ``float3``   | Size                             | Returns the width, height and depth of the box in x, y and z                   |
+|  ``float3``   | Center                           | Returns the center of the bounding box                                         |
+|  ``float3``   | min                              | The minimum value of the axis aligned bounding box in x, y and z direction     |
+|  ``float3``   | max                              | The maximum value of the axis aligned bounding box in x, y and z direction     |
 
 
 Building your own Bounding Box ###
@@ -57,7 +55,8 @@ AABBf bb1 = new AABBf
 (
     _min,
     _max 
-);```
+);
+```
 
 
 There is also a way to get the Bounding Box of an Asset or Object in the scene: #####
@@ -67,12 +66,14 @@ There is also a way to get the Bounding Box of an Asset or Object in the scene: 
 private Mesh SphereMesh;
 
 SphereMesh = Scene.Children.FindNodes(node =>node.Name == "Sphere")?.FirstOrDefault()?.GetMesh();
-bb2 = SphereMesh.BoundingBox;```
+bb2 = SphereMesh.BoundingBox;
+```
 
 
 If (at least) one of your object moves you can multiplicate it with the Matrix of the moving Object: #####
 
-```AABBf movingBb = bb2 * SphereTrans.Matrix();```
+```AABBf movingBb = bb2 * SphereTrans.Matrix();
+```
 
 
 Now if you want to check for a collision between these two Bounding Boxes, you can use the Intersect Method: #####
@@ -80,4 +81,5 @@ Now if you want to check for a collision between these two Bounding Boxes, you c
 ```if(bb1.Intersects(bb2))
 {
     Console.WriteLine(Oh? You're intersecting me?);
-}```
+}
+```
