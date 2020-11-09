@@ -2,7 +2,7 @@
 
 Work in progress
 
-The Axis-Aligned Bounding Box is an efficient tool for collision detection.
+The Axis-Aligned Bounding Box (float) is an efficient tool for collision detection.
 A Bounding Box forms itself out of the minimal and the maximal x, y, z coordinates of an object.
 The min and max values of a cube in the center of a scene may look like this:
 
@@ -73,7 +73,7 @@ bb2 = SphereMesh.BoundingBox;
 ```
 
 
-##### If (at least) one of your object moves you can multiplicate it with the Matrix of the moving Object: 
+##### If (at least) one of your objects moves you can multiplicate it with the Matrix of the moving Object: 
 
 ```
 AABBf movingBb = bb2 * SphereTrans.Matrix();
