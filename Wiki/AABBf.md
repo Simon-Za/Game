@@ -29,10 +29,10 @@ When two Bounding Boxes are tested for a collision, the minimum values of one bo
 | Type          | Name                             |        Description                                                             |
 |:-------------:|:--------------------------------:| ------------------------------------------------------------------------------:|
 | ``AABBf``     | AABBf()                          | Creates a new axis aligned bounding box                                        |
-|  ``bool``     | Equals(B)                        | Indicates whether this plane is equal to another object                        |
-|  ``bool``     | Intersects(B)                    | Checks if this AABB intersects with another                                    |
-|  ``AABBf``    | ReferenceEquals(A, C)            | Determines whether the specified object instances are the same isntance        |
-|  ``AABBf``    | Union(A, B)                      | Calculates the bounding box around two exosting bounding boxes                 |
+|  ``bool``     | Equals()                         | Indicates whether this plane is equal to another object                        |
+|  ``bool``     | Intersects()                     | Checks if this AABB intersects with another                                    |
+|  ``AABBf``    | ReferenceEquals()                | Determines whether the specified object instances are the same isntance        |
+|  ``AABBf``    | Union()                          | Calculates the bounding box around two exosting bounding boxes                 |
 |  ``int``      | GetHashCode()                    | Returns the hash code for this instance                                        |
 |  ``Type``     | GetType()                        | Gets the Type of the current instance                                          |
 |  ``bool``     | InsideOrIntersectingFrustrum()   | Checks if a viewing frustrum lies within or intersects this AABB               |
