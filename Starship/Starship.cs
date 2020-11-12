@@ -15,6 +15,7 @@ using System.Linq;
 using System.ComponentModel;
 using Fusee.Xirkit;
 using System.Text;
+
 using System.Security.Cryptography;
 using OpenTK.Graphics.OpenGL;
 using System.Threading;
@@ -51,6 +52,13 @@ namespace FuseeApp
         bool normal = true;
         bool down;
 
+        int trenchCount;
+
+        Random random;
+
+        SceneNode currentTrench;
+        SceneNode newTrench;
+
 
         float counter;//1sec
 
@@ -73,7 +81,7 @@ namespace FuseeApp
         {
             RC.ClearColor = new float4(0, 0, 0, 0);
 
-            _starshipScene = AssetStorage.Get<SceneContainer>("StarshipProto.fus");
+            _starshipScene = AssetStorage.Get<SceneContainer>("StarshipOnly.fus");
 
 
             _starshipTrans = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetTransform();
@@ -86,29 +94,17 @@ namespace FuseeApp
 
             TrenchesList = new List<SceneNode>
             {
-                AssetStorage.Get<SceneContainer>("Trench 1.1.fus").ToSceneNode(),
-                AssetStorage.Get<SceneContainer>("Trench 2.fus").ToSceneNode(),
-                AssetStorage.Get<SceneContainer>("Trench 3.fus").ToSceneNode()
+                AssetStorage.Get<SceneContainer>("Trench1new.fus").ToSceneNode(),
+                AssetStorage.Get<SceneContainer>("Trench2new.fus").ToSceneNode(),
+                AssetStorage.Get<SceneContainer>("Trench3new.fus").ToSceneNode()
             };
+             random = new Random();
+            trenchCount = TrenchesList.Count() - 1;
 
+            currentTrench = TrenchesList[0];
+            newTrench = TrenchesList[random.Next(0, 2)];
 
-            int n = TrenchesList.Count();
-            Random random = new Random();
-
-
-
-            var currentTrench = TrenchesList[0];
-            var newTrench = TrenchesList[random.Next(0, n - 1)];
-
-            TrenchParent = new SceneNode()
-            {
-                Name = "TrenchParent"
-            };
-
-            TrenchParent.Children.Add(currentTrench);
-
-
-            _starshipScene.Children.Add(TrenchParent);
+            
 
 
             _sceneRenderer = new SceneRendererForward(_starshipScene);
@@ -131,6 +127,31 @@ namespace FuseeApp
 
             double speed = (double)DeltaTime * 20;
 
+
+
+
+
+
+            TrenchParent = new SceneNode()
+            {
+                Name = "TrenchParent"
+            };
+
+            _starshipScene.Children.Add(TrenchParent);
+            
+            TrenchParent.Children.Add(currentTrench);
+            TrenchParent.Children.Add(newTrench);
+
+
+
+            var newTrenchTrans = newTrench.GetTransform().Translation.z;
+            newTrench.GetTransform().Translation.z += 100;
+
+            if (newTrench.GetTransform().Translation.z == newTrenchTrans)
+            {
+                currentTrench = newTrench;
+                newTrench = TrenchesList[random.Next(0, 2)];
+            }
 
  
 
@@ -330,12 +351,6 @@ namespace FuseeApp
             //Boundind Box des Schiffs  
             _shipBox = _starShipMesh.BoundingBox;
 
-            AABBf BoundingBox = new AABBf
-            (
-                new float3(1, 1, 1),
-                new float3(-1, -1, -1)
-            );
-
             if (start)
             { 
                 //speed *= playTime;            unnötig, aber in ähnlicher Form später für die Geschwindigkeitserhöhung nutzbar
@@ -362,6 +377,11 @@ namespace FuseeApp
                             _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ObstacleDummy" + i)?.FirstOrDefault()?.GetMesh();
 
                             AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
+
+
+                            Console.WriteLine("CubeObstTransl:" + _cubeObstTrans.Translation);
+                            Console.WriteLine("TrenchTransl" + _trenchTrans.Translation);
+                            //Console.WriteLine("Trans" + _cubeObstTrans.Translation);
                             
 
                             Trench(_shipBox, cubeHitbox);
@@ -423,11 +443,11 @@ namespace FuseeApp
     
         
         
-        private void Trench(AABBf shipHitbox, AABBf cubeHitbox)
+        private void Trench(AABBf _shipBox, AABBf cubeHitbox)
         {
-   
-            if (shipHitbox.Intersects(cubeHitbox))
+            if (_shipBox.Intersects(cubeHitbox))
             {
+
                 Console.WriteLine("Boom!");
                 Death();
             }  

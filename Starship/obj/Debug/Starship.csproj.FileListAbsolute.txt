@@ -47,3 +47,33 @@ C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Starship.pdb
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 2.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 3.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 1.1.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Boden.png
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProto.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProto2.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProto3.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoGreenSmaller.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoGreenSmallerTrench.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoMultipleDummies.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoMultipleTreches.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoObstDum.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoSeparateTrenches.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoSmall.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipProtoSmallGreen.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench 1.1.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench 1.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench 2.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench 3.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Starship.deps.json
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Starship.dll
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Starship.pdb
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\obj\Debug\Starship.csprojAssemblyReference.cache
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\obj\Debug\Starship.AssemblyInfoInputs.cache
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\obj\Debug\Starship.AssemblyInfo.cs
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\obj\Debug\Starship.csproj.CoreCompileInputs.cache
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\obj\Debug\Starship.dll
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\obj\Debug\Starship.pdb
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench 1new.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench1new.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipOnly.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench2new.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench3new.fus
