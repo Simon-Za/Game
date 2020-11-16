@@ -5566,24 +5566,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\symz1\\.nuget\\packages\\": {}
+    "C:\\Users\\symz1\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\symz1\\Desktop\\Uni shit\\Semester 3\\Game\\Starship\\Starship.csproj",
+      "projectUniqueName": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj",
       "projectName": "Starship",
-      "projectPath": "C:\\Users\\symz1\\Desktop\\Uni shit\\Semester 3\\Game\\Starship\\Starship.csproj",
+      "projectPath": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\Starship.csproj",
       "packagesPath": "C:\\Users\\symz1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\symz1\\Desktop\\Uni shit\\Semester 3\\Game\\Starship\\obj\\",
+      "outputPath": "C:\\Users\\symz1\\Documents\\FUSEE\\Game\\Starship\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\symz1\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\symz1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5620,7 +5627,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   },

@@ -28,7 +28,6 @@ C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.csproj.CoreCompi
 C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.dll
 C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.pdb
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Boden.png
-C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\RocketModel.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StarshipProto.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StarshipProto2.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StarshipProto3.fus
@@ -77,3 +76,8 @@ C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench
 C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\StarshipOnly.fus
 C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench2new.fus
 C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\Trench3new.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StarshipOnly.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 1new.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench1new.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench2new.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench3new.fus

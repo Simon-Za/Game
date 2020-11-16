@@ -427,9 +427,8 @@ namespace FuseeApp
         }
 
 
-
         //Start des Spiels, also Beginn der Bewegung der Szene und des Zählers
-    
+
 
         //Timer wird gestartet
         private float StartTimer(float appStartTime)
@@ -440,7 +439,8 @@ namespace FuseeApp
         }
     
         
-        
+
+
         private void Trench(AABBf _shipBox, AABBf cubeHitbox)
         {
             if (_shipBox.Intersects(cubeHitbox))
