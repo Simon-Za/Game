@@ -99,10 +99,10 @@ namespace FuseeApp
                 AssetStorage.Get<SceneContainer>("Trench3new.fus").ToSceneNode()
             };
              random = new Random();
-            trenchCount = TrenchesList.Count() - 1;
+            trenchCount = TrenchesList.Count();
 
             currentTrench = TrenchesList[0];
-            newTrench = TrenchesList[random.Next(0, 2)];
+            newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
 
             
 
@@ -144,13 +144,13 @@ namespace FuseeApp
 
 
 
-            var newTrenchTrans = newTrench.GetTransform().Translation.z;
+            float newTrenchTrans = newTrench.GetTransform().Translation.z;
             newTrench.GetTransform().Translation.z += 100;
 
             if (newTrench.GetTransform().Translation.z == newTrenchTrans)
             {
                 currentTrench = newTrench;
-                newTrench = TrenchesList[random.Next(0, 2)];
+                newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
             }
 
  
@@ -382,7 +382,6 @@ namespace FuseeApp
                             Console.WriteLine("CubeObstTransl:" + _cubeObstTrans.Translation);
                             Console.WriteLine("TrenchTransl" + _trenchTrans.Translation);
                             //Console.WriteLine("Trans" + _cubeObstTrans.Translation);
-                            
 
                             Trench(_shipBox, cubeHitbox);
                         }
@@ -394,7 +393,6 @@ namespace FuseeApp
                 playTime = 0;  //???? idk ob das so was bringt, aber ist erstmal egal
                 speed = 0;
             }
-
 
             if (counter > 0)
             {
@@ -461,18 +459,44 @@ namespace FuseeApp
 
 
 
+        private SceneNode CopyNode(SceneNode insn)
+        {
+            SceneNode outsn = new SceneNode();
 
+            outsn.Name = insn.Name;
+            outsn.Components = insn.Components;//CopyComponent(insn);
+            outsn.Children = insn.Children;
 
+            return outsn;
 
+            
+        }
 
+        /* private List <SceneComponent> CopyComponent(SceneNode insn)
+        {
+           List<SceneComponent> outco = new List <SceneComponent>();
+            
+               //outco.Add(insn.GetTransform());
+               //outco.Add(insn.Components.ElementAt)
 
-
-
-
-
-
-
-
+            for(int i = 0; i < insn.Components.Count; i++)
+            {
+              /* if (insn.Components[i].Name == "Transform")
+                {
+                    Transform blankTrans = new Transform();
+                    outco.Add(blankTrans);
+                } */
+                //else
+                //{ 
+                    //outco.Add(insn.Components.ElementAt(i));
+                    //outco.Add(insn.Components[i]);
+                //}
+               
+            //}
+            //outco = insn.GetComponents Components.Find(Component => Component.Name == "Transform");
+            //Console.WriteLine(outco);
+            //return outco;
+        //}
 
     }
 }
