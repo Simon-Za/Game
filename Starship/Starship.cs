@@ -110,7 +110,9 @@ namespace FuseeApp
         //private enum Status {Start, Game, Death};
         private int status = 0;
 
+        List<double> ScoresList;
 
+        private double currentScore;
 
         public override void Init()
         {
@@ -176,6 +178,11 @@ namespace FuseeApp
             _uiStartRenderer = new SceneRendererForward(_uiStart);
             _uiGameRenderer = new SceneRendererForward(_uiGame);
             _uiDeathRenderer = new SceneRendererForward(_uiDeath);
+
+
+            ScoresList = new List<TextNode>
+            {
+            };
         }
 
 
@@ -807,6 +814,7 @@ namespace FuseeApp
  
         private void Death()
         {
+            currentScore = playTime;
             start = false;
             status = 2;
         }
@@ -827,6 +835,16 @@ namespace FuseeApp
         private void Faster()
         {
             speed *= 1.25f; 
+        }
+
+        private void Leaderboard()
+        {
+            if(currentScore >= ScoresList[ScoresList.Count() - 1])
+            {
+                ScoresList.RemoveAt[]
+                ScoresList.Add()
+            }
+            
         }
     }
 }
