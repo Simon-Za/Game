@@ -8,228 +8,228 @@
     ".NETCoreApp,Version=v3.1": {
       "Starship/1.0.0": {
         "dependencies": {
-          "Fusee.Desktop": "0.8.2"
+          "Fusee.Desktop": "0.9.0"
         },
         "runtime": {
           "Starship.dll": {}
         }
       },
-      "Fusee.Base.Common/0.8.2": {
+      "Fusee.Base.Common/0.9.0": {
         "dependencies": {
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Math.Core": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Base.Common.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Base.Core/0.8.2": {
+      "Fusee.Base.Core/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Base.Core.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Base.Imp.Desktop/0.8.2": {
+      "Fusee.Base.Imp.Desktop/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
           "SharpFontStandard": "4.0.1",
-          "System.Drawing.Common": "4.7.0"
+          "System.Drawing.Common": "5.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Fusee.Base.Imp.Desktop.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Core/0.8.2": {
+      "Fusee.Core/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Engine.Core": "0.8.2",
-          "Fusee.Engine.GUI": "0.8.2",
-          "Fusee.Jometri": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Serialization": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "Fusee.Xirkit": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Engine.Core": "0.9.0",
+          "Fusee.Engine.GUI": "0.9.0",
+          "Fusee.Jometri": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Serialization": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "Fusee.Xirkit": "0.9.0"
         }
       },
-      "Fusee.Desktop/0.8.2": {
+      "Fusee.Desktop/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Imp.Desktop": "0.8.2",
-          "Fusee.Core": "0.8.2",
-          "Fusee.Engine.Imp.Graphics.Desktop": "0.8.2"
+          "Fusee.Base.Imp.Desktop": "0.9.0",
+          "Fusee.Core": "0.9.0",
+          "Fusee.Engine.Imp.Graphics.Desktop": "0.9.0"
         }
       },
-      "Fusee.Engine.Common/0.8.2": {
+      "Fusee.Engine.Common/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Xene": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Xene": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Engine.Common.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Engine.Core/0.8.2": {
+      "Fusee.Engine.Core/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Jometri": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Serialization": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "Fusee.Xirkit": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Jometri": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Serialization": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "Fusee.Xirkit": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Engine.Core.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Engine.GUI/0.8.2": {
+      "Fusee.Engine.GUI/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Engine.Core": "0.8.2",
-          "Fusee.Jometri": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "Fusee.Xirkit": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Engine.Core": "0.9.0",
+          "Fusee.Jometri": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "Fusee.Xirkit": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Engine.GUI.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Engine.Imp.Graphics.Desktop/0.8.2": {
+      "Fusee.Engine.Imp.Graphics.Desktop/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Engine.Core": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Engine.Core": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
           "OpenTK": "3.2.0",
-          "System.Drawing.Common": "4.7.0"
+          "System.Drawing.Common": "5.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Fusee.Engine.Imp.Graphics.Desktop.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Jometri/0.8.2": {
+      "Fusee.Jometri/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Jometri.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Math.Core/0.8.2": {
+      "Fusee.Math.Core/0.9.0": {
         "dependencies": {
-          "protobuf-net": "3.0.0-alpha.146.g00620fbe1a"
+          "protobuf-net": "3.0.62"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Math.Core.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Serialization/0.8.2": {
+      "Fusee.Serialization/0.9.0": {
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "protobuf-net": "3.0.0-alpha.146.g00620fbe1a"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "protobuf-net": "3.0.62"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Serialization.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Xene/0.8.2": {
+      "Fusee.Xene/0.9.0": {
         "dependencies": {
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Math.Core": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Xene.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Fusee.Xirkit/0.8.2": {
+      "Fusee.Xirkit/0.9.0": {
         "dependencies": {
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Math.Core": "0.9.0"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Xirkit.dll": {
-            "assemblyVersion": "0.8.2.0",
-            "fileVersion": "0.8.2.0"
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
-      "Microsoft.NETCore.Platforms/3.1.0": {},
+      "Microsoft.NETCore.Platforms/5.0.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
-      "Microsoft.Win32.SystemEvents/4.7.0": {
+      "Microsoft.Win32.SystemEvents/5.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "Microsoft.NETCore.Platforms": "5.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.700.19.56404"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         },
         "runtimeTargets": {
           "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
             "rid": "win",
             "assetType": "runtime",
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.700.19.56404"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
       "NETStandard.Library/1.6.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.Win32.Primitives": "4.3.0",
           "System.AppContext": "4.3.0",
           "System.Collections": "4.3.0",
@@ -283,27 +283,22 @@
           }
         }
       },
-      "protobuf-net/3.0.0-alpha.146.g00620fbe1a": {
+      "protobuf-net/3.0.62": {
         "dependencies": {
-          "System.ServiceModel.Primitives": "4.6.0",
-          "protobuf-net.Core": "3.0.0-alpha.146.g00620fbe1a"
+          "protobuf-net.Core": "3.0.62"
         },
         "runtime": {
-          "lib/netstandard2.1/protobuf-net.dll": {
+          "lib/netcoreapp3.1/protobuf-net.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.0.0"
+            "fileVersion": "3.0.62.765"
           }
         }
       },
-      "protobuf-net.Core/3.0.0-alpha.146.g00620fbe1a": {
-        "dependencies": {
-          "System.Buffers": "4.5.0",
-          "System.Memory": "4.5.3"
-        },
+      "protobuf-net.Core/3.0.62": {
         "runtime": {
-          "lib/netcoreapp3.0/protobuf-net.Core.dll": {
+          "lib/netcoreapp3.1/protobuf-net.Core.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.0.0"
+            "fileVersion": "3.0.62.765"
           }
         }
       },
@@ -312,19 +307,19 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "runtime.native.System.IO.Compression/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "runtime.native.System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
@@ -371,10 +366,18 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Buffers/4.5.0": {},
+      "System.Buffers/4.3.0": {
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading": "4.3.0"
+        }
+      },
       "System.Collections/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -395,7 +398,7 @@
       },
       "System.Console/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -404,7 +407,7 @@
       },
       "System.Diagnostics.Debug/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -420,54 +423,53 @@
       },
       "System.Diagnostics.Tools/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Drawing.Common/4.7.0": {
+      "System.Drawing.Common/5.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "Microsoft.Win32.SystemEvents": "4.7.0"
+          "Microsoft.Win32.SystemEvents": "5.0.0"
         },
         "runtime": {
-          "lib/netstandard2.0/System.Drawing.Common.dll": {
-            "assemblyVersion": "4.0.0.1",
-            "fileVersion": "4.6.26919.2"
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
             "rid": "unix",
             "assetType": "runtime",
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.700.19.56404"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           },
           "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
             "rid": "win",
             "assetType": "runtime",
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.700.19.56404"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
       "System.Globalization/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Globalization.Calendars/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Globalization": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -475,7 +477,7 @@
       },
       "System.Globalization.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -485,7 +487,7 @@
       },
       "System.IO/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0",
@@ -494,8 +496,8 @@
       },
       "System.IO.Compression/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "System.Buffers": "4.5.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "System.Buffers": "4.3.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.IO": "4.3.0",
@@ -513,7 +515,7 @@
       },
       "System.IO.Compression.ZipFile/4.3.0": {
         "dependencies": {
-          "System.Buffers": "4.5.0",
+          "System.Buffers": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.Compression": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
@@ -526,7 +528,7 @@
       },
       "System.IO.FileSystem/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
@@ -571,10 +573,9 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.Memory/4.5.3": {},
       "System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.DiagnosticSource": "4.3.0",
@@ -604,7 +605,7 @@
       },
       "System.Net.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Handles": "4.3.0"
@@ -612,7 +613,7 @@
       },
       "System.Net.Sockets/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Net.Primitives": "4.3.0",
@@ -629,29 +630,15 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.Private.ServiceModel/4.6.0": {
-        "dependencies": {
-          "System.Reflection.DispatchProxy": "4.5.0",
-          "System.Security.Cryptography.Xml": "4.5.0",
-          "System.Security.Principal.Windows": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Private.ServiceModel.dll": {
-            "assemblyVersion": "4.6.0.0",
-            "fileVersion": "4.600.19.47001"
-          }
-        }
-      },
       "System.Reflection/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.DispatchProxy/4.5.0": {},
       "System.Reflection.Emit/4.3.0": {
         "dependencies": {
           "System.IO": "4.3.0",
@@ -678,7 +665,7 @@
       },
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -686,7 +673,7 @@
       },
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -699,7 +686,7 @@
       },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Globalization": "4.3.0",
           "System.Reflection": "4.3.0",
@@ -708,27 +695,27 @@
       },
       "System.Runtime/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "System.Runtime.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.Handles/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -755,15 +742,9 @@
           "System.Runtime.Extensions": "4.3.0"
         }
       },
-      "System.Security.AccessControl/4.5.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "System.Security.Principal.Windows": "4.5.0"
-        }
-      },
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -779,10 +760,24 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {},
+      "System.Security.Cryptography.Cng/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Security.Cryptography.Encoding": "4.3.0",
+          "System.Security.Cryptography.Primitives": "4.3.0",
+          "System.Text.Encoding": "4.3.0"
+        }
+      },
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -799,7 +794,7 @@
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
@@ -830,25 +825,6 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         }
       },
-      "System.Security.Cryptography.Pkcs/4.5.0": {
-        "dependencies": {
-          "System.Security.Cryptography.Cng": "4.5.0"
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
-            "assemblyVersion": "4.0.3.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.3.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        }
-      },
       "System.Security.Cryptography.Primitives/4.3.0": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
@@ -862,7 +838,7 @@
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -877,7 +853,7 @@
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.Numerics": "4.3.0",
           "System.Security.Cryptography.Algorithms": "4.3.0",
-          "System.Security.Cryptography.Cng": "4.5.0",
+          "System.Security.Cryptography.Cng": "4.3.0",
           "System.Security.Cryptography.Csp": "4.3.0",
           "System.Security.Cryptography.Encoding": "4.3.0",
           "System.Security.Cryptography.OpenSsl": "4.3.0",
@@ -889,59 +865,16 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         }
       },
-      "System.Security.Cryptography.Xml/4.5.0": {
-        "dependencies": {
-          "System.Security.Cryptography.Pkcs": "4.5.0",
-          "System.Security.Permissions": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Cryptography.Xml.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        }
-      },
-      "System.Security.Permissions/4.5.0": {
-        "dependencies": {
-          "System.Security.AccessControl": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Permissions.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        }
-      },
-      "System.Security.Principal.Windows/4.5.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
-        }
-      },
-      "System.ServiceModel.Primitives/4.6.0": {
-        "dependencies": {
-          "System.Private.ServiceModel": "4.6.0"
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/System.ServiceModel.Primitives.dll": {
-            "assemblyVersion": "4.6.0.0",
-            "fileVersion": "4.600.19.47001"
-          },
-          "lib/netcoreapp2.1/System.ServiceModel.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.600.19.47001"
-          }
-        }
-      },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0"
@@ -960,7 +893,7 @@
       },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -974,7 +907,7 @@
       },
       "System.Threading.Timer/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -1022,110 +955,110 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Fusee.Base.Common/0.8.2": {
+    "Fusee.Base.Common/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZeHzOVdrvmD8ofveFb8GinM5DEwcHIdwkOscCnvZhpyLvCghttysZGYRNkxCIjifH8pHFCzBWGN5FRTb3EtgDA==",
-      "path": "fusee.base.common/0.8.2",
-      "hashPath": "fusee.base.common.0.8.2.nupkg.sha512"
+      "sha512": "sha512-OazmqGVpvnVaW8B7CzDg+Zp36evXXVVwjIR40Naw9/1jSFAsk/mC+xV+WaPRtRGLAO6iwz7yALaCHfULrUBZEA==",
+      "path": "fusee.base.common/0.9.0",
+      "hashPath": "fusee.base.common.0.9.0.nupkg.sha512"
     },
-    "Fusee.Base.Core/0.8.2": {
+    "Fusee.Base.Core/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zQh+9VeipscwNLCEYYosBgL7c5ymLG8Hi61TvdizFWIOlyb45uvIz+juVNPLK2fTMCrv8w3LnHKYoG+Z5YsGXg==",
-      "path": "fusee.base.core/0.8.2",
-      "hashPath": "fusee.base.core.0.8.2.nupkg.sha512"
+      "sha512": "sha512-1j9JjtLfIAt7cBjvvChaYnPC0SbSt4wIWrYZUAkOzsDa+ntXTr3uhxaOXkHoIMT6ZQtdC3iz2PuxZE064wpnZQ==",
+      "path": "fusee.base.core/0.9.0",
+      "hashPath": "fusee.base.core.0.9.0.nupkg.sha512"
     },
-    "Fusee.Base.Imp.Desktop/0.8.2": {
+    "Fusee.Base.Imp.Desktop/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-X+tImmednwrQtFrxphgP5AQfIarINX4qlkc+dNyaS8E5Oc9G9r8iclqRhEVHfOoV6HolLRlRR1MILoBJwjeF7w==",
-      "path": "fusee.base.imp.desktop/0.8.2",
-      "hashPath": "fusee.base.imp.desktop.0.8.2.nupkg.sha512"
+      "sha512": "sha512-7vaNZqczIuPvA6GPemuZ0qn0Vi5z8ToBE5JadbONG/bfqiNswaq88qmSyKuvh/plhGP8v9yvIW8g1xpFCsr8Vw==",
+      "path": "fusee.base.imp.desktop/0.9.0",
+      "hashPath": "fusee.base.imp.desktop.0.9.0.nupkg.sha512"
     },
-    "Fusee.Core/0.8.2": {
+    "Fusee.Core/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xOdc27+LbmOZkAl1nmMkOB/rOJPktwV1FP0pCrikafURr4XDg9jh0fD+Mecr5ywfGl3y6I1PRBYGwhV5c9SMBw==",
-      "path": "fusee.core/0.8.2",
-      "hashPath": "fusee.core.0.8.2.nupkg.sha512"
+      "sha512": "sha512-rLWxKIectAoo/WkTguGBqenDu5lescm6OrrUODXSMost5Pwz7sedvBBn6KbhN6M99ryrCBgb1YZU/+vtMOyazA==",
+      "path": "fusee.core/0.9.0",
+      "hashPath": "fusee.core.0.9.0.nupkg.sha512"
     },
-    "Fusee.Desktop/0.8.2": {
+    "Fusee.Desktop/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tORTYheVkHqNRomyP+buNYXJ580k8M/0DJB3bzVZgc1zvD9EjCJd2d+oKgvQUR4kkN2gidVq8rPL56ISLdlNYw==",
-      "path": "fusee.desktop/0.8.2",
-      "hashPath": "fusee.desktop.0.8.2.nupkg.sha512"
+      "sha512": "sha512-9TjADlU14/lP9qhpb9wYBMHT6XR8tG0t7ntftfEIaLyFwulbbZqEitPk9jWpFAIi68bj7LaGRTVIpjJGBrgGmg==",
+      "path": "fusee.desktop/0.9.0",
+      "hashPath": "fusee.desktop.0.9.0.nupkg.sha512"
     },
-    "Fusee.Engine.Common/0.8.2": {
+    "Fusee.Engine.Common/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4WEBIgMgpjNJ0kFqCVDmbsouzCBiiZJdzA/izUJ5KhdPENhqh50TtRt6duH4mPXAqqjOwy8qBOvcmap38E7AZA==",
-      "path": "fusee.engine.common/0.8.2",
-      "hashPath": "fusee.engine.common.0.8.2.nupkg.sha512"
+      "sha512": "sha512-yIooaq7KRvHl2dHV5onRebuzZ39Oquo9tDxDfnUG1OVECMSI3Vtw3HoyVY3FkcaMeXKvQGW5O9ROv5luMYF0rA==",
+      "path": "fusee.engine.common/0.9.0",
+      "hashPath": "fusee.engine.common.0.9.0.nupkg.sha512"
     },
-    "Fusee.Engine.Core/0.8.2": {
+    "Fusee.Engine.Core/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GTl5XRZKVMaHL4gFcAaipbHGsumJstkUbD+m8g11iEyUL9kIbWWgnIHA/WY8Kt/GJmZG9AVkY5pbnVw8hm+H0g==",
-      "path": "fusee.engine.core/0.8.2",
-      "hashPath": "fusee.engine.core.0.8.2.nupkg.sha512"
+      "sha512": "sha512-Y6KfdKju11zB9P1Z175o4dyH+omNarxhp2BF3NLD1XyR4dmoT387xPWBhs/oNGfoKNpF+N5tVlMIxr3iJ6RDEQ==",
+      "path": "fusee.engine.core/0.9.0",
+      "hashPath": "fusee.engine.core.0.9.0.nupkg.sha512"
     },
-    "Fusee.Engine.GUI/0.8.2": {
+    "Fusee.Engine.GUI/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mF7gDUTIOmU/dXuYDcV26taFLEwL+/fDlf0V08v/UAjA9yVaV+tKL4Oudj5V/qe1g3M9AHbrONURyZkzmITuLA==",
-      "path": "fusee.engine.gui/0.8.2",
-      "hashPath": "fusee.engine.gui.0.8.2.nupkg.sha512"
+      "sha512": "sha512-SQA0jDWMHdx6wzLs2Ts9oV1L8mNgH30eYJZSmFMTAvB2pbX5NLHbqyrow8QtvW6AqpdIKbkWv8qiphXXbk8qCg==",
+      "path": "fusee.engine.gui/0.9.0",
+      "hashPath": "fusee.engine.gui.0.9.0.nupkg.sha512"
     },
-    "Fusee.Engine.Imp.Graphics.Desktop/0.8.2": {
+    "Fusee.Engine.Imp.Graphics.Desktop/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-khH/h8FkPMFDKLSAUzP3luocOcSl+LCFeqWCvxPgRnHQsqcT07vcI+Ec5ZXZCdtdslpqrJisgyAlR0Ukw8G5dQ==",
-      "path": "fusee.engine.imp.graphics.desktop/0.8.2",
-      "hashPath": "fusee.engine.imp.graphics.desktop.0.8.2.nupkg.sha512"
+      "sha512": "sha512-MTDyVU+Z8mtT1nGMx5APK7TIWcIeJN2UgVaW8+QpwBLqwqKMReYNFs5UseLpH7DhVyQbcCn2KnI2FkL4BNbgng==",
+      "path": "fusee.engine.imp.graphics.desktop/0.9.0",
+      "hashPath": "fusee.engine.imp.graphics.desktop.0.9.0.nupkg.sha512"
     },
-    "Fusee.Jometri/0.8.2": {
+    "Fusee.Jometri/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DNUutrtyBroRABc7kryMwHPovE7Hrwv8iFs5Gp1mxWItjifznL5eWocPH1jGUfedhDVsJGIk7+SzmRoiqcRh7A==",
-      "path": "fusee.jometri/0.8.2",
-      "hashPath": "fusee.jometri.0.8.2.nupkg.sha512"
+      "sha512": "sha512-tIre1EUm2k9VSz3NsLVQlHoUM3Akd+zCQIHqyQePtJgZwGBOoHjb8AsnwMT7OJQhZ5HIHyljJ3ra6fmpBTTq7w==",
+      "path": "fusee.jometri/0.9.0",
+      "hashPath": "fusee.jometri.0.9.0.nupkg.sha512"
     },
-    "Fusee.Math.Core/0.8.2": {
+    "Fusee.Math.Core/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ATUrUKTJU7sd8hUwhrB6llpOznnPqRdTxKkaguLngSnBB6qS631p9jbEGy1stU0DwmUfbDx8dyD8u4IM8DK/MA==",
-      "path": "fusee.math.core/0.8.2",
-      "hashPath": "fusee.math.core.0.8.2.nupkg.sha512"
+      "sha512": "sha512-AS4W49ZvVdjFxH37P/ZWbN/1pM+mwQbkcv++PCzVtP1krmSewhlCGkg3NLz+TSvzjIcSU1HLFO1AZ8yvgsCpmw==",
+      "path": "fusee.math.core/0.9.0",
+      "hashPath": "fusee.math.core.0.9.0.nupkg.sha512"
     },
-    "Fusee.Serialization/0.8.2": {
+    "Fusee.Serialization/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DjepJWvzxGTphQouUfEBXDr6aW5mE0rYuOiuC+DpNNibA69b2nMHrDUp+V0w3OWye+5PS9YmjihdYHvZjswtgQ==",
-      "path": "fusee.serialization/0.8.2",
-      "hashPath": "fusee.serialization.0.8.2.nupkg.sha512"
+      "sha512": "sha512-ZPsPxPocMvd+3+xg6/m/oOJfqtq9PvI+l2V/8AJksBYiaPYwjILKuVlMQh2DtGLsvkDjeZ7aRfz0VQUpft4pGQ==",
+      "path": "fusee.serialization/0.9.0",
+      "hashPath": "fusee.serialization.0.9.0.nupkg.sha512"
     },
-    "Fusee.Xene/0.8.2": {
+    "Fusee.Xene/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4yP1bOFh1cglcJF841QUiu57xCNuAsOF8HdubLbKT7N7nozhnbbYRm7jTEiBsQ0BTKGsRkbnXjyEyGfUN078kQ==",
-      "path": "fusee.xene/0.8.2",
-      "hashPath": "fusee.xene.0.8.2.nupkg.sha512"
+      "sha512": "sha512-LBiQobJVhIa6JPvku2J8eGZySy3SPuvRaqXuHcZgtM2NaybO/P9Yaskll6zC+iBoJ9j37dPG7c9nyOu6npTNGg==",
+      "path": "fusee.xene/0.9.0",
+      "hashPath": "fusee.xene.0.9.0.nupkg.sha512"
     },
-    "Fusee.Xirkit/0.8.2": {
+    "Fusee.Xirkit/0.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IatySA+YQzFNGuKa93lwaH1NTuKeon8NGLK6co2EYsUEyfYV3S/6gov4lckoiSUEcgrWxfto+ktO9SSlqUOznw==",
-      "path": "fusee.xirkit/0.8.2",
-      "hashPath": "fusee.xirkit.0.8.2.nupkg.sha512"
+      "sha512": "sha512-EjPdUpav2hDevCavCK/nmgCBJLNIXo+iv9vw1CgtjA9GwxDkgvYBDCCaKS7aYkKbayrTlZ6Sj5S/wMJ5vfvgmg==",
+      "path": "fusee.xirkit/0.9.0",
+      "hashPath": "fusee.xirkit.0.9.0.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/3.1.0": {
+    "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
-      "path": "microsoft.netcore.platforms/3.1.0",
-      "hashPath": "microsoft.netcore.platforms.3.1.0.nupkg.sha512"
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Targets/1.1.0": {
       "type": "package",
@@ -1141,12 +1074,12 @@
       "path": "microsoft.win32.primitives/4.3.0",
       "hashPath": "microsoft.win32.primitives.4.3.0.nupkg.sha512"
     },
-    "Microsoft.Win32.SystemEvents/4.7.0": {
+    "Microsoft.Win32.SystemEvents/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
-      "path": "microsoft.win32.systemevents/4.7.0",
-      "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",
@@ -1162,19 +1095,19 @@
       "path": "opentk/3.2.0",
       "hashPath": "opentk.3.2.0.nupkg.sha512"
     },
-    "protobuf-net/3.0.0-alpha.146.g00620fbe1a": {
+    "protobuf-net/3.0.62": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aDxOQjCstX5ps3VqnGxbOrhjeguankjvfQ8BYZfmj7mLEDn8pFLnVKTCemjrcOXcAEAqqRhpMaJnZknVLoqwcQ==",
-      "path": "protobuf-net/3.0.0-alpha.146.g00620fbe1a",
-      "hashPath": "protobuf-net.3.0.0-alpha.146.g00620fbe1a.nupkg.sha512"
+      "sha512": "sha512-EqdVJU6BXj6SVMcZObrUV5DUThRyvWBn8jKRaTccgdB3NC/DAjNDABz85luptyPMxabWaCBYcWp3S8z9Qtbyyw==",
+      "path": "protobuf-net/3.0.62",
+      "hashPath": "protobuf-net.3.0.62.nupkg.sha512"
     },
-    "protobuf-net.Core/3.0.0-alpha.146.g00620fbe1a": {
+    "protobuf-net.Core/3.0.62": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-F9EL8COGauSatIuYcXYgUVkoEE7AfO0NTR7Q9AYFS9KxEck8TI90BeWEOj5SCGNQo98vDiAGZfuJMV7Druh57A==",
-      "path": "protobuf-net.core/3.0.0-alpha.146.g00620fbe1a",
-      "hashPath": "protobuf-net.core.3.0.0-alpha.146.g00620fbe1a.nupkg.sha512"
+      "sha512": "sha512-UfLUKkMe2VhFvlY1kwm0wzg1rGU0/2NElvKcQweB3TGGD+MBtGQ5sQA9ZFPRjqi0n/fDF2oq0D0oAYFSwVpHTg==",
+      "path": "protobuf-net.core/3.0.62",
+      "hashPath": "protobuf-net.core.3.0.62.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
@@ -1302,12 +1235,12 @@
       "path": "system.appcontext/4.3.0",
       "hashPath": "system.appcontext.4.3.0.nupkg.sha512"
     },
-    "System.Buffers/4.5.0": {
+    "System.Buffers/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
-      "path": "system.buffers/4.5.0",
-      "hashPath": "system.buffers.4.5.0.nupkg.sha512"
+      "sha512": "sha512-ratu44uTIHgeBeI0dE8DWvmXVBSo4u7ozRZZHOMmK/JPpYyo0dAfgSiHlpiObMQ5lEtEyIXA40sKRYg5J6A8uQ==",
+      "path": "system.buffers/4.3.0",
+      "hashPath": "system.buffers.4.3.0.nupkg.sha512"
     },
     "System.Collections/4.3.0": {
       "type": "package",
@@ -1358,12 +1291,12 @@
       "path": "system.diagnostics.tracing/4.3.0",
       "hashPath": "system.diagnostics.tracing.4.3.0.nupkg.sha512"
     },
-    "System.Drawing.Common/4.7.0": {
+    "System.Drawing.Common/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
-      "path": "system.drawing.common/4.7.0",
-      "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
+      "sha512": "sha512-SztFwAnpfKC8+sEKXAFxCBWhKQaEd97EiOL7oZJZP56zbqnLpmxACWA8aGseaUExciuEAUuR9dY8f7HkTRAdnw==",
+      "path": "system.drawing.common/5.0.0",
+      "hashPath": "system.drawing.common.5.0.0.nupkg.sha512"
     },
     "System.Globalization/4.3.0": {
       "type": "package",
@@ -1435,13 +1368,6 @@
       "path": "system.linq.expressions/4.3.0",
       "hashPath": "system.linq.expressions.4.3.0.nupkg.sha512"
     },
-    "System.Memory/4.5.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "path": "system.memory/4.5.3",
-      "hashPath": "system.memory.4.5.3.nupkg.sha512"
-    },
     "System.Net.Http/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1470,26 +1396,12 @@
       "path": "system.objectmodel/4.3.0",
       "hashPath": "system.objectmodel.4.3.0.nupkg.sha512"
     },
-    "System.Private.ServiceModel/4.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-8iD5mvu76p3L9tUzmh1Iwgh51XRGIBKfKZhnfUoORjqDCabKugQOmne0SWzuU0ksNW1d6fTn6zEFmig8AbzI3g==",
-      "path": "system.private.servicemodel/4.6.0",
-      "hashPath": "system.private.servicemodel.4.6.0.nupkg.sha512"
-    },
     "System.Reflection/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
       "path": "system.reflection/4.3.0",
       "hashPath": "system.reflection.4.3.0.nupkg.sha512"
-    },
-    "System.Reflection.DispatchProxy/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+UW1hq11TNSeb+16rIk8hRQ02o339NFyzMc4ma/FqmxBzM30l1c2IherBB4ld1MNcenS48fz8tbt50OW4rVULA==",
-      "path": "system.reflection.dispatchproxy/4.5.0",
-      "hashPath": "system.reflection.dispatchproxy.4.5.0.nupkg.sha512"
     },
     "System.Reflection.Emit/4.3.0": {
       "type": "package",
@@ -1582,13 +1494,6 @@
       "path": "system.runtime.numerics/4.3.0",
       "hashPath": "system.runtime.numerics.4.3.0.nupkg.sha512"
     },
-    "System.Security.AccessControl/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
-      "path": "system.security.accesscontrol/4.5.0",
-      "hashPath": "system.security.accesscontrol.4.5.0.nupkg.sha512"
-    },
     "System.Security.Cryptography.Algorithms/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1596,12 +1501,12 @@
       "path": "system.security.cryptography.algorithms/4.3.0",
       "hashPath": "system.security.cryptography.algorithms.4.3.0.nupkg.sha512"
     },
-    "System.Security.Cryptography.Cng/4.5.0": {
+    "System.Security.Cryptography.Cng/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
-      "path": "system.security.cryptography.cng/4.5.0",
-      "hashPath": "system.security.cryptography.cng.4.5.0.nupkg.sha512"
+      "sha512": "sha512-03idZOqFlsKRL4W+LuCpJ6dBYDUWReug6lZjBa3uJWnk5sPCUXckocevTaUA8iT/MFSrY/2HXkOt753xQ/cf8g==",
+      "path": "system.security.cryptography.cng/4.3.0",
+      "hashPath": "system.security.cryptography.cng.4.3.0.nupkg.sha512"
     },
     "System.Security.Cryptography.Csp/4.3.0": {
       "type": "package",
@@ -1624,13 +1529,6 @@
       "path": "system.security.cryptography.openssl/4.3.0",
       "hashPath": "system.security.cryptography.openssl.4.3.0.nupkg.sha512"
     },
-    "System.Security.Cryptography.Pkcs/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-TGQX51gxpY3K3I6LJlE2LAftVlIMqJf0cBGhz68Y89jjk3LJCB6SrwiD+YN1fkqemBvWGs+GjyMJukl6d6goyQ==",
-      "path": "system.security.cryptography.pkcs/4.5.0",
-      "hashPath": "system.security.cryptography.pkcs.4.5.0.nupkg.sha512"
-    },
     "System.Security.Cryptography.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1644,34 +1542,6 @@
       "sha512": "sha512-t2Tmu6Y2NtJ2um0RtcuhP7ZdNNxXEgUm2JeoA/0NvlMjAhKCnM1NX07TDl3244mVp3QU6LPEhT3HTtH1uF7IYw==",
       "path": "system.security.cryptography.x509certificates/4.3.0",
       "hashPath": "system.security.cryptography.x509certificates.4.3.0.nupkg.sha512"
-    },
-    "System.Security.Cryptography.Xml/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-i2Jn6rGXR63J0zIklImGRkDIJL4b1NfPSEbIVHBlqoIb12lfXIigCbDRpDmIEzwSo/v1U5y/rYJdzZYSyCWxvg==",
-      "path": "system.security.cryptography.xml/4.5.0",
-      "hashPath": "system.security.cryptography.xml.4.5.0.nupkg.sha512"
-    },
-    "System.Security.Permissions/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
-      "path": "system.security.permissions/4.5.0",
-      "hashPath": "system.security.permissions.4.5.0.nupkg.sha512"
-    },
-    "System.Security.Principal.Windows/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
-      "path": "system.security.principal.windows/4.5.0",
-      "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
-    },
-    "System.ServiceModel.Primitives/4.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-LwFQqlATMZh5bdL2bZmEhuYGgTeb+GxT0WWkYqA2A+bywYM5Oq3wouHSigm1kRQwk4iQjrfsk5wxBdjmK1ozRQ==",
-      "path": "system.servicemodel.primitives/4.6.0",
-      "hashPath": "system.servicemodel.primitives.4.6.0.nupkg.sha512"
     },
     "System.Text.Encoding/4.3.0": {
       "type": "package",

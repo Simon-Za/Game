@@ -21,7 +21,6 @@ C:\Users\symz1\Documents\FUSEE\Starship\bin\Debug\Assets\StarshipProtoMultipleDu
 C:\Users\symz1\Documents\FUSEE\Starship\bin\Debug\Assets\StarshipProtoMultipleTreches.fus
 C:\Users\symz1\Documents\FUSEE\Starship\bin\Debug\Assets\StarshipProtoSeparateTrenches.fus
 C:\Users\symz1\Documents\FUSEE\Starship\bin\Debug\Assets\Trench 1.fus
-C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.csprojAssemblyReference.cache
 C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.AssemblyInfoInputs.cache
 C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.AssemblyInfo.cs
 C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.csproj.CoreCompileInputs.cache
@@ -81,3 +80,18 @@ C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench 1new.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench1new.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench2new.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench3new.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StarshipProtoExperiment.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StartButton.png
+C:\Users\symz1\Documents\FUSEE\Game\Starship\obj\Debug\Starship.csprojAssemblyReference.cache
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TrenchCubes.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\StarshipProtoNew.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\backgroundVaporwave.jpg
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench1newGlow.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench2newGlow.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Trench3newGlow.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CubesOnly1.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CubesOnly2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CubesOnly3.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Lato-Black.ttf
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\AgainButton.png
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TryAgainBig.png

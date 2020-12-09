@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Fusee.Base.Common/0.8.2": {
+      "Fusee.Base.Common/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Math.Core": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Base.Common.dll": {}
@@ -14,11 +14,11 @@
           "lib/netstandard2.1/Fusee.Base.Common.dll": {}
         }
       },
-      "Fusee.Base.Core/0.8.2": {
+      "Fusee.Base.Core/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Base.Core.dll": {}
@@ -27,14 +27,14 @@
           "lib/netstandard2.1/Fusee.Base.Core.dll": {}
         }
       },
-      "Fusee.Base.Imp.Desktop/0.8.2": {
+      "Fusee.Base.Imp.Desktop/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
           "SharpFontStandard": "4.0.1",
-          "System.Drawing.Common": "4.7.0"
+          "System.Drawing.Common": "5.0.0"
         },
         "compile": {
           "lib/netcoreapp3.1/Fusee.Base.Imp.Desktop.dll": {}
@@ -43,35 +43,35 @@
           "lib/netcoreapp3.1/Fusee.Base.Imp.Desktop.dll": {}
         }
       },
-      "Fusee.Core/0.8.2": {
+      "Fusee.Core/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Engine.Core": "0.8.2",
-          "Fusee.Engine.GUI": "0.8.2",
-          "Fusee.Jometri": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Serialization": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "Fusee.Xirkit": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Engine.Core": "0.9.0",
+          "Fusee.Engine.GUI": "0.9.0",
+          "Fusee.Jometri": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Serialization": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "Fusee.Xirkit": "0.9.0"
         }
       },
-      "Fusee.Desktop/0.8.2": {
+      "Fusee.Desktop/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Imp.Desktop": "0.8.2",
-          "Fusee.Core": "0.8.2",
-          "Fusee.Engine.Imp.Graphics.Desktop": "0.8.2"
+          "Fusee.Base.Imp.Desktop": "0.9.0",
+          "Fusee.Core": "0.9.0",
+          "Fusee.Engine.Imp.Graphics.Desktop": "0.9.0"
         }
       },
-      "Fusee.Engine.Common/0.8.2": {
+      "Fusee.Engine.Common/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Xene": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Xene": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Engine.Common.dll": {}
@@ -80,17 +80,17 @@
           "lib/netstandard2.1/Fusee.Engine.Common.dll": {}
         }
       },
-      "Fusee.Engine.Core/0.8.2": {
+      "Fusee.Engine.Core/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Jometri": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Serialization": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "Fusee.Xirkit": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Jometri": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Serialization": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "Fusee.Xirkit": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Engine.Core.dll": {}
@@ -102,17 +102,17 @@
           "build/Fusee.Engine.Core.targets": {}
         }
       },
-      "Fusee.Engine.GUI/0.8.2": {
+      "Fusee.Engine.GUI/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Engine.Core": "0.8.2",
-          "Fusee.Jometri": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "Fusee.Xirkit": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Engine.Core": "0.9.0",
+          "Fusee.Jometri": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "Fusee.Xirkit": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Engine.GUI.dll": {}
@@ -124,16 +124,16 @@
           "build/Fusee.Engine.GUI.targets": {}
         }
       },
-      "Fusee.Engine.Imp.Graphics.Desktop/0.8.2": {
+      "Fusee.Engine.Imp.Graphics.Desktop/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Base.Core": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Engine.Core": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Base.Core": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Engine.Core": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
           "OpenTK": "3.2.0",
-          "System.Drawing.Common": "4.7.0"
+          "System.Drawing.Common": "5.0.0"
         },
         "compile": {
           "lib/netcoreapp3.1/Fusee.Engine.Imp.Graphics.Desktop.dll": {}
@@ -142,12 +142,12 @@
           "lib/netcoreapp3.1/Fusee.Engine.Imp.Graphics.Desktop.dll": {}
         }
       },
-      "Fusee.Jometri/0.8.2": {
+      "Fusee.Jometri/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Engine.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Engine.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Jometri.dll": {}
@@ -156,10 +156,10 @@
           "lib/netstandard2.1/Fusee.Jometri.dll": {}
         }
       },
-      "Fusee.Math.Core/0.8.2": {
+      "Fusee.Math.Core/0.9.0": {
         "type": "package",
         "dependencies": {
-          "protobuf-net": "3.0.0-alpha.146.g00620fbe1a"
+          "protobuf-net": "3.0.62"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Math.Core.dll": {}
@@ -168,13 +168,13 @@
           "lib/netstandard2.1/Fusee.Math.Core.dll": {}
         }
       },
-      "Fusee.Serialization/0.8.2": {
+      "Fusee.Serialization/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Base.Common": "0.8.2",
-          "Fusee.Math.Core": "0.8.2",
-          "Fusee.Xene": "0.8.2",
-          "protobuf-net": "3.0.0-alpha.146.g00620fbe1a"
+          "Fusee.Base.Common": "0.9.0",
+          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Xene": "0.9.0",
+          "protobuf-net": "3.0.62"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Serialization.dll": {}
@@ -183,10 +183,10 @@
           "lib/netstandard2.1/Fusee.Serialization.dll": {}
         }
       },
-      "Fusee.Xene/0.8.2": {
+      "Fusee.Xene/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Math.Core": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Xene.dll": {}
@@ -195,10 +195,10 @@
           "lib/netstandard2.1/Fusee.Xene.dll": {}
         }
       },
-      "Fusee.Xirkit/0.8.2": {
+      "Fusee.Xirkit/0.9.0": {
         "type": "package",
         "dependencies": {
-          "Fusee.Math.Core": "0.8.2"
+          "Fusee.Math.Core": "0.9.0"
         },
         "compile": {
           "lib/netstandard2.1/Fusee.Xirkit.dll": {}
@@ -207,7 +207,7 @@
           "lib/netstandard2.1/Fusee.Xirkit.dll": {}
         }
       },
-      "Microsoft.NETCore.Platforms/3.1.0": {
+      "Microsoft.NETCore.Platforms/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -236,10 +236,10 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/4.7.0": {
+      "Microsoft.Win32.SystemEvents/5.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "Microsoft.NETCore.Platforms": "5.0.0"
         },
         "compile": {
           "ref/netstandard2.0/_._": {}
@@ -312,30 +312,25 @@
           "lib/net20/OpenTK.dll": {}
         }
       },
-      "protobuf-net/3.0.0-alpha.146.g00620fbe1a": {
+      "protobuf-net/3.0.62": {
         "type": "package",
         "dependencies": {
-          "System.ServiceModel.Primitives": "4.6.0",
-          "protobuf-net.Core": "3.0.0-alpha.146.g00620fbe1a"
+          "protobuf-net.Core": "3.0.62"
         },
         "compile": {
-          "lib/netstandard2.1/protobuf-net.dll": {}
+          "lib/netcoreapp3.1/protobuf-net.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/protobuf-net.dll": {}
+          "lib/netcoreapp3.1/protobuf-net.dll": {}
         }
       },
-      "protobuf-net.Core/3.0.0-alpha.146.g00620fbe1a": {
+      "protobuf-net.Core/3.0.62": {
         "type": "package",
-        "dependencies": {
-          "System.Buffers": "4.5.0",
-          "System.Memory": "4.5.3"
-        },
         "compile": {
-          "lib/netcoreapp3.0/protobuf-net.Core.dll": {}
+          "lib/netcoreapp3.1/protobuf-net.Core.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/protobuf-net.Core.dll": {}
+          "lib/netcoreapp3.1/protobuf-net.Core.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -533,13 +528,20 @@
           "lib/netstandard1.6/System.AppContext.dll": {}
         }
       },
-      "System.Buffers/4.5.0": {
+      "System.Buffers/4.3.0": {
         "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading": "4.3.0"
+        },
         "compile": {
-          "ref/netcoreapp2.0/_._": {}
+          "lib/netstandard1.1/_._": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/_._": {}
+          "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -636,17 +638,16 @@
           "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
         }
       },
-      "System.Drawing.Common/4.7.0": {
+      "System.Drawing.Common/5.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "Microsoft.Win32.SystemEvents": "4.7.0"
+          "Microsoft.Win32.SystemEvents": "5.0.0"
         },
         "compile": {
           "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Drawing.Common.dll": {}
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
@@ -844,15 +845,6 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Memory/4.5.3": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/_._": {}
-        }
-      },
       "System.Net.Http/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -939,20 +931,6 @@
           "lib/netstandard1.3/System.ObjectModel.dll": {}
         }
       },
-      "System.Private.ServiceModel/4.6.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.DispatchProxy": "4.5.0",
-          "System.Security.Cryptography.Xml": "4.5.0",
-          "System.Security.Principal.Windows": "4.5.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Private.ServiceModel.dll": {}
-        }
-      },
       "System.Reflection/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -964,15 +942,6 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Reflection.dll": {}
-        }
-      },
-      "System.Reflection.DispatchProxy/4.5.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.DispatchProxy.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/System.Reflection.DispatchProxy.dll": {}
         }
       },
       "System.Reflection.Emit/4.3.0": {
@@ -1158,25 +1127,6 @@
           "lib/netstandard1.3/System.Runtime.Numerics.dll": {}
         }
       },
-      "System.Security.AccessControl/4.5.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.Security.Principal.Windows": "4.5.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1213,16 +1163,30 @@
           }
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {
+      "System.Security.Cryptography.Cng/4.3.0": {
         "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Security.Cryptography.Encoding": "4.3.0",
+          "System.Security.Cryptography.Primitives": "4.3.0",
+          "System.Text.Encoding": "4.3.0"
         },
-        "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+        "compile": {
+          "ref/netstandard1.6/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
+          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1319,24 +1283,6 @@
           }
         }
       },
-      "System.Security.Cryptography.Pkcs/4.5.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.Cryptography.Cng": "4.5.0"
-        },
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
       "System.Security.Cryptography.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1396,67 +1342,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "System.Security.Cryptography.Xml/4.5.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.Cryptography.Pkcs": "4.5.0",
-          "System.Security.Permissions": "4.5.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Security.Cryptography.Xml.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Cryptography.Xml.dll": {}
-        }
-      },
-      "System.Security.Permissions/4.5.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.AccessControl": "4.5.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Security.Permissions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Permissions.dll": {}
-        }
-      },
-      "System.Security.Principal.Windows/4.5.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Security.Principal.Windows.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.ServiceModel.Primitives/4.6.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Private.ServiceModel": "4.6.0"
-        },
-        "compile": {
-          "ref/netcoreapp2.1/System.ServiceModel.Primitives.dll": {},
-          "ref/netcoreapp2.1/System.ServiceModel.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/System.ServiceModel.Primitives.dll": {},
-          "lib/netcoreapp2.1/System.ServiceModel.dll": {}
         }
       },
       "System.Text.Encoding/4.3.0": {
@@ -1595,90 +1480,90 @@
     }
   },
   "libraries": {
-    "Fusee.Base.Common/0.8.2": {
-      "sha512": "ZeHzOVdrvmD8ofveFb8GinM5DEwcHIdwkOscCnvZhpyLvCghttysZGYRNkxCIjifH8pHFCzBWGN5FRTb3EtgDA==",
+    "Fusee.Base.Common/0.9.0": {
+      "sha512": "OazmqGVpvnVaW8B7CzDg+Zp36evXXVVwjIR40Naw9/1jSFAsk/mC+xV+WaPRtRGLAO6iwz7yALaCHfULrUBZEA==",
       "type": "package",
-      "path": "fusee.base.common/0.8.2",
+      "path": "fusee.base.common/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.base.common.0.8.2.nupkg.sha512",
+        "fusee.base.common.0.9.0.nupkg.sha512",
         "fusee.base.common.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Base.Common.dll",
         "lib/netstandard2.1/Fusee.Base.Common.xml"
       ]
     },
-    "Fusee.Base.Core/0.8.2": {
-      "sha512": "zQh+9VeipscwNLCEYYosBgL7c5ymLG8Hi61TvdizFWIOlyb45uvIz+juVNPLK2fTMCrv8w3LnHKYoG+Z5YsGXg==",
+    "Fusee.Base.Core/0.9.0": {
+      "sha512": "1j9JjtLfIAt7cBjvvChaYnPC0SbSt4wIWrYZUAkOzsDa+ntXTr3uhxaOXkHoIMT6ZQtdC3iz2PuxZE064wpnZQ==",
       "type": "package",
-      "path": "fusee.base.core/0.8.2",
+      "path": "fusee.base.core/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.base.core.0.8.2.nupkg.sha512",
+        "fusee.base.core.0.9.0.nupkg.sha512",
         "fusee.base.core.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Base.Core.dll",
         "lib/netstandard2.1/Fusee.Base.Core.xml"
       ]
     },
-    "Fusee.Base.Imp.Desktop/0.8.2": {
-      "sha512": "X+tImmednwrQtFrxphgP5AQfIarINX4qlkc+dNyaS8E5Oc9G9r8iclqRhEVHfOoV6HolLRlRR1MILoBJwjeF7w==",
+    "Fusee.Base.Imp.Desktop/0.9.0": {
+      "sha512": "7vaNZqczIuPvA6GPemuZ0qn0Vi5z8ToBE5JadbONG/bfqiNswaq88qmSyKuvh/plhGP8v9yvIW8g1xpFCsr8Vw==",
       "type": "package",
-      "path": "fusee.base.imp.desktop/0.8.2",
+      "path": "fusee.base.imp.desktop/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.base.imp.desktop.0.8.2.nupkg.sha512",
+        "fusee.base.imp.desktop.0.9.0.nupkg.sha512",
         "fusee.base.imp.desktop.nuspec",
         "images/icon.png",
         "lib/netcoreapp3.1/Fusee.Base.Imp.Desktop.dll",
         "lib/netcoreapp3.1/Fusee.Base.Imp.Desktop.xml"
       ]
     },
-    "Fusee.Core/0.8.2": {
-      "sha512": "xOdc27+LbmOZkAl1nmMkOB/rOJPktwV1FP0pCrikafURr4XDg9jh0fD+Mecr5ywfGl3y6I1PRBYGwhV5c9SMBw==",
+    "Fusee.Core/0.9.0": {
+      "sha512": "rLWxKIectAoo/WkTguGBqenDu5lescm6OrrUODXSMost5Pwz7sedvBBn6KbhN6M99ryrCBgb1YZU/+vtMOyazA==",
       "type": "package",
-      "path": "fusee.core/0.8.2",
+      "path": "fusee.core/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.core.0.8.2.nupkg.sha512",
+        "fusee.core.0.9.0.nupkg.sha512",
         "fusee.core.nuspec",
         "images/icon.png"
       ]
     },
-    "Fusee.Desktop/0.8.2": {
-      "sha512": "tORTYheVkHqNRomyP+buNYXJ580k8M/0DJB3bzVZgc1zvD9EjCJd2d+oKgvQUR4kkN2gidVq8rPL56ISLdlNYw==",
+    "Fusee.Desktop/0.9.0": {
+      "sha512": "9TjADlU14/lP9qhpb9wYBMHT6XR8tG0t7ntftfEIaLyFwulbbZqEitPk9jWpFAIi68bj7LaGRTVIpjJGBrgGmg==",
       "type": "package",
-      "path": "fusee.desktop/0.8.2",
+      "path": "fusee.desktop/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.desktop.0.8.2.nupkg.sha512",
+        "fusee.desktop.0.9.0.nupkg.sha512",
         "fusee.desktop.nuspec",
         "images/icon.png"
       ]
     },
-    "Fusee.Engine.Common/0.8.2": {
-      "sha512": "4WEBIgMgpjNJ0kFqCVDmbsouzCBiiZJdzA/izUJ5KhdPENhqh50TtRt6duH4mPXAqqjOwy8qBOvcmap38E7AZA==",
+    "Fusee.Engine.Common/0.9.0": {
+      "sha512": "yIooaq7KRvHl2dHV5onRebuzZ39Oquo9tDxDfnUG1OVECMSI3Vtw3HoyVY3FkcaMeXKvQGW5O9ROv5luMYF0rA==",
       "type": "package",
-      "path": "fusee.engine.common/0.8.2",
+      "path": "fusee.engine.common/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.engine.common.0.8.2.nupkg.sha512",
+        "fusee.engine.common.0.9.0.nupkg.sha512",
         "fusee.engine.common.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Engine.Common.dll",
         "lib/netstandard2.1/Fusee.Engine.Common.xml"
       ]
     },
-    "Fusee.Engine.Core/0.8.2": {
-      "sha512": "GTl5XRZKVMaHL4gFcAaipbHGsumJstkUbD+m8g11iEyUL9kIbWWgnIHA/WY8Kt/GJmZG9AVkY5pbnVw8hm+H0g==",
+    "Fusee.Engine.Core/0.9.0": {
+      "sha512": "Y6KfdKju11zB9P1Z175o4dyH+omNarxhp2BF3NLD1XyR4dmoT387xPWBhs/oNGfoKNpF+N5tVlMIxr3iJ6RDEQ==",
       "type": "package",
-      "path": "fusee.engine.core/0.8.2",
+      "path": "fusee.engine.core/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1696,127 +1581,129 @@
         "contentFiles/Assets/ShadowMap.frag",
         "contentFiles/Assets/ShadowMap.vert",
         "contentFiles/Assets/SimpleBlur.frag",
-        "fusee.engine.core.0.8.2.nupkg.sha512",
+        "fusee.engine.core.0.9.0.nupkg.sha512",
         "fusee.engine.core.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Engine.Core.dll",
         "lib/netstandard2.1/Fusee.Engine.Core.xml"
       ]
     },
-    "Fusee.Engine.GUI/0.8.2": {
-      "sha512": "mF7gDUTIOmU/dXuYDcV26taFLEwL+/fDlf0V08v/UAjA9yVaV+tKL4Oudj5V/qe1g3M9AHbrONURyZkzmITuLA==",
+    "Fusee.Engine.GUI/0.9.0": {
+      "sha512": "SQA0jDWMHdx6wzLs2Ts9oV1L8mNgH30eYJZSmFMTAvB2pbX5NLHbqyrow8QtvW6AqpdIKbkWv8qiphXXbk8qCg==",
       "type": "package",
-      "path": "fusee.engine.gui/0.8.2",
+      "path": "fusee.engine.gui/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/Fusee.Engine.GUI.targets",
         "contentFiles/Assets/nineSlice.vert",
         "contentFiles/Assets/nineSliceTile.frag",
+        "contentFiles/Assets/text.frag",
         "contentFiles/Assets/texture.frag",
         "contentFiles/Assets/texture.vert",
-        "fusee.engine.gui.0.8.2.nupkg.sha512",
+        "fusee.engine.gui.0.9.0.nupkg.sha512",
         "fusee.engine.gui.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Engine.GUI.dll",
         "lib/netstandard2.1/Fusee.Engine.GUI.xml"
       ]
     },
-    "Fusee.Engine.Imp.Graphics.Desktop/0.8.2": {
-      "sha512": "khH/h8FkPMFDKLSAUzP3luocOcSl+LCFeqWCvxPgRnHQsqcT07vcI+Ec5ZXZCdtdslpqrJisgyAlR0Ukw8G5dQ==",
+    "Fusee.Engine.Imp.Graphics.Desktop/0.9.0": {
+      "sha512": "MTDyVU+Z8mtT1nGMx5APK7TIWcIeJN2UgVaW8+QpwBLqwqKMReYNFs5UseLpH7DhVyQbcCn2KnI2FkL4BNbgng==",
       "type": "package",
-      "path": "fusee.engine.imp.graphics.desktop/0.8.2",
+      "path": "fusee.engine.imp.graphics.desktop/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.engine.imp.graphics.desktop.0.8.2.nupkg.sha512",
+        "fusee.engine.imp.graphics.desktop.0.9.0.nupkg.sha512",
         "fusee.engine.imp.graphics.desktop.nuspec",
         "images/icon.png",
         "lib/netcoreapp3.1/Fusee.Engine.Imp.Graphics.Desktop.dll",
         "lib/netcoreapp3.1/Fusee.Engine.Imp.Graphics.Desktop.xml"
       ]
     },
-    "Fusee.Jometri/0.8.2": {
-      "sha512": "DNUutrtyBroRABc7kryMwHPovE7Hrwv8iFs5Gp1mxWItjifznL5eWocPH1jGUfedhDVsJGIk7+SzmRoiqcRh7A==",
+    "Fusee.Jometri/0.9.0": {
+      "sha512": "tIre1EUm2k9VSz3NsLVQlHoUM3Akd+zCQIHqyQePtJgZwGBOoHjb8AsnwMT7OJQhZ5HIHyljJ3ra6fmpBTTq7w==",
       "type": "package",
-      "path": "fusee.jometri/0.8.2",
+      "path": "fusee.jometri/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.jometri.0.8.2.nupkg.sha512",
+        "fusee.jometri.0.9.0.nupkg.sha512",
         "fusee.jometri.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Jometri.dll",
         "lib/netstandard2.1/Fusee.Jometri.xml"
       ]
     },
-    "Fusee.Math.Core/0.8.2": {
-      "sha512": "ATUrUKTJU7sd8hUwhrB6llpOznnPqRdTxKkaguLngSnBB6qS631p9jbEGy1stU0DwmUfbDx8dyD8u4IM8DK/MA==",
+    "Fusee.Math.Core/0.9.0": {
+      "sha512": "AS4W49ZvVdjFxH37P/ZWbN/1pM+mwQbkcv++PCzVtP1krmSewhlCGkg3NLz+TSvzjIcSU1HLFO1AZ8yvgsCpmw==",
       "type": "package",
-      "path": "fusee.math.core/0.8.2",
+      "path": "fusee.math.core/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.math.core.0.8.2.nupkg.sha512",
+        "fusee.math.core.0.9.0.nupkg.sha512",
         "fusee.math.core.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Math.Core.dll",
         "lib/netstandard2.1/Fusee.Math.Core.xml"
       ]
     },
-    "Fusee.Serialization/0.8.2": {
-      "sha512": "DjepJWvzxGTphQouUfEBXDr6aW5mE0rYuOiuC+DpNNibA69b2nMHrDUp+V0w3OWye+5PS9YmjihdYHvZjswtgQ==",
+    "Fusee.Serialization/0.9.0": {
+      "sha512": "ZPsPxPocMvd+3+xg6/m/oOJfqtq9PvI+l2V/8AJksBYiaPYwjILKuVlMQh2DtGLsvkDjeZ7aRfz0VQUpft4pGQ==",
       "type": "package",
-      "path": "fusee.serialization/0.8.2",
+      "path": "fusee.serialization/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.serialization.0.8.2.nupkg.sha512",
+        "fusee.serialization.0.9.0.nupkg.sha512",
         "fusee.serialization.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Serialization.dll",
         "lib/netstandard2.1/Fusee.Serialization.xml"
       ]
     },
-    "Fusee.Xene/0.8.2": {
-      "sha512": "4yP1bOFh1cglcJF841QUiu57xCNuAsOF8HdubLbKT7N7nozhnbbYRm7jTEiBsQ0BTKGsRkbnXjyEyGfUN078kQ==",
+    "Fusee.Xene/0.9.0": {
+      "sha512": "LBiQobJVhIa6JPvku2J8eGZySy3SPuvRaqXuHcZgtM2NaybO/P9Yaskll6zC+iBoJ9j37dPG7c9nyOu6npTNGg==",
       "type": "package",
-      "path": "fusee.xene/0.8.2",
+      "path": "fusee.xene/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.xene.0.8.2.nupkg.sha512",
+        "fusee.xene.0.9.0.nupkg.sha512",
         "fusee.xene.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Xene.dll",
         "lib/netstandard2.1/Fusee.Xene.xml"
       ]
     },
-    "Fusee.Xirkit/0.8.2": {
-      "sha512": "IatySA+YQzFNGuKa93lwaH1NTuKeon8NGLK6co2EYsUEyfYV3S/6gov4lckoiSUEcgrWxfto+ktO9SSlqUOznw==",
+    "Fusee.Xirkit/0.9.0": {
+      "sha512": "EjPdUpav2hDevCavCK/nmgCBJLNIXo+iv9vw1CgtjA9GwxDkgvYBDCCaKS7aYkKbayrTlZ6Sj5S/wMJ5vfvgmg==",
       "type": "package",
-      "path": "fusee.xirkit/0.8.2",
+      "path": "fusee.xirkit/0.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fusee.xirkit.0.8.2.nupkg.sha512",
+        "fusee.xirkit.0.9.0.nupkg.sha512",
         "fusee.xirkit.nuspec",
         "images/icon.png",
         "lib/netstandard2.1/Fusee.Xirkit.dll",
         "lib/netstandard2.1/Fusee.Xirkit.xml"
       ]
     },
-    "Microsoft.NETCore.Platforms/3.1.0": {
-      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/3.1.0",
+      "path": "microsoft.netcore.platforms/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -1876,25 +1763,24 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Microsoft.Win32.SystemEvents/4.7.0": {
-      "sha512": "mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "sha512": "Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
       "type": "package",
-      "path": "microsoft.win32.systemevents/4.7.0",
+      "path": "microsoft.win32.systemevents/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/Microsoft.Win32.SystemEvents.dll",
         "lib/net461/Microsoft.Win32.SystemEvents.xml",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+        "microsoft.win32.systemevents.5.0.0.nupkg.sha512",
         "microsoft.win32.systemevents.nuspec",
         "ref/net461/Microsoft.Win32.SystemEvents.dll",
         "ref/net461/Microsoft.Win32.SystemEvents.xml",
-        "ref/net472/Microsoft.Win32.SystemEvents.dll",
-        "ref/net472/Microsoft.Win32.SystemEvents.xml",
         "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "ref/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
         "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
@@ -1933,39 +1819,45 @@
         "opentk.nuspec"
       ]
     },
-    "protobuf-net/3.0.0-alpha.146.g00620fbe1a": {
-      "sha512": "aDxOQjCstX5ps3VqnGxbOrhjeguankjvfQ8BYZfmj7mLEDn8pFLnVKTCemjrcOXcAEAqqRhpMaJnZknVLoqwcQ==",
+    "protobuf-net/3.0.62": {
+      "sha512": "EqdVJU6BXj6SVMcZObrUV5DUThRyvWBn8jKRaTccgdB3NC/DAjNDABz85luptyPMxabWaCBYcWp3S8z9Qtbyyw==",
       "type": "package",
-      "path": "protobuf-net/3.0.0-alpha.146.g00620fbe1a",
+      "path": "protobuf-net/3.0.62",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net461/protobuf-net.dll",
         "lib/net461/protobuf-net.xml",
+        "lib/net5.0/protobuf-net.dll",
+        "lib/net5.0/protobuf-net.xml",
+        "lib/netcoreapp3.1/protobuf-net.dll",
+        "lib/netcoreapp3.1/protobuf-net.xml",
         "lib/netstandard2.0/protobuf-net.dll",
         "lib/netstandard2.0/protobuf-net.xml",
         "lib/netstandard2.1/protobuf-net.dll",
         "lib/netstandard2.1/protobuf-net.xml",
-        "protobuf-net.3.0.0-alpha.146.g00620fbe1a.nupkg.sha512",
+        "protobuf-net.3.0.62.nupkg.sha512",
         "protobuf-net.nuspec"
       ]
     },
-    "protobuf-net.Core/3.0.0-alpha.146.g00620fbe1a": {
-      "sha512": "F9EL8COGauSatIuYcXYgUVkoEE7AfO0NTR7Q9AYFS9KxEck8TI90BeWEOj5SCGNQo98vDiAGZfuJMV7Druh57A==",
+    "protobuf-net.Core/3.0.62": {
+      "sha512": "UfLUKkMe2VhFvlY1kwm0wzg1rGU0/2NElvKcQweB3TGGD+MBtGQ5sQA9ZFPRjqi0n/fDF2oq0D0oAYFSwVpHTg==",
       "type": "package",
-      "path": "protobuf-net.core/3.0.0-alpha.146.g00620fbe1a",
+      "path": "protobuf-net.core/3.0.62",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net461/protobuf-net.Core.dll",
         "lib/net461/protobuf-net.Core.xml",
-        "lib/netcoreapp3.0/protobuf-net.Core.dll",
-        "lib/netcoreapp3.0/protobuf-net.Core.xml",
+        "lib/net5.0/protobuf-net.Core.dll",
+        "lib/net5.0/protobuf-net.Core.xml",
+        "lib/netcoreapp3.1/protobuf-net.Core.dll",
+        "lib/netcoreapp3.1/protobuf-net.Core.xml",
         "lib/netstandard2.0/protobuf-net.Core.dll",
         "lib/netstandard2.0/protobuf-net.Core.xml",
         "lib/netstandard2.1/protobuf-net.Core.dll",
         "lib/netstandard2.1/protobuf-net.Core.xml",
-        "protobuf-net.core.3.0.0-alpha.146.g00620fbe1a.nupkg.sha512",
+        "protobuf-net.core.3.0.62.nupkg.sha512",
         "protobuf-net.core.nuspec"
       ]
     },
@@ -2260,33 +2152,19 @@
         "system.appcontext.nuspec"
       ]
     },
-    "System.Buffers/4.5.0": {
-      "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
+    "System.Buffers/4.3.0": {
+      "sha512": "ratu44uTIHgeBeI0dE8DWvmXVBSo4u7ozRZZHOMmK/JPpYyo0dAfgSiHlpiObMQ5lEtEyIXA40sKRYg5J6A8uQ==",
       "type": "package",
-      "path": "system.buffers/4.5.0",
+      "path": "system.buffers/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.0/_._",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.1/.xml",
         "lib/netstandard1.1/System.Buffers.dll",
-        "lib/netstandard1.1/System.Buffers.xml",
-        "lib/netstandard2.0/System.Buffers.dll",
-        "lib/netstandard2.0/System.Buffers.xml",
-        "lib/uap10.0.16299/_._",
-        "ref/net45/System.Buffers.dll",
-        "ref/net45/System.Buffers.xml",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.1/System.Buffers.dll",
-        "ref/netstandard1.1/System.Buffers.xml",
-        "ref/netstandard2.0/System.Buffers.dll",
-        "ref/netstandard2.0/System.Buffers.xml",
-        "ref/uap10.0.16299/_._",
-        "system.buffers.4.5.0.nupkg.sha512",
-        "system.buffers.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.buffers.4.3.0.nupkg.sha512",
+        "system.buffers.nuspec"
       ]
     },
     "System.Collections/4.3.0": {
@@ -2699,18 +2577,21 @@
         "system.diagnostics.tracing.nuspec"
       ]
     },
-    "System.Drawing.Common/4.7.0": {
-      "sha512": "v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
+    "System.Drawing.Common/5.0.0": {
+      "sha512": "SztFwAnpfKC8+sEKXAFxCBWhKQaEd97EiOL7oZJZP56zbqnLpmxACWA8aGseaUExciuEAUuR9dY8f7HkTRAdnw==",
       "type": "package",
-      "path": "system.drawing.common/4.7.0",
+      "path": "system.drawing.common/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net461/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.xml",
         "lib/netstandard2.0/System.Drawing.Common.dll",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
@@ -2732,7 +2613,7 @@
         "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
         "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
         "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "system.drawing.common.4.7.0.nupkg.sha512",
+        "system.drawing.common.5.0.0.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3309,27 +3190,6 @@
         "system.linq.expressions.nuspec"
       ]
     },
-    "System.Memory/4.5.3": {
-      "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "type": "package",
-      "path": "system.memory/4.5.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.1/System.Memory.dll",
-        "lib/netstandard1.1/System.Memory.xml",
-        "lib/netstandard2.0/System.Memory.dll",
-        "lib/netstandard2.0/System.Memory.xml",
-        "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.3.nupkg.sha512",
-        "system.memory.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Net.Http/4.3.0": {
       "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
       "type": "package",
@@ -3599,22 +3459,6 @@
         "system.objectmodel.nuspec"
       ]
     },
-    "System.Private.ServiceModel/4.6.0": {
-      "sha512": "8iD5mvu76p3L9tUzmh1Iwgh51XRGIBKfKZhnfUoORjqDCabKugQOmne0SWzuU0ksNW1d6fTn6zEFmig8AbzI3g==",
-      "type": "package",
-      "path": "system.private.servicemodel/4.6.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netstandard2.0/System.Private.ServiceModel.dll",
-        "lib/netstandard2.0/System.Private.ServiceModel.pdb",
-        "ref/netstandard2.0/_._",
-        "system.private.servicemodel.4.6.0.nupkg.sha512",
-        "system.private.servicemodel.nuspec"
-      ]
-    },
     "System.Reflection/4.3.0": {
       "sha512": "KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
       "type": "package",
@@ -3694,57 +3538,6 @@
         "ref/xamarinwatchos10/_._",
         "system.reflection.4.3.0.nupkg.sha512",
         "system.reflection.nuspec"
-      ]
-    },
-    "System.Reflection.DispatchProxy/4.5.0": {
-      "sha512": "+UW1hq11TNSeb+16rIk8hRQ02o339NFyzMc4ma/FqmxBzM30l1c2IherBB4ld1MNcenS48fz8tbt50OW4rVULA==",
-      "type": "package",
-      "path": "system.reflection.dispatchproxy/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Reflection.DispatchProxy.dll",
-        "lib/netcoreapp2.0/System.Reflection.DispatchProxy.dll",
-        "lib/netstandard1.3/System.Reflection.DispatchProxy.dll",
-        "lib/netstandard2.0/System.Reflection.DispatchProxy.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/netstandard1.3/System.Reflection.DispatchProxy.dll",
-        "ref/netstandard1.3/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/de/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/es/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/fr/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/it/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/ja/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/ko/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/ru/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/zh-hans/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard1.3/zh-hant/System.Reflection.DispatchProxy.xml",
-        "ref/netstandard2.0/System.Reflection.DispatchProxy.dll",
-        "ref/netstandard2.0/System.Reflection.DispatchProxy.xml",
-        "ref/uap10.0.16299/System.Reflection.DispatchProxy.dll",
-        "ref/uap10.0.16299/System.Reflection.DispatchProxy.xml",
-        "ref/uap10.0.16300/System.Reflection.DispatchProxy.dll",
-        "ref/uap10.0.16300/System.Reflection.DispatchProxy.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Reflection.DispatchProxy.dll",
-        "runtimes/win-aot/lib/uap10.0.16299/System.Reflection.DispatchProxy.dll",
-        "runtimes/win/lib/uap10.0.16299/System.Reflection.DispatchProxy.dll",
-        "system.reflection.dispatchproxy.4.5.0.nupkg.sha512",
-        "system.reflection.dispatchproxy.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.Reflection.Emit/4.3.0": {
@@ -4494,48 +4287,6 @@
         "system.runtime.numerics.nuspec"
       ]
     },
-    "System.Security.AccessControl/4.5.0": {
-      "sha512": "vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
-      "type": "package",
-      "path": "system.security.accesscontrol/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net46/System.Security.AccessControl.dll",
-        "lib/net461/System.Security.AccessControl.dll",
-        "lib/netstandard1.3/System.Security.AccessControl.dll",
-        "lib/netstandard2.0/System.Security.AccessControl.dll",
-        "lib/uap10.0.16299/_._",
-        "ref/net46/System.Security.AccessControl.dll",
-        "ref/net461/System.Security.AccessControl.dll",
-        "ref/net461/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/System.Security.AccessControl.dll",
-        "ref/netstandard1.3/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/de/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/es/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/fr/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/it/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/ja/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/ko/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/ru/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/zh-hans/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/zh-hant/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/System.Security.AccessControl.dll",
-        "ref/netstandard2.0/System.Security.AccessControl.xml",
-        "ref/uap10.0.16299/_._",
-        "runtimes/win/lib/net46/System.Security.AccessControl.dll",
-        "runtimes/win/lib/net461/System.Security.AccessControl.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
-        "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.accesscontrol.4.5.0.nupkg.sha512",
-        "system.security.accesscontrol.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Security.Cryptography.Algorithms/4.3.0": {
       "sha512": "W1kd2Y8mYSCgc3ULTAZ0hOP2dSdG5YauTb1089T0/kRcN2MpSAW1izOFROrJgxSlMn3ArsgHXagigyi+ibhevg==",
       "type": "package",
@@ -4577,67 +4328,32 @@
         "system.security.cryptography.algorithms.nuspec"
       ]
     },
-    "System.Security.Cryptography.Cng/4.5.0": {
-      "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+    "System.Security.Cryptography.Cng/4.3.0": {
+      "sha512": "03idZOqFlsKRL4W+LuCpJ6dBYDUWReug6lZjBa3uJWnk5sPCUXckocevTaUA8iT/MFSrY/2HXkOt753xQ/cf8g==",
       "type": "package",
-      "path": "system.security.cryptography.cng/4.5.0",
+      "path": "system.security.cryptography.cng/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/net46/System.Security.Cryptography.Cng.dll",
         "lib/net461/System.Security.Cryptography.Cng.dll",
-        "lib/net462/System.Security.Cryptography.Cng.dll",
-        "lib/net47/System.Security.Cryptography.Cng.dll",
-        "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard1.3/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.Cng.dll",
-        "lib/uap10.0.16299/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
+        "lib/net463/System.Security.Cryptography.Cng.dll",
         "ref/net46/System.Security.Cryptography.Cng.dll",
         "ref/net461/System.Security.Cryptography.Cng.dll",
-        "ref/net461/System.Security.Cryptography.Cng.xml",
-        "ref/net462/System.Security.Cryptography.Cng.dll",
-        "ref/net462/System.Security.Cryptography.Cng.xml",
-        "ref/net47/System.Security.Cryptography.Cng.dll",
-        "ref/net47/System.Security.Cryptography.Cng.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.xml",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.xml",
+        "ref/net463/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.3/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.4/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Cng.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Cng.xml",
-        "ref/uap10.0.16299/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/net46/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/net461/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/net462/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/net47/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net463/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.cryptography.cng.4.5.0.nupkg.sha512",
-        "system.security.cryptography.cng.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.security.cryptography.cng.4.3.0.nupkg.sha512",
+        "system.security.cryptography.cng.nuspec"
       ]
     },
     "System.Security.Cryptography.Csp/4.3.0": {
@@ -4729,39 +4445,6 @@
         "system.security.cryptography.openssl.nuspec"
       ]
     },
-    "System.Security.Cryptography.Pkcs/4.5.0": {
-      "sha512": "TGQX51gxpY3K3I6LJlE2LAftVlIMqJf0cBGhz68Y89jjk3LJCB6SrwiD+YN1fkqemBvWGs+GjyMJukl6d6goyQ==",
-      "type": "package",
-      "path": "system.security.cryptography.pkcs/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net46/System.Security.Cryptography.Pkcs.dll",
-        "lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "ref/net46/System.Security.Cryptography.Pkcs.dll",
-        "ref/net461/System.Security.Cryptography.Pkcs.dll",
-        "ref/net461/System.Security.Cryptography.Pkcs.xml",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Pkcs.xml",
-        "ref/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/net46/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "system.security.cryptography.pkcs.4.5.0.nupkg.sha512",
-        "system.security.cryptography.pkcs.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Security.Cryptography.Primitives/4.3.0": {
       "sha512": "7bDIyVFNL/xKeFHjhobUAQqSpJq9YTOpbEs6mR233Et01STBMXNAc/V+BM6dwYGc95gVh/Zf+iVXWzj3mE8DWg==",
       "type": "package",
@@ -4845,145 +4528,6 @@
         "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll",
         "system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
         "system.security.cryptography.x509certificates.nuspec"
-      ]
-    },
-    "System.Security.Cryptography.Xml/4.5.0": {
-      "sha512": "i2Jn6rGXR63J0zIklImGRkDIJL4b1NfPSEbIVHBlqoIb12lfXIigCbDRpDmIEzwSo/v1U5y/rYJdzZYSyCWxvg==",
-      "type": "package",
-      "path": "system.security.cryptography.xml/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Security.Cryptography.Xml.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.Xml.dll",
-        "ref/net461/System.Security.Cryptography.Xml.dll",
-        "ref/net461/System.Security.Cryptography.Xml.xml",
-        "ref/netstandard2.0/System.Security.Cryptography.Xml.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Xml.xml",
-        "system.security.cryptography.xml.4.5.0.nupkg.sha512",
-        "system.security.cryptography.xml.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Security.Permissions/4.5.0": {
-      "sha512": "9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
-      "type": "package",
-      "path": "system.security.permissions/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Security.Permissions.dll",
-        "lib/netstandard2.0/System.Security.Permissions.dll",
-        "ref/net461/System.Security.Permissions.dll",
-        "ref/net461/System.Security.Permissions.xml",
-        "ref/netstandard2.0/System.Security.Permissions.dll",
-        "ref/netstandard2.0/System.Security.Permissions.xml",
-        "system.security.permissions.4.5.0.nupkg.sha512",
-        "system.security.permissions.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
-      "type": "package",
-      "path": "system.security.principal.windows/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net46/System.Security.Principal.Windows.dll",
-        "lib/net461/System.Security.Principal.Windows.dll",
-        "lib/netstandard1.3/System.Security.Principal.Windows.dll",
-        "lib/netstandard2.0/System.Security.Principal.Windows.dll",
-        "lib/uap10.0.16299/_._",
-        "ref/net46/System.Security.Principal.Windows.dll",
-        "ref/net461/System.Security.Principal.Windows.dll",
-        "ref/net461/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/System.Security.Principal.Windows.dll",
-        "ref/netstandard1.3/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/de/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/es/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/fr/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/it/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/ja/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/ko/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/ru/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/zh-hans/System.Security.Principal.Windows.xml",
-        "ref/netstandard1.3/zh-hant/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/System.Security.Principal.Windows.dll",
-        "ref/netstandard2.0/System.Security.Principal.Windows.xml",
-        "ref/uap10.0.16299/_._",
-        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/net46/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/net461/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.principal.windows.4.5.0.nupkg.sha512",
-        "system.security.principal.windows.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.ServiceModel.Primitives/4.6.0": {
-      "sha512": "LwFQqlATMZh5bdL2bZmEhuYGgTeb+GxT0WWkYqA2A+bywYM5Oq3wouHSigm1kRQwk4iQjrfsk5wxBdjmK1ozRQ==",
-      "type": "package",
-      "path": "system.servicemodel.primitives/4.6.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/net46/System.ServiceModel.Primitives.dll",
-        "lib/net461/System.ServiceModel.Primitives.dll",
-        "lib/net461/System.ServiceModel.Primitives.pdb",
-        "lib/netcore50/System.ServiceModel.Primitives.dll",
-        "lib/netcoreapp2.1/System.ServiceModel.Primitives.dll",
-        "lib/netcoreapp2.1/System.ServiceModel.Primitives.pdb",
-        "lib/netcoreapp2.1/System.ServiceModel.dll",
-        "lib/netstandard1.3/System.ServiceModel.Primitives.dll",
-        "lib/netstandard2.0/System.ServiceModel.Primitives.dll",
-        "lib/netstandard2.0/System.ServiceModel.Primitives.pdb",
-        "lib/netstandard2.0/System.ServiceModel.dll",
-        "lib/portable-net45+win8+wp8/_._",
-        "lib/win8/_._",
-        "lib/wp8/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/net46/System.ServiceModel.Primitives.dll",
-        "ref/net461/System.ServiceModel.Primitives.dll",
-        "ref/netcore50/System.ServiceModel.Primitives.dll",
-        "ref/netcoreapp2.1/System.ServiceModel.Primitives.dll",
-        "ref/netcoreapp2.1/System.ServiceModel.dll",
-        "ref/netstandard1.0/System.ServiceModel.Primitives.dll",
-        "ref/netstandard1.1/System.ServiceModel.Primitives.dll",
-        "ref/netstandard1.3/System.ServiceModel.Primitives.dll",
-        "ref/netstandard2.0/System.ServiceModel.Primitives.dll",
-        "ref/netstandard2.0/System.ServiceModel.dll",
-        "ref/portable-net45+win8+wp8/_._",
-        "ref/win8/_._",
-        "ref/wp8/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.servicemodel.primitives.4.6.0.nupkg.sha512",
-        "system.servicemodel.primitives.nuspec"
       ]
     },
     "System.Text.Encoding/4.3.0": {
@@ -5562,7 +5106,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Fusee.Desktop >= 0.8.2"
+      "Fusee.Desktop >= 0.9.0"
     ]
   },
   "packageFolders": {
@@ -5609,7 +5153,7 @@
         "dependencies": {
           "Fusee.Desktop": {
             "target": "Package",
-            "version": "[0.8.2, )"
+            "version": "[0.9.0, )"
           }
         },
         "imports": [

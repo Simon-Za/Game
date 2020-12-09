@@ -38,19 +38,18 @@ namespace FuseeApp
         private SceneNode TrenchParent;
 
 
-   
+
         private float appStartTime;             //Die Zeit seit Start der Applikation
         private float playTime;                 //Die Zeit seit drücken des Startknopfs (Leertaste)             wird später benutzt für das Leaderboard/aktive Anzeige ingame(?)
         private bool start;
+        private double speed;
+        private bool d;
 
 
         bool left;
         bool mid = true;
         bool right;
 
-        bool up;
-        bool normal = true;
-        bool down;
 
         int trenchCount;
 
@@ -60,16 +59,23 @@ namespace FuseeApp
         SceneNode newTrench;
 
 
-        float counter;//1sec
+        float currentTrenchTrans;
+
+
+        float counterLR;//1sec
+        float counterUD;
 
         float3 oldPos;
         float3 newPos;
 
+        float oldPosY;
+        float newPosY;
+
         //Kollisionsvariablen 
-        private AABBf _shipBox; 
+        private AABBf _shipBox;
 
         private Transform _cubeObstTrans;
-      
+
         private Mesh _cubeObstMesh;
 
 
@@ -77,58 +83,78 @@ namespace FuseeApp
         List<SceneNode> TrenchesList;
 
 
+
+        private readonly CanvasRenderMode _canvasRenderMode = CanvasRenderMode.Screen;
+        private GUIButton _btnStart;
+        private float2 _btnStartPosition;
+        private SceneContainer _uiStart;
+        private SceneInteractionHandler _sihS;
+        private SceneRendererForward _uiStartRenderer;
+
+        private SceneContainer _uiGame;
+        private SceneRendererForward _uiGameRenderer;
+        private SceneInteractionHandler _sihG;
+
+        private GUIText _timerText;
+
+        private GUIButton _btnRetry;
+        private float2 _btnRetryPosition;
+        private SceneContainer _uiDeath;
+        private SceneRendererForward _uiDeathRenderer;
+        private SceneInteractionHandler _sihD;
+
+        private const float ZNear = 1f;
+        private const float ZFar = 1000;
+
+
+        //private enum Status {Start, Game, Death};
+        private int status = 0;
+
+
+
         public override void Init()
         {
-            RC.ClearColor = new float4(0, 0, 0, 0);
+            RC.ClearColor = new float4(0.3f, 0, 0.9f, 0);
 
-            _starshipScene = AssetStorage.Get<SceneContainer>("StarshipOnly.fus");
+
+            _uiStart = CreateUIStart();
+            _uiGame = CreateUIGame();
+
+            _uiDeath = CreateUIDeath();
+            //Create the interaction handler
+            _sihS = new SceneInteractionHandler(_uiStart);
+            _sihG = new SceneInteractionHandler(_uiGame);
+            _sihD = new SceneInteractionHandler(_uiDeath);
+
+
+            _starshipScene = AssetStorage.Get<SceneContainer>("StarshipProto.fus");
 
 
             _starshipTrans = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetTransform();
 
             _starShipMesh = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetMesh();
 
+
             oldPos = _starshipTrans.Translation;
             newPos = _starshipTrans.Translation;
+
+            oldPosY = _starshipTrans.Translation.y;
+            newPosY = _starshipTrans.Translation.y;
 
 
             TrenchesList = new List<SceneNode>
             {
-                AssetStorage.Get<SceneContainer>("Trench1new.fus").ToSceneNode(),
-                AssetStorage.Get<SceneContainer>("Trench2new.fus").ToSceneNode(),
-                AssetStorage.Get<SceneContainer>("Trench3new.fus").ToSceneNode()
+               AssetStorage.Get<SceneContainer>("CubesOnly1.fus").ToSceneNode(),
+               AssetStorage.Get<SceneContainer>("CubesOnly2.fus").ToSceneNode(),
+               AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
             };
-             random = new Random();
+            random = new Random();
             trenchCount = TrenchesList.Count();
 
-            currentTrench = TrenchesList[0];
+            currentTrench = CopyNode(TrenchesList[0]);
             newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
 
-            
-
-
-            _sceneRenderer = new SceneRendererForward(_starshipScene);
-
-        }
-
-       
-
-        public override void RenderAFrame()
-        {
-
-
-
-            // Clear the backbuffer
-            RC.Clear(ClearFlags.Color | ClearFlags.Depth);
-
-            RC.Viewport(0, 0, Width, Height);
-
-
-
-            double speed = (double)DeltaTime * 20;
-
-
-
+            newTrench.GetTransform().Translation.z += newTrench.GetTransform().Scale.z;
 
 
 
@@ -138,25 +164,67 @@ namespace FuseeApp
             };
 
             _starshipScene.Children.Add(TrenchParent);
-            
+
             TrenchParent.Children.Add(currentTrench);
             TrenchParent.Children.Add(newTrench);
 
 
+            currentTrenchTrans = currentTrench.GetTransform().Translation.z;
 
-            float newTrenchTrans = newTrench.GetTransform().Translation.z;
-            newTrench.GetTransform().Translation.z += 100;
 
-            if (newTrench.GetTransform().Translation.z == newTrenchTrans)
+            _sceneRenderer = new SceneRendererForward(_starshipScene);
+            _uiStartRenderer = new SceneRendererForward(_uiStart);
+            _uiGameRenderer = new SceneRendererForward(_uiGame);
+            _uiDeathRenderer = new SceneRendererForward(_uiDeath);
+        }
+
+
+
+        public override void RenderAFrame()
+        {
+
+            // Clear the backbuffer
+            RC.Clear(ClearFlags.Color | ClearFlags.Depth);
+
+            RC.Viewport(0, 0, Width, Height);
+
+
+            if (playTime != 0)
             {
-                currentTrench = newTrench;
-                newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
+                if ((int)playTime % 20 == 0 && (int)playTime != 0 && d == true)
+                {
+                    Faster();
+                    d = false;
+                }
+                else if ((int)playTime % 20 != 0 && d == false)
+                {
+                    d = true;
+                }
             }
 
- 
+            //Console.WriteLine(playTime);
+            //Console.WriteLine(speed);
+
+            //newTrenchTrans = newTrench.GetTransform().Translation.z;
+
+
+            if (newTrench.GetTransform().Translation.z <= currentTrenchTrans)
+            {
+                TrenchParent.Children.Remove(currentTrench);
+                TrenchParent.Children.Remove(newTrench);
+
+
+                currentTrench = newTrench;
+                newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
+                newTrench.GetTransform().Translation.z = 99;
+                TrenchParent.Children.Add(currentTrench);
+                TrenchParent.Children.Add(newTrench);
+            }
+
+
 
             //Steuerung links/rechts
-            if (Keyboard.IsKeyDown(KeyCodes.Left))
+            if (Keyboard.IsKeyDown(KeyCodes.Left) || Keyboard.IsKeyDown(KeyCodes.A))
             {
                 if (left)
                 {
@@ -166,30 +234,30 @@ namespace FuseeApp
                 {
                     oldPos = newPos;
                     newPos.x = -3;
-                    counter = 0.3f;
+                    counterLR = 0.3f;
 
                     mid = false;
                     left = true;
-                    
+
                 }
                 else if (right)
                 {
                     oldPos = newPos;
                     newPos.x = 0;
-                    counter = 0.3f;
+                    counterLR = 0.3f;
 
                     right = false;
                     mid = true;
                 }
 
             }
-            if (Keyboard.IsKeyDown(KeyCodes.Right))
+            if (Keyboard.IsKeyDown(KeyCodes.Right) || Keyboard.IsKeyDown(KeyCodes.D))
             {
                 if (left)
                 {
                     oldPos = newPos;
                     newPos.x = 0;
-                    counter = 0.3f;
+                    counterLR = 0.3f;
 
                     left = false;
                     mid = true;
@@ -198,7 +266,7 @@ namespace FuseeApp
                 {
                     oldPos = newPos;
                     newPos.x = 3;
-                    counter = 0.3f;
+                    counterLR = 0.3f;
 
                     mid = false;
                     right = true;
@@ -209,53 +277,70 @@ namespace FuseeApp
                 }
             }
 
+
             //oben / unten
-            if (Keyboard.IsKeyDown(KeyCodes.Up))
+            if (Keyboard.IsKeyDown(KeyCodes.Up) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.W) && counterUD == 0)
             {
-                if (up)
-                {
-                    //do nothing
-                    normal = false;
-                }
-                else if (normal)
-                {
-                    _starshipTrans.Translation.y += 2.5f;
-                    normal = false;
-                    up = true;
+                //if (up)
+                //{
+                //    //do nothing
+                //    normal = false;
+                //}
+                //else if (normal)
+                //{
+                //_starshipTrans.Translation.y += 2.5f;
+                oldPosY = newPosY;
+                newPosY = 4.2039146f;
+                counterUD = 0.3f;
 
-                }
-                else if (down)
-                {
-                    _starshipTrans.Translation.y += 2.5f;
-                    down = false;
-                    normal = true;
-                }
-                _starshipTrans.Rotation.z = + 0.083f;
+                //    normal = false;
+                //    up = true;
+
+                //}
+                //else if (down)
+                //{
+                //    //_starshipTrans.Translation.y += 2.5f;
+                //    oldPosY = newPosY;
+                //    newPosY = 1.7039146f;
+                //    counterUD = 0.3f;
+
+                //    down = false;
+                //    normal = true;
+                //}
+                //_starshipTrans.Rotation.z = + 0.083f;
             }
-            if (Keyboard.IsKeyDown(KeyCodes.Down))
+            if (Keyboard.IsKeyDown(KeyCodes.Down) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.S) && counterUD == 0)
             {
-                if (up)
-                {
-                    _starshipTrans.Translation.y -= 2.5f;
-                    up = false;
-                    normal = true;
-                }
-                else if (normal)
-                {
-                    _starshipTrans.Translation.y -= 2.5f;
-                    normal = false;
-                    down = true;
-                }
-                else if (down)
-                {
-                    //do nothing
-                    normal = false;
-                }
-                _starshipTrans.Rotation.z = -0.083f;
+                //if (up)
+                //{
+                //_starshipTrans.Translation.y -= 2.5f;
+                //oldPosY = newPosY;
+                //newPosY = 1.7039146f;
+                //counterUD = 0.3f;
+
+                //up = false;
+                //normal = true;
+                //}
+                //else if (normal)
+                //{
+                //_starshipTrans.Translation.y -= 2.5f;
+                oldPosY = newPosY;
+                newPosY = -0.7960852f;
+                counterUD = 0.3f;
+
+                //normal = false;
+                //down = true;
+                //}
+                //else if (down)
+                //{
+                //    //do nothing
+                //    normal = false;
+                //}
+                //_starshipTrans.Rotation.z = -0.083f;
             }
 
 
-
+            //Console.WriteLine(_starshipTrans.Translation.y);
 
             //flüssige Steuerung
 
@@ -335,26 +420,24 @@ namespace FuseeApp
 
 
 
+            //if (Keyboard.IsKeyDown(KeyCodes.Space))  //wenn die Leertaste gedrückt wird, wird die Zeit seit dem Drücken in playTime gespeichert
+            //{
+            //    StartGame();
 
-            if (Keyboard.IsKeyDown(KeyCodes.Space))  //wenn die Leertaste gedrückt wird, wird die Zeit seit dem Drücken in playTime gespeichert
-            {
-                start = true;
-                appStartTime = RealTimeSinceStart;
-
-                //var irgendwas = AssetStorage.Get<SceneContainer>("Trench 1.fus").ToSceneNode();
-                   // _starshipScene.Children.Add(irgendwas);
-            }
+            //    //var irgendwas = AssetStorage.Get<SceneContainer>("Trench 1.fus").ToSceneNode();
+            //    //_starshipScene.Children.Add(irgendwas);
+            //}
 
 
-            //Bounding Boxes 
+            //Bounding Boxes
 
             //Boundind Box des Schiffs  
-            _shipBox = _starShipMesh.BoundingBox;
+            _shipBox = _starshipTrans.Matrix() * _starShipMesh.BoundingBox;
 
             if (start)
-            { 
+            {
                 //speed *= playTime;            unnötig, aber in ähnlicher Form später für die Geschwindigkeitserhöhung nutzbar
-               
+
                 playTime = StartTimer(appStartTime);
 
                 //Hier werden für Trenches sowie ihre jeweiligen obstacles Listen erstellt, die einzeln abgegangen werden, um nach einer Kollision zu prüfen
@@ -368,20 +451,15 @@ namespace FuseeApp
 
                     if (_trenchTrans != null)
                     {
-                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ObstacleDummy")).ToList();
+                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("CubeObstacle")).ToList(); //könnte statt TrenchParent.Children wahrscheinlich einfach currentTrench nehmen
 
                         for (int i = 0; i < ObstaclesList.Count(); i++)
                         {
-                            _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ObstacleDummy" + i)?.FirstOrDefault()?.GetTransform();
+                            _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetTransform();
 
-                            _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ObstacleDummy" + i)?.FirstOrDefault()?.GetMesh();
+                            _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetMesh();
 
                             AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
-
-
-                            Console.WriteLine("CubeObstTransl:" + _cubeObstTrans.Translation);
-                            Console.WriteLine("TrenchTransl" + _trenchTrans.Translation);
-                            //Console.WriteLine("Trans" + _cubeObstTrans.Translation);
 
                             Trench(_shipBox, cubeHitbox);
                         }
@@ -394,32 +472,108 @@ namespace FuseeApp
                 speed = 0;
             }
 
-            if (counter > 0)
+            if (counterLR > 0)        //Bewegung und Tilt
             {
-                _starshipTrans.Translation = float3.Lerp(newPos, oldPos, M.SmootherStep((counter)/0.3f));
-               if (newPos.x < oldPos.x)
+                _starshipTrans.Translation = float3.Lerp(newPos, oldPos, M.SmootherStep((counterLR) / 0.3f));
+                if (newPos.x < oldPos.x)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(counter / 0.3f) * -0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(counterLR / 0.3f) * -0.167f;
                 }
-               else if (newPos.x > oldPos.x)
+                else if (newPos.x > oldPos.x)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(counter/0.3f) * 0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(counterLR / 0.3f) * 0.167f;
                 }
-                
-                counter -= DeltaTime;
+
+                counterLR -= DeltaTime;
             }
-            else if (counter < 0)
+            else if (counterLR < 0)
             {
-                counter = 0;
+                counterLR = 0;
                 _starshipTrans.Rotation.x = 0;
             }
 
 
-            RC.View =  float4x4.LookAt(0, 3, -8, 0, 2, 0, 0, 1, 0);   
+
+            float3 newPosXY = new float3(_starshipTrans.Translation.x, newPosY, _starshipTrans.Translation.z);
+            float3 oldPosXY = new float3(_starshipTrans.Translation.x, oldPosY, _starshipTrans.Translation.z);
+
+            if (counterUD > 0)        //Bewegung und Tilt Oben/Unten
+            {
+                _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((counterUD) / 0.3f));
+                newPos.y = newPosY;
+                oldPos.y = newPosY;
+                if (newPosY < oldPosY)
+                {
+                    _starshipTrans.Rotation.z = M.SmootherStep(counterUD / 0.3f) * 1;//0.167f;
+                }
+                else if (newPosY > oldPosY)
+                {
+                    _starshipTrans.Rotation.z = M.SmootherStep(counterUD / 0.3f) * -1; // 0.167f;
+                }
+
+                counterUD -= DeltaTime;
+
+            }
+            else if (counterUD < 0 && counterUD > -0.2f)
+            {
+                counterUD -= DeltaTime;
+            }
+            else if (counterUD < -0.2f && counterUD >= -0.5f)
+            {
+                _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((counterUD + 0.2f) / -0.3f));
+
+                if (oldPosY < newPosY)
+                {
+                    _starshipTrans.Rotation.z = M.SmoothStep(-(counterUD + 0.2f) / 0.3f) * 0.5f;// 1.5f; //-0.167f;
+                }
+                else if (oldPosY > newPosY)
+                {
+                    _starshipTrans.Rotation.z = M.SmoothStep(-(counterUD + 0.2f) / 0.3f) * -0.7f; // 1.5f;//0.167f;
+                }
+                newPos.y = oldPosY;
+                oldPos.y = newPosY;
+
+                counterUD -= DeltaTime;
+            }
+            else if (counterUD < -0.5f)
+            {
+                newPosY = oldPosY;
+                counterUD = 0;
+                _starshipTrans.Rotation.z = 0;
+            }
+
+
+            RC.View = float4x4.LookAt(0, 8, -8, 0, 0, 7, 0, 1, 0);
+
 
 
             //Tick any animations and Render the scene loaded in Init()
+
+            var orthographic = float4x4.CreateOrthographic(Width, Height, ZNear, ZFar);
+
             _sceneRenderer.Render(RC);
+
+            RC.Projection = orthographic;
+
+            Console.WriteLine(playTime.ToString());
+
+
+            _timerText.Text = playTime.ToString();
+
+            if (status == 0)
+            {
+                _uiStartRenderer.Render(RC);
+                _sihS.CheckForInteractiveObjects(RC, Mouse.Position, Width, Height);
+            }
+            else if(status == 1)
+            {
+                _uiGameRenderer.Render(RC);
+            }
+            else if(status == 2)
+            {
+                _uiDeathRenderer.Render(RC);
+                _sihD.CheckForInteractiveObjects(RC, Mouse.Position, Width, Height);
+            }
 
             // Swap buffers: Show the contents of the backbuffer (containing the currently rendered frame) on the front buffer.
             Present();
@@ -427,8 +581,206 @@ namespace FuseeApp
         }
 
 
-        //Start des Spiels, also Beginn der Bewegung der Szene und des Zählers
 
+
+        private SceneContainer CreateUIStart()   //UI für Start
+        {
+            var vsTex = AssetStorage.Get<string>("texture.vert");
+            var psTex = AssetStorage.Get<string>("texture.frag");
+            var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
+            var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+
+            var canvasWidth = Width / 100f;
+            var canvasHeight = Height / 100f;
+
+            _btnStart = new GUIButton
+            {
+                Name = "Start_Button"
+            };
+            _btnStart.OnMouseDown += StartGame;
+            _btnStartPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
+
+            var startNode = new TextureNode(
+            "StartButtonLogo",
+            vsTex,
+            psTex,
+            new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
+            UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
+            UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
+            float2.One
+            );
+            //var startNode = new TextureNode(
+            //    "StartButtonLogo",
+            //    vsNineSlice,
+            //    psNineSlice,
+            //    new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
+            //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
+            //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
+            //    float2.One,
+            //    new float4(1, 1, 1, 1),
+            //    0, 0, 0, 0
+            //    );
+            startNode.Components.Add(_btnStart);
+
+
+            var canvas = new CanvasNode(
+                "Canvas",
+                _canvasRenderMode,
+                new MinMaxRect
+                {
+                    Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
+                    Max = new float2(canvasWidth / 2, canvasHeight / 2f)
+                })
+            {
+                Children = new ChildList()
+                {
+                    //Simple Texture Node, contains the fusee logo. Lüge
+                    startNode
+
+                }
+            };
+
+
+            return new SceneContainer
+            {
+                Children = new List<SceneNode>
+                {
+                    //Add canvas.
+                    canvas
+                }
+            };
+
+        }
+
+        private SceneContainer CreateUIGame() //UI für ingame Zeit
+        {
+            var vsTex = AssetStorage.Get<string>("texture.vert");
+            var psTex = AssetStorage.Get<string>("texture.frag");
+            var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
+            var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+            var psText = AssetStorage.Get<string>("text.frag");
+
+            var canvasWidth = Width / 100f;
+            var canvasHeight = Height / 100f;
+
+            var fontLato = AssetStorage.Get<Font>("Lato-Black.ttf");
+            var guiLatoBlack = new FontMap(fontLato, 24);
+
+
+            var displayTime = new TextNode(
+                "0.00",
+                "TimerText",
+                vsTex,
+                psText,
+                UIElementPosition.GetAnchors(AnchorPos.StretchHorizontal),
+                UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, 0), canvasHeight, canvasWidth, new float2(8, 1)),
+                guiLatoBlack,
+                ColorUint.Tofloat4(ColorUint.White),
+                HorizontalTextAlignment.Center,
+                VerticalTextAlignment.Center);
+
+            _timerText = displayTime.GetComponentsInChildren<GUIText>().FirstOrDefault();
+
+
+            var canvas = new CanvasNode(
+                "Canvas",
+                _canvasRenderMode,
+                new MinMaxRect
+                {
+                    Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
+                    Max = new float2(canvasWidth / 2, canvasHeight / 2f)
+                })
+            {
+                Children = new ChildList()
+                {
+                    displayTime
+                }
+            };
+
+            return new SceneContainer
+            {
+                Children = new List<SceneNode>
+                {
+                    canvas
+                }
+            };
+
+        }
+
+
+        private SceneContainer CreateUIDeath() //UI für Todesscreen
+        {
+            var vsTex = AssetStorage.Get<string>("texture.vert");
+            var psTex = AssetStorage.Get<string>("texture.frag");
+            var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
+            var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+
+            var canvasWidth = Width / 100f;
+            var canvasHeight = Height / 100f;
+
+            _btnRetry = new GUIButton
+            {
+                Name = "Retry_Button"
+            };
+            _btnRetry.OnMouseDown += TryAgain;
+            _btnRetryPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
+
+            var retryNode = new TextureNode(
+            "StartButtonLogo",
+            vsTex,
+            psTex,
+            new Texture(AssetStorage.Get<ImageData>("tryAgainBig.png")),
+            UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
+            UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnRetryPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
+            float2.One
+            );
+            retryNode.Components.Add(_btnRetry);
+
+            var canvas = new CanvasNode(
+                "Canvas",
+                _canvasRenderMode,
+                new MinMaxRect
+                {
+                    Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
+                    Max = new float2(canvasWidth / 2, canvasHeight / 2f)
+                })
+            {
+                Children = new ChildList()
+                {
+                    retryNode
+                }
+            };
+
+            return new SceneContainer
+            {
+                Children = new List<SceneNode>
+                {
+                    canvas
+                }
+            };
+
+        }
+
+
+
+
+
+        //Start des Spiels, also Beginn der Bewegung der Szene und des Zählers
+        private void StartGame(CodeComponent sender)
+        {
+            start = true;
+            appStartTime = RealTimeSinceStart;
+            speed = (double)DeltaTime * 20;
+            status = 1;
+
+        }
+
+        private void TryAgain(CodeComponent sender)
+        {
+            Init();
+            RenderAFrame();
+            StartGame(sender);
+        }
 
         //Timer wird gestartet
         private float StartTimer(float appStartTime)
@@ -438,7 +790,8 @@ namespace FuseeApp
             
         }
     
-        
+       
+
 
 
         private void Trench(AABBf _shipBox, AABBf cubeHitbox)
@@ -451,10 +804,11 @@ namespace FuseeApp
             }  
         }
 
-
+ 
         private void Death()
         {
             start = false;
+            status = 2;
         }
 
 
@@ -464,39 +818,15 @@ namespace FuseeApp
             SceneNode outsn = new SceneNode();
 
             outsn.Name = insn.Name;
-            outsn.Components = insn.Components;//CopyComponent(insn);
+            outsn.Components.Add(new Transform()); 
             outsn.Children = insn.Children;
 
             return outsn;
-
-            
         }
 
-        /* private List <SceneComponent> CopyComponent(SceneNode insn)
+        private void Faster()
         {
-           List<SceneComponent> outco = new List <SceneComponent>();
-            
-               //outco.Add(insn.GetTransform());
-               //outco.Add(insn.Components.ElementAt)
-
-            for(int i = 0; i < insn.Components.Count; i++)
-            {
-              /* if (insn.Components[i].Name == "Transform")
-                {
-                    Transform blankTrans = new Transform();
-                    outco.Add(blankTrans);
-                } */
-                //else
-                //{ 
-                    //outco.Add(insn.Components.ElementAt(i));
-                    //outco.Add(insn.Components[i]);
-                //}
-               
-            //}
-            //outco = insn.GetComponents Components.Find(Component => Component.Name == "Transform");
-            //Console.WriteLine(outco);
-            //return outco;
-        //}
-
+            speed *= 1.25f; 
+        }
     }
 }
