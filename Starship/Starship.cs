@@ -10,6 +10,8 @@ using static Fusee.Engine.Core.Input;
 using static Fusee.Engine.Core.Time;
 using Fusee.Engine.GUI;
 using System;
+using System.IO;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
@@ -110,9 +112,11 @@ namespace FuseeApp
         //private enum Status {Start, Game, Death};
         private int status = 0;
 
-        List<double> ScoresList;
+        List<TextNode> ScoresList;
 
         private double currentScore;
+
+        private string path = @"c:\temp\Leaderboard.txt";
 
         public override void Init()
         {
@@ -180,7 +184,7 @@ namespace FuseeApp
             _uiDeathRenderer = new SceneRendererForward(_uiDeath);
 
 
-            ScoresList = new List<TextNode>
+            //ScoresList = new List<TextNode>
             {
             };
         }
@@ -780,6 +784,7 @@ namespace FuseeApp
             speed = (double)DeltaTime * 20;
             status = 1;
 
+
         }
 
         private void TryAgain(CodeComponent sender)
@@ -815,6 +820,7 @@ namespace FuseeApp
         private void Death()
         {
             currentScore = playTime;
+            Leaderboard();
             start = false;
             status = 2;
         }
@@ -838,12 +844,35 @@ namespace FuseeApp
         }
 
         private void Leaderboard()
+
         {
-            if(currentScore >= ScoresList[ScoresList.Count() - 1])
+           
+            // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Hello");
+                    sw.WriteLine("And");
+                    sw.WriteLine("Welcome");
+                }
+            
+         // Open the file to read from.
+            using (StreamReader sr = File.OpenText(path))
             {
-                ScoresList.RemoveAt[]
-                ScoresList.Add()
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
             }
+
+
+
+
+           /*  if(currentScore >= ScoresList[ScoresList.Count() - 1])
+            {
+                ScoresList.RemoveAt[] 
+                ScoresList.Add()
+            } */
             
         }
     }
