@@ -22,6 +22,9 @@ using System.Security.Cryptography;
 using OpenTK.Graphics.OpenGL;
 using System.Threading;
 using OpenTK.Graphics.ES20;
+using Fusee.Engine.Core.Effects;
+using Starship.Data;
+using System.Xml.Serialization;
 
 namespace FuseeApp
 {
@@ -60,6 +63,9 @@ namespace FuseeApp
         SceneNode currentTrench;
         SceneNode newTrench;
 
+        SceneNode currentItemTrench;
+        SceneNode newItemTrench;
+
 
         float currentTrenchTrans;
 
@@ -80,10 +86,16 @@ namespace FuseeApp
 
         private Mesh _cubeObstMesh;
 
+        private Transform _itemOrbTrans;
+
+        private Mesh _itemOrbMesh;
+
+        private SceneNode _currentItem;
 
 
         List<SceneNode> TrenchesList;
 
+        List<SceneNode> ItemList;
 
 
         private readonly CanvasRenderMode _canvasRenderMode = CanvasRenderMode.Screen;
@@ -118,6 +130,15 @@ namespace FuseeApp
 
         private string path = @"c:\temp\Leaderboard.txt";
 
+        private int _itemStatus; //0 = nichts, 1 = invincibility, 2 = ??
+
+        private float _itemTimer;
+
+        private float4 _color;
+       
+
+
+
         public override void Init()
         {
             RC.ClearColor = new float4(0.3f, 0, 0.9f, 0);
@@ -125,8 +146,8 @@ namespace FuseeApp
 
             _uiStart = CreateUIStart();
             _uiGame = CreateUIGame();
-
             _uiDeath = CreateUIDeath();
+
             //Create the interaction handler
             _sihS = new SceneInteractionHandler(_uiStart);
             _sihG = new SceneInteractionHandler(_uiGame);
@@ -154,11 +175,21 @@ namespace FuseeApp
                AssetStorage.Get<SceneContainer>("CubesOnly2.fus").ToSceneNode(),
                AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
             };
+
+            ItemList = new List<SceneNode>
+            {
+                AssetStorage.Get<SceneContainer>("ItemTrench1.fus").ToSceneNode(),
+                AssetStorage.Get<SceneContainer>("ItemTrench2.fus").ToSceneNode(),
+            };
+
             random = new Random();
             trenchCount = TrenchesList.Count();
 
             currentTrench = CopyNode(TrenchesList[0]);
             newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
+
+            currentItemTrench = CopyNode(ItemList[0]);
+            newItemTrench = CopyNode(ItemList[random.Next(0, ItemList.Count())]);
 
             newTrench.GetTransform().Translation.z += newTrench.GetTransform().Scale.z;
 
@@ -174,6 +205,9 @@ namespace FuseeApp
             TrenchParent.Children.Add(currentTrench);
             TrenchParent.Children.Add(newTrench);
 
+            TrenchParent.Children.Add(currentItemTrench);
+            TrenchParent.Children.Add(newItemTrench);
+
 
             currentTrenchTrans = currentTrench.GetTransform().Translation.z;
 
@@ -187,9 +221,41 @@ namespace FuseeApp
             //ScoresList = new List<TextNode>
             {
             };
+
+            _color = (float4)_starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().GetFxParam<float4>("SurfaceInput.Albedo");
+
+
+            //Funktionsname();
+            //Leaderboard();
         }
 
+        private void Funktionsname()
+        {
+            var blub = new Leaderboard();
+            blub.Scores = new List<Score>
+            {
+                new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000)
+            };
 
+            var ser = new XmlSerializer(typeof(Leaderboard));
+            using StringWriter TextWriter = new StringWriter();
+            ser.Serialize(TextWriter, blub);
+            File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
+            TextWriter.Dispose();
+
+            FileStream fs = new FileStream("Leaderboard.xml", System.IO.FileMode.OpenOrCreate);
+            TextReader reader = new StreamReader(fs);
+
+            ser.Deserialize(reader);
+
+            for (int k = 0; k < blub.Scores.Count(); k++)
+            {
+                if (currentScore >= blub.Scores.ElementAt(k).topTime)
+                {
+                    blub.Scores.Insert(k, new Score(currentScore));
+                }
+            }
+        }
 
         public override void RenderAFrame()
         {
@@ -199,6 +265,25 @@ namespace FuseeApp
 
             RC.Viewport(0, 0, Width, Height);
 
+            if (_itemTimer <= playTime + _itemTimer && _itemOrbMesh != null)
+            {
+                _itemOrbMesh.Active = true;
+                //_itemStatus = 0;
+            }
+            if (_itemTimer <= playTime && _itemOrbMesh != null)
+            {
+                _itemStatus = 0;
+             
+            }
+
+            if (_itemStatus == 1)
+            {
+                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 0, 1));
+            }
+            else
+            {
+                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", _color);
+            };
 
             if (playTime != 0)
             {
@@ -224,12 +309,21 @@ namespace FuseeApp
                 TrenchParent.Children.Remove(currentTrench);
                 TrenchParent.Children.Remove(newTrench);
 
+                TrenchParent.Children.Remove(currentItemTrench);
+                TrenchParent.Children.Remove(newItemTrench);
+
 
                 currentTrench = newTrench;
                 newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
                 newTrench.GetTransform().Translation.z = 99;
                 TrenchParent.Children.Add(currentTrench);
                 TrenchParent.Children.Add(newTrench);
+
+                currentItemTrench = newItemTrench;
+                newItemTrench = CopyNode(ItemList[random.Next(0, ItemList.Count())]);
+                newItemTrench.GetTransform().Translation.z = 99;
+                TrenchParent.Children.Add(currentItemTrench);
+                TrenchParent.Children.Add(newItemTrench);
             }
 
 
@@ -351,8 +445,6 @@ namespace FuseeApp
             }
 
 
-            //Console.WriteLine(_starshipTrans.Translation.y);
-
             //flüssige Steuerung
 
             //if (Keyboard.LeftRightAxis != 0)
@@ -430,14 +522,22 @@ namespace FuseeApp
             //Hier Startbutton / Menü einfügen
 
 
+            if (status == 0)
+            {
+                if (Keyboard.IsKeyDown(KeyCodes.Enter))  //wenn die Leertaste gedrückt wird, wird die Zeit seit dem Drücken in playTime gespeichert
+                {
+                    StartGame();
 
-            //if (Keyboard.IsKeyDown(KeyCodes.Space))  //wenn die Leertaste gedrückt wird, wird die Zeit seit dem Drücken in playTime gespeichert
-            //{
-            //    StartGame();
+                }
+            }
+            else if ( status == 2)
+            {
+                if (Keyboard.IsKeyDown(KeyCodes.Enter))
+                {
+                    TryAgain();
+                }
+            }
 
-            //    //var irgendwas = AssetStorage.Get<SceneContainer>("Trench 1.fus").ToSceneNode();
-            //    //_starshipScene.Children.Add(irgendwas);
-            //}
 
 
             //Bounding Boxes
@@ -447,8 +547,6 @@ namespace FuseeApp
 
             if (start)
             {
-                //speed *= playTime;            unnötig, aber in ähnlicher Form später für die Geschwindigkeitserhöhung nutzbar
-
                 playTime = StartTimer(appStartTime);
 
                 //Hier werden für Trenches sowie ihre jeweiligen obstacles Listen erstellt, die einzeln abgegangen werden, um nach einer Kollision zu prüfen
@@ -456,24 +554,42 @@ namespace FuseeApp
                 {
                     var _trenchTrans = TrenchParent.Children.ElementAt(j).GetTransform();
                     _trenchTrans.Translation.z -= (float)speed;         //Die Bewegung der Szene wird aktiviert
-                    //System.Console.WriteLine(_trenchTrans.Translation);
 
-                    //System.Console.WriteLine(_trenchTrans.Translation);
 
                     if (_trenchTrans != null)
                     {
                         List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("CubeObstacle")).ToList(); //könnte statt TrenchParent.Children wahrscheinlich einfach currentTrench nehmen
+                        
+                        List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
 
-                        for (int i = 0; i < ObstaclesList.Count(); i++)
+
+                        if (_itemStatus != 1)
                         {
-                            _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetTransform();
+                            for (int i = 0; i < ObstaclesList.Count(); i++)
+                            {
+                                _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetTransform();
 
-                            _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetMesh();
+                                _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetMesh();
 
-                            AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
+                                AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
 
-                            Trench(_shipBox, cubeHitbox);
+                                Collision(_shipBox, cubeHitbox);
+                            }
                         }
+
+                        for (int i = 0; i < ItemList.Count(); i++)
+                        {
+
+                            _currentItem = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault();
+                            _itemOrbTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault()?.GetTransform();
+                            _itemOrbMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault()?.GetMesh();
+
+                            AABBf itemHitbox = _trenchTrans.Matrix() * _itemOrbTrans.Matrix() * _itemOrbMesh.BoundingBox;
+
+                            ObtainItem(_shipBox, itemHitbox);
+                        }
+
+
                     }
                 }
             }
@@ -566,7 +682,7 @@ namespace FuseeApp
 
             RC.Projection = orthographic;
 
-            Console.WriteLine(playTime.ToString());
+            //Console.WriteLine(playTime.ToString());
 
 
             _timerText.Text = playTime.ToString();
@@ -594,44 +710,101 @@ namespace FuseeApp
 
 
 
-        private SceneContainer CreateUIStart()   //UI für Start
+        //private SceneContainer CreateUIStart()   //UI für Start mit Button
+        //{
+        //    var vsTex = AssetStorage.Get<string>("texture.vert");
+        //    var psTex = AssetStorage.Get<string>("texture.frag");
+        //    var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
+        //    var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+
+        //    var canvasWidth = Width / 100f;
+        //    var canvasHeight = Height / 100f;
+
+        //    _btnStart = new GUIButton
+        //    {
+        //        Name = "Start_Button"
+        //    };
+        //    _btnStart.OnMouseDown += StartGame;
+        //    _btnStartPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
+
+        //    var startNode = new TextureNode(
+        //    "StartButtonLogo",
+        //    vsTex,
+        //    psTex,
+        //    new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
+        //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
+        //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
+        //    float2.One
+        //    );
+        //    //var startNode = new TextureNode(
+        //    //    "StartButtonLogo",
+        //    //    vsNineSlice,
+        //    //    psNineSlice,
+        //    //    new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
+        //    //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
+        //    //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
+        //    //    float2.One,
+        //    //    new float4(1, 1, 1, 1),
+        //    //    0, 0, 0, 0
+        //    //    );
+        //    startNode.Components.Add(_btnStart);
+
+
+        //    var canvas = new CanvasNode(
+        //        "Canvas",
+        //        _canvasRenderMode,
+        //        new MinMaxRect
+        //        {
+        //            Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
+        //            Max = new float2(canvasWidth / 2, canvasHeight / 2f)
+        //        })
+        //    {
+        //        Children = new ChildList()
+        //        {
+        //            //Simple Texture Node, contains the fusee logo. Lüge
+        //            startNode
+
+        //        }
+        //    };
+
+
+        //    return new SceneContainer
+        //    {
+        //        Children = new List<SceneNode>
+        //        {
+        //            //Add canvas.
+        //            canvas
+        //        }
+        //    };
+
+        //}
+
+        private SceneContainer CreateUIStart()      //UI für Start mit Enter
         {
             var vsTex = AssetStorage.Get<string>("texture.vert");
             var psTex = AssetStorage.Get<string>("texture.frag");
             var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
             var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+            var psText = AssetStorage.Get<string>("text.frag");
 
             var canvasWidth = Width / 100f;
             var canvasHeight = Height / 100f;
 
-            _btnStart = new GUIButton
-            {
-                Name = "Start_Button"
-            };
-            _btnStart.OnMouseDown += StartGame;
-            _btnStartPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
+            var fontLato = AssetStorage.Get<Font>("Lato-Black.ttf");
+            var guiLatoBlack = new FontMap(fontLato, 36);
 
-            var startNode = new TextureNode(
-            "StartButtonLogo",
-            vsTex,
-            psTex,
-            new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
-            UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
-            UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
-            float2.One
-            );
-            //var startNode = new TextureNode(
-            //    "StartButtonLogo",
-            //    vsNineSlice,
-            //    psNineSlice,
-            //    new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
-            //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
-            //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
-            //    float2.One,
-            //    new float4(1, 1, 1, 1),
-            //    0, 0, 0, 0
-            //    );
-            startNode.Components.Add(_btnStart);
+
+            var startText = new TextNode(
+                "Press Enter to start",
+                "StartText",
+                vsTex,
+                psText,
+                UIElementPosition.GetAnchors(AnchorPos.StretchHorizontal),
+                UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, 0), canvasHeight, canvasWidth, new float2(8.5f, 7.5f)),
+                guiLatoBlack,
+                ColorUint.Tofloat4(ColorUint.White),
+                HorizontalTextAlignment.Center,
+                VerticalTextAlignment.Center);
 
 
             var canvas = new CanvasNode(
@@ -645,23 +818,19 @@ namespace FuseeApp
             {
                 Children = new ChildList()
                 {
-                    //Simple Texture Node, contains the fusee logo. Lüge
-                    startNode
-
+                    startText
                 }
             };
-
 
             return new SceneContainer
             {
                 Children = new List<SceneNode>
                 {
-                    //Add canvas.
                     canvas
                 }
             };
-
         }
+
 
         private SceneContainer CreateUIGame() //UI für ingame Zeit
         {
@@ -719,33 +888,86 @@ namespace FuseeApp
         }
 
 
-        private SceneContainer CreateUIDeath() //UI für Todesscreen
+        //private SceneContainer CreateUIDeath() //UI für Todesscreen
+        //{
+        //    var vsTex = AssetStorage.Get<string>("texture.vert");
+        //    var psTex = AssetStorage.Get<string>("texture.frag");
+        //    var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
+        //    var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+
+        //    var canvasWidth = Width / 100f;
+        //    var canvasHeight = Height / 100f;
+
+        //    _btnRetry = new GUIButton
+        //    {
+        //        Name = "Retry_Button"
+        //    };
+        //    _btnRetry.OnMouseDown += TryAgain;
+        //    _btnRetryPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
+
+        //    var retryNode = new TextureNode(
+        //    "StartButtonLogo",
+        //    vsTex,
+        //    psTex,
+        //    new Texture(AssetStorage.Get<ImageData>("tryAgainBig.png")),
+        //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
+        //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnRetryPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
+        //    float2.One
+        //    );
+        //    retryNode.Components.Add(_btnRetry);
+
+        //    var canvas = new CanvasNode(
+        //        "Canvas",
+        //        _canvasRenderMode,
+        //        new MinMaxRect
+        //        {
+        //            Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
+        //            Max = new float2(canvasWidth / 2, canvasHeight / 2f)
+        //        })
+        //    {
+        //        Children = new ChildList()
+        //        {
+        //            retryNode
+        //        }
+        //    };
+
+        //    return new SceneContainer
+        //    {
+        //        Children = new List<SceneNode>
+        //        {
+        //            canvas
+        //        }
+        //    };
+
+        //}
+        private SceneContainer CreateUIDeath()
         {
+
             var vsTex = AssetStorage.Get<string>("texture.vert");
             var psTex = AssetStorage.Get<string>("texture.frag");
             var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
             var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
+            var psText = AssetStorage.Get<string>("text.frag");
 
             var canvasWidth = Width / 100f;
             var canvasHeight = Height / 100f;
 
-            _btnRetry = new GUIButton
-            {
-                Name = "Retry_Button"
-            };
-            _btnRetry.OnMouseDown += TryAgain;
-            _btnRetryPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
+            var fontLato = AssetStorage.Get<Font>("Lato-Black.ttf");
+            var guiLatoBlack = new FontMap(fontLato, 36);
 
-            var retryNode = new TextureNode(
-            "StartButtonLogo",
-            vsTex,
-            psTex,
-            new Texture(AssetStorage.Get<ImageData>("tryAgainBig.png")),
-            UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
-            UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnRetryPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
-            float2.One
-            );
-            retryNode.Components.Add(_btnRetry);
+
+            var restartText = new TextNode(
+                "Press Enter to retry",
+                "RestartText",
+                vsTex,
+                psText,
+                UIElementPosition.GetAnchors(AnchorPos.StretchHorizontal),
+                UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, 0), canvasHeight, canvasWidth, new float2(8.5f, 7.5f)),
+                guiLatoBlack,
+                ColorUint.Tofloat4(ColorUint.White),
+                HorizontalTextAlignment.Center,
+                VerticalTextAlignment.Center);
+
 
             var canvas = new CanvasNode(
                 "Canvas",
@@ -758,7 +980,7 @@ namespace FuseeApp
             {
                 Children = new ChildList()
                 {
-                    retryNode
+                    restartText
                 }
             };
 
@@ -769,7 +991,6 @@ namespace FuseeApp
                     canvas
                 }
             };
-
         }
 
 
@@ -777,21 +998,36 @@ namespace FuseeApp
 
 
         //Start des Spiels, also Beginn der Bewegung der Szene und des Zählers
-        private void StartGame(CodeComponent sender)
+        private void StartGame()
         {
             start = true;
             appStartTime = RealTimeSinceStart;
             speed = (double)DeltaTime * 20;
             status = 1;
-
-
         }
 
-        private void TryAgain(CodeComponent sender)
+        private void TryAgain()
         {
-            Init();
-            RenderAFrame();
-            StartGame(sender);
+            ReloadScene();
+            StartGame();
+        }
+
+        private void ReloadScene()
+        {
+            TrenchParent.Children.Remove(currentTrench);
+            TrenchParent.Children.Remove(newTrench);
+
+            currentTrench = CopyNode(TrenchesList[0]);
+            newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
+
+            newTrench.GetTransform().Translation.z += newTrench.GetTransform().Scale.z;
+
+
+            TrenchParent.Children.Add(currentTrench);
+            TrenchParent.Children.Add(newTrench);
+
+
+            currentTrenchTrans = currentTrench.GetTransform().Translation.z;
         }
 
         //Timer wird gestartet
@@ -806,7 +1042,7 @@ namespace FuseeApp
 
 
 
-        private void Trench(AABBf _shipBox, AABBf cubeHitbox)
+        private void Collision(AABBf _shipBox, AABBf cubeHitbox)
         {
             if (_shipBox.Intersects(cubeHitbox))
             {
@@ -816,11 +1052,22 @@ namespace FuseeApp
             }  
         }
 
- 
+        private void ObtainItem(AABBf _shipBox, AABBf itemHitbox)
+        {
+            if (itemHitbox.Intersects(_shipBox.Center))
+            {               
+                _itemOrbMesh.Active = false;
+                _itemStatus = 1;
+                _itemTimer = playTime + 3;//(float)speed * 60 / playTime;
+                Console.WriteLine(_itemTimer);
+            }
+        }
+
+
         private void Death()
         {
             currentScore = playTime;
-            Leaderboard();
+            //Leaderboard();
             start = false;
             status = 2;
         }
@@ -835,6 +1082,8 @@ namespace FuseeApp
             outsn.Components.Add(new Transform()); 
             outsn.Children = insn.Children;
 
+            //var c = MakeEffect.Default;       Standard Shader
+
             return outsn;
         }
 
@@ -843,37 +1092,79 @@ namespace FuseeApp
             speed *= 1.25f; 
         }
 
-        private void Leaderboard()
+        //private void Leaderboard()
 
-        {
-           
-            // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Hello");
-                    sw.WriteLine("And");
-                    sw.WriteLine("Welcome");
-                }
+        //{
+        //    var blub = new Leaderboard();
+        //    blub.Scores = new List<Score>
+        //    {
+        //        new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000)
+        //    };
+
+        //    var ser = new XmlSerializer(typeof(Leaderboard));
+        //    using StringWriter TextWriter = new StringWriter();
+        //    ser.Serialize(TextWriter, blub);
+        //    File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
+        //    TextWriter.Dispose();
+
+        //    FileStream fs = new FileStream("Leaderboard.xml", System.IO.FileMode.OpenOrCreate);
+        //    TextReader reader = new StreamReader(fs);
             
-         // Open the file to read from.
-            using (StreamReader sr = File.OpenText(path))
-            {
-                string s;
-                while ((s = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(s);
-                }
-            }
+
+        //    for (int k = 0; k < blub.Scores.Count(); k++)
+        //    {
+        //        if (currentScore >= blub.Scores.ElementAt(k).topTime)
+        //        {
+        //            blub.Scores.Insert(k, new Score(currentScore));
+        //        }
+        //    }
+        //    ser.Deserialize(reader);
+
+            //Create a file to write to
+            //if (!File.Exists(path))
+            //{
+            //    // Create a file to write to.
+            //    using (StreamWriter sw = File.CreateText(path))
+            //    {
+            //        //sw.WriteLine(currentScore);
+            //    }
+            //}
+            ////else
+            ////{
+            ////    using (Stream sw = File.OpenWrite(path))
+            ////    {
+            ////        sw.WriteLine("Line2");
+            ////        File.S
+            ////    }
+            ////}
+
+            ////using (StreamWriter sw = File.CreateText(path))
+            ////{           
+            ////    sw.WriteLine("Hello");
+            ////    sw.WriteLine("And");
+            ////    sw.WriteLine("Welcome");
+            ////    sw.WriteLine((float)currentScore);
+            ////}
+
+            //// Open the file to read from.
+            //using (StreamReader sr = File.OpenText(path))
+            //{
+            //    string s;
+            //    while ((s = sr.ReadLine()) != null)
+            //    {
+            //        //Console.WriteLine(s);
+            //    }
+            //}
 
 
 
 
-           /*  if(currentScore >= ScoresList[ScoresList.Count() - 1])
-            {
-                ScoresList.RemoveAt[] 
-                ScoresList.Add()
-            } */
-            
-        }
+            /*  if(currentScore >= ScoresList[ScoresList.Count() - 1])
+             {
+                 ScoresList.RemoveAt[] 
+                 ScoresList.Add()
+             } */
+
+        //}
     }
 }
