@@ -26,6 +26,8 @@ using Fusee.Engine.Core.Effects;
 using Starship.Data;
 using System.Xml.Serialization;
 
+
+
 namespace FuseeApp
 {
     [FuseeApplication(Name = "Starship", Description = "Yet another FUSEE App.")]
@@ -257,6 +259,9 @@ namespace FuseeApp
             }
         }
 
+
+
+
         public override void RenderAFrame()
         {
 
@@ -265,6 +270,8 @@ namespace FuseeApp
 
             RC.Viewport(0, 0, Width, Height);
 
+
+            //Item Shenanigans
             if (_itemTimer <= playTime + _itemTimer && _itemOrbMesh != null)
             {
                 _itemOrbMesh.Active = true;
@@ -298,12 +305,8 @@ namespace FuseeApp
                 }
             }
 
-            //Console.WriteLine(playTime);
-            //Console.WriteLine(speed);
 
-            //newTrenchTrans = newTrench.GetTransform().Translation.z;
-
-
+            //Trench Switches
             if (newTrench.GetTransform().Translation.z <= currentTrenchTrans)
             {
                 TrenchParent.Children.Remove(currentTrench);
@@ -518,13 +521,11 @@ namespace FuseeApp
 
 
 
-            //Start
-            //Hier Startbutton / Menü einfügen
-
+            //Start und Restart Button
 
             if (status == 0)
             {
-                if (Keyboard.IsKeyDown(KeyCodes.Enter))  //wenn die Leertaste gedrückt wird, wird die Zeit seit dem Drücken in playTime gespeichert
+                if (Keyboard.IsKeyDown(KeyCodes.Enter))
                 {
                     StartGame();
 
@@ -540,7 +541,7 @@ namespace FuseeApp
 
 
 
-            //Bounding Boxes
+            //Bounding Boxes and collision detection
 
             //Boundind Box des Schiffs  
             _shipBox = _starshipTrans.Matrix() * _starShipMesh.BoundingBox;
@@ -563,7 +564,7 @@ namespace FuseeApp
                         List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
 
 
-                        if (_itemStatus != 1)
+                        if (_itemStatus != 1) //Wenn Invinvibility nicht aktiv ist
                         {
                             for (int i = 0; i < ObstaclesList.Count(); i++)
                             {
@@ -595,7 +596,6 @@ namespace FuseeApp
             }
             else
             {
-                playTime = 0;  //???? idk ob das so was bringt, aber ist erstmal egal
                 speed = 0;
             }
 
@@ -687,6 +687,8 @@ namespace FuseeApp
 
             _timerText.Text = playTime.ToString();
 
+
+            //verschiedene UIs werden gerendert
             if (status == 0)
             {
                 _uiStartRenderer.Render(RC);
@@ -812,6 +814,7 @@ namespace FuseeApp
                 _canvasRenderMode,
                 new MinMaxRect
                 {
+
                     Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
                     Max = new float2(canvasWidth / 2, canvasHeight / 2f)
                 })
@@ -940,7 +943,7 @@ namespace FuseeApp
         //    };
 
         //}
-        private SceneContainer CreateUIDeath()
+        private SceneContainer CreateUIDeath() //UI für Todesscreen
         {
 
             var vsTex = AssetStorage.Get<string>("texture.vert");
@@ -1092,69 +1095,69 @@ namespace FuseeApp
             speed *= 1.25f; 
         }
 
-        //private void Leaderboard()
+        private void Leaderboard()
 
-        //{
-        //    var blub = new Leaderboard();
-        //    blub.Scores = new List<Score>
-        //    {
-        //        new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000)
-        //    };
+        {
+            var blub = new Leaderboard();
+            blub.Scores = new List<Score>
+            {
+                new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000)
+            };
 
-        //    var ser = new XmlSerializer(typeof(Leaderboard));
-        //    using StringWriter TextWriter = new StringWriter();
-        //    ser.Serialize(TextWriter, blub);
-        //    File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
-        //    TextWriter.Dispose();
+            var ser = new XmlSerializer(typeof(Leaderboard));
+            using StringWriter TextWriter = new StringWriter();
+            ser.Serialize(TextWriter, blub);
+            File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
+            TextWriter.Dispose();
 
-        //    FileStream fs = new FileStream("Leaderboard.xml", System.IO.FileMode.OpenOrCreate);
-        //    TextReader reader = new StreamReader(fs);
+            //FileStream fs = new FileStream("Leaderboard.xml", System.IO.FileMode.OpenOrCreate);
+            //TextReader reader = new StreamReader(fs);
             
 
-        //    for (int k = 0; k < blub.Scores.Count(); k++)
-        //    {
-        //        if (currentScore >= blub.Scores.ElementAt(k).topTime)
-        //        {
-        //            blub.Scores.Insert(k, new Score(currentScore));
-        //        }
-        //    }
-        //    ser.Deserialize(reader);
+            /*for (int k = 0; k < blub.Scores.Count(); k++)
+            {
+                if (currentScore >= blub.Scores.ElementAt(k).topTime)
+                {
+                    blub.Scores.Insert(k, new Score(currentScore));
+                }
+            }*/
+            return(ser.Deserialize(TextWriter));
 
-            //Create a file to write to
-            //if (!File.Exists(path))
+            Create a file to write to
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine(currentScore);
+                }
+            }
+            else
             //{
-            //    // Create a file to write to.
-            //    using (StreamWriter sw = File.CreateText(path))
+            //    using (Stream sw = File.OpenWrite(path))
             //    {
-            //        //sw.WriteLine(currentScore);
+            //        sw.WriteLine("Line2");
+            //        File.S
             //    }
             //}
-            ////else
-            ////{
-            ////    using (Stream sw = File.OpenWrite(path))
-            ////    {
-            ////        sw.WriteLine("Line2");
-            ////        File.S
-            ////    }
-            ////}
 
-            ////using (StreamWriter sw = File.CreateText(path))
-            ////{           
-            ////    sw.WriteLine("Hello");
-            ////    sw.WriteLine("And");
-            ////    sw.WriteLine("Welcome");
-            ////    sw.WriteLine((float)currentScore);
-            ////}
-
-            //// Open the file to read from.
-            //using (StreamReader sr = File.OpenText(path))
-            //{
-            //    string s;
-            //    while ((s = sr.ReadLine()) != null)
-            //    {
-            //        //Console.WriteLine(s);
-            //    }
+            //using (StreamWriter sw = File.CreateText(path))
+            //{           
+            //    sw.WriteLine("Hello");
+            //    sw.WriteLine("And");
+            //    sw.WriteLine("Welcome");
+            //    sw.WriteLine((float)currentScore);
             //}
+
+            // Open the file to read from.
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    //Console.WriteLine(s);
+                }
+            }
 
 
 
@@ -1165,6 +1168,6 @@ namespace FuseeApp
                  ScoresList.Add()
              } */
 
-        //}
+        }
     }
 }

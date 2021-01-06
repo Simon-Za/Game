@@ -113,3 +113,7 @@ C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CubesNOrbs1.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\ItemOrb.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\ItemTrench1.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\ItemTrench2.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\CubesNOrbs1.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemOrb.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemTrench1.fus
+C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemTrench2.fus
