@@ -44,13 +44,23 @@ namespace FuseeApp
 
         private SceneNode TrenchParent;
 
+        private SceneNode _laserbeam;
+
+        private Transform _laserTrans;
+
+        private Mesh _laserMesh;
+
+        private AABBf _laserHitbox;
+
 
 
         private float appStartTime;             //Die Zeit seit Start der Applikation
         private float playTime;                 //Die Zeit seit drücken des Startknopfs (Leertaste)             wird später benutzt für das Leaderboard/aktive Anzeige ingame(?)
         private bool start;
         private double speed;
+        private double _fasterSpeedIncr;
         private bool d;
+        private bool laser;
 
 
         bool left;
@@ -92,6 +102,8 @@ namespace FuseeApp
 
         private Mesh _itemOrbMesh;
 
+        private float _speedIncrItem;
+
         private SceneNode _currentItem;
 
 
@@ -101,8 +113,6 @@ namespace FuseeApp
 
 
         private readonly CanvasRenderMode _canvasRenderMode = CanvasRenderMode.Screen;
-        private GUIButton _btnStart;
-        private float2 _btnStartPosition;
         private SceneContainer _uiStart;
         private SceneInteractionHandler _sihS;
         private SceneRendererForward _uiStartRenderer;
@@ -112,9 +122,8 @@ namespace FuseeApp
         private SceneInteractionHandler _sihG;
 
         private GUIText _timerText;
+        private GUIText _ldrbrdText;
 
-        private GUIButton _btnRetry;
-        private float2 _btnRetryPosition;
         private SceneContainer _uiDeath;
         private SceneRendererForward _uiDeathRenderer;
         private SceneInteractionHandler _sihD;
@@ -126,11 +135,12 @@ namespace FuseeApp
         //private enum Status {Start, Game, Death};
         private int status = 0;
 
-        List<TextNode> ScoresList;
+        List<Score> ScoresList;
 
         private double currentScore;
 
-        private string path = @"c:\temp\Leaderboard.txt";
+        //private string path = @"c:\temp\Leaderboard.txt";
+        private string path = @"C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Leaderboard.txt";
 
         private int _itemStatus; //0 = nichts, 1 = invincibility, 2 = ??
 
@@ -162,6 +172,13 @@ namespace FuseeApp
             _starshipTrans = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetTransform();
 
             _starShipMesh = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetMesh();
+
+            _laserbeam = AssetStorage.Get<SceneContainer>("Laserbeam.fus").ToSceneNode();
+
+            _laserTrans = _laserbeam.GetTransform();
+
+            _laserMesh = _laserbeam.Children[0].GetMesh();
+
 
 
             oldPos = _starshipTrans.Translation;
@@ -195,7 +212,10 @@ namespace FuseeApp
 
             newTrench.GetTransform().Translation.z += newTrench.GetTransform().Scale.z;
 
+            _speedIncrItem = 1;
+            _fasterSpeedIncr = 1;
 
+            laser = false;
 
             TrenchParent = new SceneNode()
             {
@@ -220,46 +240,9 @@ namespace FuseeApp
             _uiDeathRenderer = new SceneRendererForward(_uiDeath);
 
 
-            //ScoresList = new List<TextNode>
-            {
-            };
-
             _color = (float4)_starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().GetFxParam<float4>("SurfaceInput.Albedo");
 
-
-            //Funktionsname();
-            //Leaderboard();
         }
-
-        private void Funktionsname()
-        {
-            var blub = new Leaderboard();
-            blub.Scores = new List<Score>
-            {
-                new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000)
-            };
-
-            var ser = new XmlSerializer(typeof(Leaderboard));
-            using StringWriter TextWriter = new StringWriter();
-            ser.Serialize(TextWriter, blub);
-            File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
-            TextWriter.Dispose();
-
-            FileStream fs = new FileStream("Leaderboard.xml", System.IO.FileMode.OpenOrCreate);
-            TextReader reader = new StreamReader(fs);
-
-            ser.Deserialize(reader);
-
-            for (int k = 0; k < blub.Scores.Count(); k++)
-            {
-                if (currentScore >= blub.Scores.ElementAt(k).topTime)
-                {
-                    blub.Scores.Insert(k, new Score(currentScore));
-                }
-            }
-        }
-
-
 
 
         public override void RenderAFrame()
@@ -272,25 +255,78 @@ namespace FuseeApp
 
 
             //Item Shenanigans
-            if (_itemTimer <= playTime + _itemTimer && _itemOrbMesh != null)
-            {
-                _itemOrbMesh.Active = true;
-                //_itemStatus = 0;
-            }
             if (_itemTimer <= playTime && _itemOrbMesh != null)
             {
-                _itemStatus = 0;
-             
+                _itemOrbMesh.Active = true;
             }
+            if (_itemTimer <= playTime)
+            {
+                _itemStatus = 0;
+            }
+
+            if(_itemStatus == 3)
+            {
+                appStartTime -= 1;
+            }
+            else if (_itemStatus == 4)
+            {
+                _speedIncrItem = 0.95f;
+            }
+            else
+            {
+                _speedIncrItem = 1.0526f;
+                if(_itemOrbMesh!= null)
+                _itemOrbMesh.Active = true;
+            }
+
+
+            if(_itemStatus == 5)
+            {
+                if(laser == false)
+                {
+                    _starshipScene.Children.Add(_laserbeam);
+                    laser = true;
+                }
+                _laserTrans.Translation.y = _starshipTrans.Translation.y - 2;
+                _laserTrans.Translation.x = _starshipTrans.Translation.x;
+
+
+
+
+                if(_itemTimer <= playTime + 2 /*&& _starshipScene.Children.FindNodes(node => node.Name == "Laserbeam") != null*/)
+                {
+                    _starshipScene.Children.Remove(_laserbeam);
+                }
+            }
+            else
+            {
+                laser = false;
+                _starshipScene.Children.Remove(_laserbeam);
+            }
+
 
             if (_itemStatus == 1)
             {
                 _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 0, 1));
             }
+            else if (_itemStatus == 2)
+            {
+                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(1, 2, 3, 1));
+            }
+            else if (_itemStatus == 3)
+            {
+                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 3, 1));
+            }
+            else if (_itemStatus == 4)
+            {
+                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 1, 3, 1));
+            }
             else
             {
                 _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", _color);
             };
+
+
 
             if (playTime != 0)
             {
@@ -388,136 +424,19 @@ namespace FuseeApp
 
             //oben / unten
             if (Keyboard.IsKeyDown(KeyCodes.Up) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.W) && counterUD == 0)
-            {
-                //if (up)
-                //{
-                //    //do nothing
-                //    normal = false;
-                //}
-                //else if (normal)
-                //{
-                //_starshipTrans.Translation.y += 2.5f;
+            {               
                 oldPosY = newPosY;
                 newPosY = 4.2039146f;
                 counterUD = 0.3f;
 
-                //    normal = false;
-                //    up = true;
-
-                //}
-                //else if (down)
-                //{
-                //    //_starshipTrans.Translation.y += 2.5f;
-                //    oldPosY = newPosY;
-                //    newPosY = 1.7039146f;
-                //    counterUD = 0.3f;
-
-                //    down = false;
-                //    normal = true;
-                //}
-                //_starshipTrans.Rotation.z = + 0.083f;
             }
-            if (Keyboard.IsKeyDown(KeyCodes.Down) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.S) && counterUD == 0)
-            {
-                //if (up)
-                //{
-                //_starshipTrans.Translation.y -= 2.5f;
-                //oldPosY = newPosY;
-                //newPosY = 1.7039146f;
-                //counterUD = 0.3f;
 
-                //up = false;
-                //normal = true;
-                //}
-                //else if (normal)
-                //{
-                //_starshipTrans.Translation.y -= 2.5f;
+            if (Keyboard.IsKeyDown(KeyCodes.Down) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.S) && counterUD == 0)
+            {  
                 oldPosY = newPosY;
                 newPosY = -0.7960852f;
                 counterUD = 0.3f;
-
-                //normal = false;
-                //down = true;
-                //}
-                //else if (down)
-                //{
-                //    //do nothing
-                //    normal = false;
-                //}
-                //_starshipTrans.Rotation.z = -0.083f;
             }
-
-
-            //flüssige Steuerung
-
-            //if (Keyboard.LeftRightAxis != 0)
-            //{
-            //    if (Keyboard.LeftRightAxis > 0) //rechts
-            //    {
-            //        _starshipTrans.Translation.x += 10 * DeltaTime * Keyboard.LeftRightAxis;
-
-            //        //leichter tilt nach links
-            //        _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
-
-
-            //        //Bewegungsgrenze rechts
-            //        if (_starshipTrans.Translation.x >= 3.8f)
-            //        {
-            //            _starshipTrans.Translation.x -= 10 * DeltaTime * Keyboard.LeftRightAxis;
-            //        }
-
-            //    }
-            //    else if (Keyboard.LeftRightAxis < 0)  //links
-            //    {
-            //        _starshipTrans.Translation.x += 10 * DeltaTime * Keyboard.LeftRightAxis;
-
-            //        //leichter tilt nach rechts
-            //        _starshipTrans.Rotation.x = Keyboard.LeftRightAxis * 0.167f;
-
-
-            //        //Bewegungsgrenze links
-            //        if (_starshipTrans.Translation.x <= -3.8f)
-            //        {
-            //            _starshipTrans.Translation.x -= 10 * DeltaTime * Keyboard.LeftRightAxis;
-            //        }
-            //    }
-            //    //Console.WriteLine(_starshipTrans.Translation.x);
-            //}
-
-            ////Steuerung oben/ unten
-
-            //if (Keyboard.UpDownAxis != 0)
-            //{
-            //    if (Keyboard.UpDownAxis > 0) //oben
-            //    {
-            //        _starshipTrans.Translation.y += 7 * DeltaTime * Keyboard.UpDownAxis;
-
-            //        //leichter tilt nach oben
-            //        _starshipTrans.Rotation.z = -Keyboard.UpDownAxis * 0.083f;
-
-
-            //        //Bewegungsgrenze oben
-            //        if (_starshipTrans.Translation.y >= 4.5f)
-            //        {
-            //            _starshipTrans.Translation.y -= 7 * DeltaTime * Keyboard.UpDownAxis;
-            //        }
-            //    }
-            //    else if (Keyboard.UpDownAxis < 0) //unten
-            //    {
-            //        _starshipTrans.Translation.y += 7 * DeltaTime * Keyboard.UpDownAxis;
-
-            //        //leichter tilt nach unten
-            //        _starshipTrans.Rotation.z = -Keyboard.UpDownAxis * 0.083f;
-
-
-            //        //Bewegungsgrenze unten
-            //        if (_starshipTrans.Translation.y <= -0.3f)
-            //        {
-            //            _starshipTrans.Translation.y -= 7 * DeltaTime * Keyboard.UpDownAxis;
-            //        }
-            //    }
-            //}
-
 
 
 
@@ -538,8 +457,14 @@ namespace FuseeApp
                     TryAgain();
                 }
             }
-
-
+            if(_itemStatus == 4 && _itemTimer == playTime + 3)
+            {
+                speed = ((double)DeltaTime * 20) *_speedIncrItem * _fasterSpeedIncr;
+            }
+            else if(_itemStatus == 0)
+            {
+                speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
+            }
 
             //Bounding Boxes and collision detection
 
@@ -559,13 +484,14 @@ namespace FuseeApp
 
                     if (_trenchTrans != null)
                     {
-                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("CubeObstacle")).ToList(); //könnte statt TrenchParent.Children wahrscheinlich einfach currentTrench nehmen
+                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("CubeObstacle")).ToList();
                         
                         List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
 
 
                         if (_itemStatus != 1) //Wenn Invinvibility nicht aktiv ist
                         {
+
                             for (int i = 0; i < ObstaclesList.Count(); i++)
                             {
                                 _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetTransform();
@@ -574,7 +500,21 @@ namespace FuseeApp
 
                                 AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
 
-                                Collision(_shipBox, cubeHitbox);
+                                if (_itemStatus == 5)
+                                {
+                                    _laserHitbox = _laserTrans.Matrix() * _laserMesh.BoundingBox;
+                                    LaserCollision(_laserHitbox, cubeHitbox);
+                                }
+
+                                if (_itemStatus == 2) //Wenn Shield aktiv ist
+                                {
+                                    ShieldCollision(_shipBox, cubeHitbox);
+                                }
+                                else
+                                {
+                                    _cubeObstMesh.Active = true;
+                                    Collision(_shipBox, cubeHitbox);
+                                }
                             }
                         }
 
@@ -587,10 +527,11 @@ namespace FuseeApp
 
                             AABBf itemHitbox = _trenchTrans.Matrix() * _itemOrbTrans.Matrix() * _itemOrbMesh.BoundingBox;
 
-                            ObtainItem(_shipBox, itemHitbox);
+                            if (_itemOrbMesh.Active == true)
+                            {
+                                ObtainItem(_shipBox, itemHitbox);
+                            }
                         }
-
-
                     }
                 }
             }
@@ -686,8 +627,10 @@ namespace FuseeApp
 
 
             _timerText.Text = playTime.ToString();
+            //Console.WriteLine(speed);
+            Console.WriteLine(_itemStatus);
 
-
+         
             //verschiedene UIs werden gerendert
             if (status == 0)
             {
@@ -700,6 +643,7 @@ namespace FuseeApp
             }
             else if(status == 2)
             {
+                _uiGameRenderer.Render(RC);
                 _uiDeathRenderer.Render(RC);
                 _sihD.CheckForInteractiveObjects(RC, Mouse.Position, Width, Height);
             }
@@ -709,77 +653,6 @@ namespace FuseeApp
 
         }
 
-
-
-
-        //private SceneContainer CreateUIStart()   //UI für Start mit Button
-        //{
-        //    var vsTex = AssetStorage.Get<string>("texture.vert");
-        //    var psTex = AssetStorage.Get<string>("texture.frag");
-        //    var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
-        //    var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
-
-        //    var canvasWidth = Width / 100f;
-        //    var canvasHeight = Height / 100f;
-
-        //    _btnStart = new GUIButton
-        //    {
-        //        Name = "Start_Button"
-        //    };
-        //    _btnStart.OnMouseDown += StartGame;
-        //    _btnStartPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
-
-        //    var startNode = new TextureNode(
-        //    "StartButtonLogo",
-        //    vsTex,
-        //    psTex,
-        //    new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
-        //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
-        //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
-        //    float2.One
-        //    );
-        //    //var startNode = new TextureNode(
-        //    //    "StartButtonLogo",
-        //    //    vsNineSlice,
-        //    //    psNineSlice,
-        //    //    new Texture(AssetStorage.Get<ImageData>("StartButton.png")),
-        //    //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
-        //    //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnStartPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
-        //    //    float2.One,
-        //    //    new float4(1, 1, 1, 1),
-        //    //    0, 0, 0, 0
-        //    //    );
-        //    startNode.Components.Add(_btnStart);
-
-
-        //    var canvas = new CanvasNode(
-        //        "Canvas",
-        //        _canvasRenderMode,
-        //        new MinMaxRect
-        //        {
-        //            Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
-        //            Max = new float2(canvasWidth / 2, canvasHeight / 2f)
-        //        })
-        //    {
-        //        Children = new ChildList()
-        //        {
-        //            //Simple Texture Node, contains the fusee logo. Lüge
-        //            startNode
-
-        //        }
-        //    };
-
-
-        //    return new SceneContainer
-        //    {
-        //        Children = new List<SceneNode>
-        //        {
-        //            //Add canvas.
-        //            canvas
-        //        }
-        //    };
-
-        //}
 
         private SceneContainer CreateUIStart()      //UI für Start mit Enter
         {
@@ -858,7 +731,7 @@ namespace FuseeApp
                 UIElementPosition.GetAnchors(AnchorPos.StretchHorizontal),
                 UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, 0), canvasHeight, canvasWidth, new float2(8, 1)),
                 guiLatoBlack,
-                ColorUint.Tofloat4(ColorUint.White),
+                ColorUint.Tofloat4(ColorUint.Green),
                 HorizontalTextAlignment.Center,
                 VerticalTextAlignment.Center);
 
@@ -887,62 +760,8 @@ namespace FuseeApp
                     canvas
                 }
             };
-
         }
 
-
-        //private SceneContainer CreateUIDeath() //UI für Todesscreen
-        //{
-        //    var vsTex = AssetStorage.Get<string>("texture.vert");
-        //    var psTex = AssetStorage.Get<string>("texture.frag");
-        //    var vsNineSlice = AssetStorage.Get<string>("nineSlice.vert");
-        //    var psNineSlice = AssetStorage.Get<string>("nineSliceTile.frag");
-
-        //    var canvasWidth = Width / 100f;
-        //    var canvasHeight = Height / 100f;
-
-        //    _btnRetry = new GUIButton
-        //    {
-        //        Name = "Retry_Button"
-        //    };
-        //    _btnRetry.OnMouseDown += TryAgain;
-        //    _btnRetryPosition = new float2(canvasWidth / 2 - 1f, canvasHeight / 3);
-
-        //    var retryNode = new TextureNode(
-        //    "StartButtonLogo",
-        //    vsTex,
-        //    psTex,
-        //    new Texture(AssetStorage.Get<ImageData>("tryAgainBig.png")),
-        //    UIElementPosition.GetAnchors(AnchorPos.DownDownRight),
-        //    UIElementPosition.CalcOffsets(AnchorPos.DownDownRight, _btnRetryPosition, canvasHeight, canvasWidth, new float2(1.6f, 0.6f)),
-        //    float2.One
-        //    );
-        //    retryNode.Components.Add(_btnRetry);
-
-        //    var canvas = new CanvasNode(
-        //        "Canvas",
-        //        _canvasRenderMode,
-        //        new MinMaxRect
-        //        {
-        //            Min = new float2(-canvasWidth / 2, -canvasHeight / 2f),
-        //            Max = new float2(canvasWidth / 2, canvasHeight / 2f)
-        //        })
-        //    {
-        //        Children = new ChildList()
-        //        {
-        //            retryNode
-        //        }
-        //    };
-
-        //    return new SceneContainer
-        //    {
-        //        Children = new List<SceneNode>
-        //        {
-        //            canvas
-        //        }
-        //    };
-
-        //}
         private SceneContainer CreateUIDeath() //UI für Todesscreen
         {
 
@@ -959,17 +778,33 @@ namespace FuseeApp
             var guiLatoBlack = new FontMap(fontLato, 36);
 
 
+            var leaderboardText = new TextNode(
+                "Leaderboard",
+                "LeaderboardText",
+                vsTex,
+                psText,
+                UIElementPosition.GetAnchors(AnchorPos.StretchHorizontal),
+                UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, canvasHeight - 4.3f), canvasHeight, canvasWidth, new float2(8.5f, 7.5f)),
+                guiLatoBlack,
+                ColorUint.Tofloat4(ColorUint.White),
+                HorizontalTextAlignment.Center,
+                VerticalTextAlignment.Center);
+
+            _ldrbrdText = leaderboardText.GetComponentsInChildren<GUIText>().FirstOrDefault();
+
+
             var restartText = new TextNode(
                 "Press Enter to retry",
                 "RestartText",
                 vsTex,
                 psText,
                 UIElementPosition.GetAnchors(AnchorPos.StretchHorizontal),
-                UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, 0), canvasHeight, canvasWidth, new float2(8.5f, 7.5f)),
+                UIElementPosition.CalcOffsets(AnchorPos.StretchHorizontal, new float2(canvasWidth / 2 - 4.3f, canvasHeight / -2.4f), canvasHeight, canvasWidth, new float2(8.5f, 7.7f)),
                 guiLatoBlack,
-                ColorUint.Tofloat4(ColorUint.White),
+                ColorUint.Tofloat4(ColorUint.Red),
                 HorizontalTextAlignment.Center,
                 VerticalTextAlignment.Center);
+
 
 
             var canvas = new CanvasNode(
@@ -983,7 +818,8 @@ namespace FuseeApp
             {
                 Children = new ChildList()
                 {
-                    restartText
+                    leaderboardText,
+                    restartText,
                 }
             };
 
@@ -1006,6 +842,8 @@ namespace FuseeApp
             start = true;
             appStartTime = RealTimeSinceStart;
             speed = (double)DeltaTime * 20;
+            _speedIncrItem = 1;
+            _fasterSpeedIncr = 1;
             status = 1;
         }
 
@@ -1031,19 +869,16 @@ namespace FuseeApp
 
 
             currentTrenchTrans = currentTrench.GetTransform().Translation.z;
+            _itemStatus = 0;
         }
 
         //Timer wird gestartet
         private float StartTimer(float appStartTime)
         {
-
-            return RealTimeSinceStart - appStartTime;    
-            
+            return RealTimeSinceStart - appStartTime;        
         }
     
        
-
-
 
         private void Collision(AABBf _shipBox, AABBf cubeHitbox)
         {
@@ -1055,13 +890,43 @@ namespace FuseeApp
             }  
         }
 
+        private void ShieldCollision(AABBf _shipBox, AABBf cubeHitbox)
+        {
+            if (_shipBox.Intersects(cubeHitbox))
+            {
+                _cubeObstMesh.Active = false;
+                _itemTimer = playTime + 0.2f;
+            }
+        }
+
+        private void LaserCollision(AABBf _laserHitbox, AABBf cubeHitbox)
+        {
+            if (_laserHitbox.Intersects(cubeHitbox))
+            {
+                _cubeObstMesh.Active = false;
+            }
+        }
+
         private void ObtainItem(AABBf _shipBox, AABBf itemHitbox)
         {
             if (itemHitbox.Intersects(_shipBox.Center))
             {               
                 _itemOrbMesh.Active = false;
-                _itemStatus = 1;
-                _itemTimer = playTime + 3;//(float)speed * 60 / playTime;
+                random = new Random();
+                _itemStatus = random.Next(1, 6);    //hier random item 1-x
+                if(_itemStatus != 2 && _itemStatus != 3)
+                {
+                    _itemTimer = playTime + 3;//(float)speed * 60 / playTime;
+                }
+                else if (_itemStatus == 2)
+                {
+                    _itemTimer = playTime + 20;    //lange Zeit für Schild, Timer wird runtergesetzt bei Kollision
+                }
+                else if (_itemStatus == 3)
+                {
+                    _itemTimer = playTime + 1;
+                }
+                
                 Console.WriteLine(_itemTimer);
             }
         }
@@ -1070,9 +935,14 @@ namespace FuseeApp
         private void Death()
         {
             currentScore = playTime;
-            //Leaderboard();
+            Leaderboard();
             start = false;
             status = 2;
+            _ldrbrdText.Text = "Leaderboard";
+            for (int m = 0; m < 10; m++)
+            {
+                _ldrbrdText.Text += Environment.NewLine +  Math.Round((ScoresList[m].topTime), 3).ToString();
+            }
         }
 
 
@@ -1092,81 +962,55 @@ namespace FuseeApp
 
         private void Faster()
         {
-            speed *= 1.25f; 
+            _fasterSpeedIncr *= 1.2f; 
         }
 
         private void Leaderboard()
-
         {
             var blub = new Leaderboard();
-            blub.Scores = new List<Score>
-            {
-                new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000), new Score(0.000)
-            };
-
             var ser = new XmlSerializer(typeof(Leaderboard));
-            using StringWriter TextWriter = new StringWriter();
-            ser.Serialize(TextWriter, blub);
-            File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
-            TextWriter.Dispose();
-
-            //FileStream fs = new FileStream("Leaderboard.xml", System.IO.FileMode.OpenOrCreate);
-            //TextReader reader = new StreamReader(fs);
             
 
-            /*for (int k = 0; k < blub.Scores.Count(); k++)
+            if(!File.Exists("Leaderboard.xml"))
             {
+                blub.Scores = new List<Score>
+                {
+                    new Score(0.000)
+                };
+
+                using StringWriter TextWriter = new StringWriter();
+                ser.Serialize(TextWriter, blub);
+                File.WriteAllText("Leaderboard.xml", TextWriter.ToString());
+                TextWriter.Dispose();
+            }
+           
+            TextReader reader = new StreamReader("Leaderboard.xml");
+            object obj = ser.Deserialize(reader);
+            blub = (Leaderboard)obj;
+
+
+            for (int k = 0; k < blub.Scores.Count(); k++)
+            {
+                
                 if (currentScore >= blub.Scores.ElementAt(k).topTime)
                 {
                     blub.Scores.Insert(k, new Score(currentScore));
-                }
-            }*/
-            return(ser.Deserialize(TextWriter));
-
-            Create a file to write to
-            if (!File.Exists(path))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine(currentScore);
+                    break;
                 }
             }
-            else
-            //{
-            //    using (Stream sw = File.OpenWrite(path))
-            //    {
-            //        sw.WriteLine("Line2");
-            //        File.S
-            //    }
-            //}
+            ScoresList = blub.Scores;
+            reader.Dispose();
 
-            //using (StreamWriter sw = File.CreateText(path))
-            //{           
-            //    sw.WriteLine("Hello");
-            //    sw.WriteLine("And");
-            //    sw.WriteLine("Welcome");
-            //    sw.WriteLine((float)currentScore);
-            //}
-
-            // Open the file to read from.
-            using (StreamReader sr = File.OpenText(path))
+            for (int l = 0; l < blub.Scores.Count() && l < 10 ; l++)
             {
-                string s;
-                while ((s = sr.ReadLine()) != null)
-                {
-                    //Console.WriteLine(s);
-                }
+                Console.WriteLine(blub.Scores[l].topTime);
             }
 
 
-
-
-            /*  if(currentScore >= ScoresList[ScoresList.Count() - 1])
-             {
-                 ScoresList.RemoveAt[] 
-                 ScoresList.Add()
-             } */
+            using StringWriter TextWriter2 = new StringWriter();
+            ser.Serialize(TextWriter2, blub);
+            File.WriteAllText("Leaderboard.xml", TextWriter2.ToString());
+            TextWriter2.Dispose();
 
         }
     }
