@@ -8,194 +8,194 @@
     ".NETCoreApp,Version=v3.1": {
       "Starship/1.0.0": {
         "dependencies": {
-          "Fusee.Desktop": "0.9.0"
+          "Fusee.Desktop": "0.9.1"
         },
         "runtime": {
           "Starship.dll": {}
         }
       },
-      "Fusee.Base.Common/0.9.0": {
+      "Fusee.Base.Common/0.9.1": {
         "dependencies": {
-          "Fusee.Math.Core": "0.9.0"
+          "Fusee.Math.Core": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Base.Common.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Base.Core/0.9.0": {
+      "Fusee.Base.Core/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Math.Core": "0.9.0"
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Math.Core": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Base.Core.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Base.Imp.Desktop/0.9.0": {
+      "Fusee.Base.Imp.Desktop/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Base.Core": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Base.Core": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
           "SharpFontStandard": "4.0.1",
           "System.Drawing.Common": "5.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Fusee.Base.Imp.Desktop.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Core/0.9.0": {
+      "Fusee.Core/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Base.Core": "0.9.0",
-          "Fusee.Engine.Common": "0.9.0",
-          "Fusee.Engine.Core": "0.9.0",
-          "Fusee.Engine.GUI": "0.9.0",
-          "Fusee.Jometri": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
-          "Fusee.Serialization": "0.9.0",
-          "Fusee.Xene": "0.9.0",
-          "Fusee.Xirkit": "0.9.0"
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Base.Core": "0.9.1",
+          "Fusee.Engine.Common": "0.9.1",
+          "Fusee.Engine.Core": "0.9.1",
+          "Fusee.Engine.GUI": "0.9.1",
+          "Fusee.Jometri": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
+          "Fusee.Serialization": "0.9.1",
+          "Fusee.Xene": "0.9.1",
+          "Fusee.Xirkit": "0.9.1"
         }
       },
-      "Fusee.Desktop/0.9.0": {
+      "Fusee.Desktop/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Imp.Desktop": "0.9.0",
-          "Fusee.Core": "0.9.0",
-          "Fusee.Engine.Imp.Graphics.Desktop": "0.9.0"
+          "Fusee.Base.Imp.Desktop": "0.9.1",
+          "Fusee.Core": "0.9.1",
+          "Fusee.Engine.Imp.Graphics.Desktop": "0.9.1"
         }
       },
-      "Fusee.Engine.Common/0.9.0": {
+      "Fusee.Engine.Common/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
-          "Fusee.Xene": "0.9.0"
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
+          "Fusee.Xene": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Engine.Common.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Engine.Core/0.9.0": {
+      "Fusee.Engine.Core/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Base.Core": "0.9.0",
-          "Fusee.Engine.Common": "0.9.0",
-          "Fusee.Jometri": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
-          "Fusee.Serialization": "0.9.0",
-          "Fusee.Xene": "0.9.0",
-          "Fusee.Xirkit": "0.9.0"
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Base.Core": "0.9.1",
+          "Fusee.Engine.Common": "0.9.1",
+          "Fusee.Jometri": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
+          "Fusee.Serialization": "0.9.1",
+          "Fusee.Xene": "0.9.1",
+          "Fusee.Xirkit": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Engine.Core.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Engine.GUI/0.9.0": {
+      "Fusee.Engine.GUI/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Base.Core": "0.9.0",
-          "Fusee.Engine.Common": "0.9.0",
-          "Fusee.Engine.Core": "0.9.0",
-          "Fusee.Jometri": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
-          "Fusee.Xene": "0.9.0",
-          "Fusee.Xirkit": "0.9.0"
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Base.Core": "0.9.1",
+          "Fusee.Engine.Common": "0.9.1",
+          "Fusee.Engine.Core": "0.9.1",
+          "Fusee.Jometri": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
+          "Fusee.Xene": "0.9.1",
+          "Fusee.Xirkit": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Engine.GUI.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Engine.Imp.Graphics.Desktop/0.9.0": {
+      "Fusee.Engine.Imp.Graphics.Desktop/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Base.Core": "0.9.0",
-          "Fusee.Engine.Common": "0.9.0",
-          "Fusee.Engine.Core": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Base.Core": "0.9.1",
+          "Fusee.Engine.Common": "0.9.1",
+          "Fusee.Engine.Core": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
           "OpenTK": "3.2.0",
           "System.Drawing.Common": "5.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Fusee.Engine.Imp.Graphics.Desktop.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Jometri/0.9.0": {
+      "Fusee.Jometri/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Engine.Common": "0.9.0",
-          "Fusee.Math.Core": "0.9.0"
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Engine.Common": "0.9.1",
+          "Fusee.Math.Core": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Jometri.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Math.Core/0.9.0": {
+      "Fusee.Math.Core/0.9.1": {
         "dependencies": {
           "protobuf-net": "3.0.62"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Math.Core.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Serialization/0.9.0": {
+      "Fusee.Serialization/0.9.1": {
         "dependencies": {
-          "Fusee.Base.Common": "0.9.0",
-          "Fusee.Math.Core": "0.9.0",
-          "Fusee.Xene": "0.9.0",
+          "Fusee.Base.Common": "0.9.1",
+          "Fusee.Math.Core": "0.9.1",
+          "Fusee.Xene": "0.9.1",
           "protobuf-net": "3.0.62"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Serialization.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Xene/0.9.0": {
+      "Fusee.Xene/0.9.1": {
         "dependencies": {
-          "Fusee.Math.Core": "0.9.0"
+          "Fusee.Math.Core": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Xene.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
-      "Fusee.Xirkit/0.9.0": {
+      "Fusee.Xirkit/0.9.1": {
         "dependencies": {
-          "Fusee.Math.Core": "0.9.0"
+          "Fusee.Math.Core": "0.9.1"
         },
         "runtime": {
           "lib/netstandard2.1/Fusee.Xirkit.dll": {
-            "assemblyVersion": "0.9.0.0",
-            "fileVersion": "0.9.0.0"
+            "assemblyVersion": "0.9.1.0",
+            "fileVersion": "0.9.1.0"
           }
         }
       },
@@ -955,103 +955,103 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Fusee.Base.Common/0.9.0": {
+    "Fusee.Base.Common/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OazmqGVpvnVaW8B7CzDg+Zp36evXXVVwjIR40Naw9/1jSFAsk/mC+xV+WaPRtRGLAO6iwz7yALaCHfULrUBZEA==",
-      "path": "fusee.base.common/0.9.0",
-      "hashPath": "fusee.base.common.0.9.0.nupkg.sha512"
+      "sha512": "sha512-Vt0tJVM0jX4m2lXidN3KClAWkfdUTnTQQ5b9jKNuAKm1OhP4/s2E2lMu5peQSOoueeLyqh6YrfpzNViOeBi/Vw==",
+      "path": "fusee.base.common/0.9.1",
+      "hashPath": "fusee.base.common.0.9.1.nupkg.sha512"
     },
-    "Fusee.Base.Core/0.9.0": {
+    "Fusee.Base.Core/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1j9JjtLfIAt7cBjvvChaYnPC0SbSt4wIWrYZUAkOzsDa+ntXTr3uhxaOXkHoIMT6ZQtdC3iz2PuxZE064wpnZQ==",
-      "path": "fusee.base.core/0.9.0",
-      "hashPath": "fusee.base.core.0.9.0.nupkg.sha512"
+      "sha512": "sha512-UAUzcK/cUauYXgj5CQe/Uo0vWtpjTGczf0oomeVYl69WtzGbnaqmdNWQhFKka8QkEKmcVmaHFVhH1vK7UEaP/g==",
+      "path": "fusee.base.core/0.9.1",
+      "hashPath": "fusee.base.core.0.9.1.nupkg.sha512"
     },
-    "Fusee.Base.Imp.Desktop/0.9.0": {
+    "Fusee.Base.Imp.Desktop/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7vaNZqczIuPvA6GPemuZ0qn0Vi5z8ToBE5JadbONG/bfqiNswaq88qmSyKuvh/plhGP8v9yvIW8g1xpFCsr8Vw==",
-      "path": "fusee.base.imp.desktop/0.9.0",
-      "hashPath": "fusee.base.imp.desktop.0.9.0.nupkg.sha512"
+      "sha512": "sha512-5q3o/T2AG5PtkJ/nNZc99/ZzSrWxGoB0/l3UKr9flY40d2N+ko+TXf5adPT3YUP27RjwWEVfzmY4hw8ibLHiaw==",
+      "path": "fusee.base.imp.desktop/0.9.1",
+      "hashPath": "fusee.base.imp.desktop.0.9.1.nupkg.sha512"
     },
-    "Fusee.Core/0.9.0": {
+    "Fusee.Core/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rLWxKIectAoo/WkTguGBqenDu5lescm6OrrUODXSMost5Pwz7sedvBBn6KbhN6M99ryrCBgb1YZU/+vtMOyazA==",
-      "path": "fusee.core/0.9.0",
-      "hashPath": "fusee.core.0.9.0.nupkg.sha512"
+      "sha512": "sha512-XTqpkPA/wr21TFmmzxiutnI9dMrUwlAMAY3oMQEgI4ntC5heyJzV9Fsl2CHryIb2l+R1GN7RutrVS+QE+yWBXw==",
+      "path": "fusee.core/0.9.1",
+      "hashPath": "fusee.core.0.9.1.nupkg.sha512"
     },
-    "Fusee.Desktop/0.9.0": {
+    "Fusee.Desktop/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9TjADlU14/lP9qhpb9wYBMHT6XR8tG0t7ntftfEIaLyFwulbbZqEitPk9jWpFAIi68bj7LaGRTVIpjJGBrgGmg==",
-      "path": "fusee.desktop/0.9.0",
-      "hashPath": "fusee.desktop.0.9.0.nupkg.sha512"
+      "sha512": "sha512-Zha2vn5QQaLdvcFgaRy1eBH7l2aT9yeKo9DNbr3/EYdubchwlRNMv6JcLgztDtPnFwhbXEflmYYU5jxTQWLi4w==",
+      "path": "fusee.desktop/0.9.1",
+      "hashPath": "fusee.desktop.0.9.1.nupkg.sha512"
     },
-    "Fusee.Engine.Common/0.9.0": {
+    "Fusee.Engine.Common/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yIooaq7KRvHl2dHV5onRebuzZ39Oquo9tDxDfnUG1OVECMSI3Vtw3HoyVY3FkcaMeXKvQGW5O9ROv5luMYF0rA==",
-      "path": "fusee.engine.common/0.9.0",
-      "hashPath": "fusee.engine.common.0.9.0.nupkg.sha512"
+      "sha512": "sha512-GwSIRjlFd+XMQibZ0mBcEESkTTPPaVSFtrihS4obsSotEsJy9EYSx99JlJ6bmDGx12J0TDew/vy+DXLPi5AAEA==",
+      "path": "fusee.engine.common/0.9.1",
+      "hashPath": "fusee.engine.common.0.9.1.nupkg.sha512"
     },
-    "Fusee.Engine.Core/0.9.0": {
+    "Fusee.Engine.Core/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Y6KfdKju11zB9P1Z175o4dyH+omNarxhp2BF3NLD1XyR4dmoT387xPWBhs/oNGfoKNpF+N5tVlMIxr3iJ6RDEQ==",
-      "path": "fusee.engine.core/0.9.0",
-      "hashPath": "fusee.engine.core.0.9.0.nupkg.sha512"
+      "sha512": "sha512-fV8WFa/XpnjFLK2RhVENsZBVP74WiaFiRrb0JUVxdER22eAKD1ddbr+Rswi8Q6/swfplUWciO0P4qPnWE+a4Vw==",
+      "path": "fusee.engine.core/0.9.1",
+      "hashPath": "fusee.engine.core.0.9.1.nupkg.sha512"
     },
-    "Fusee.Engine.GUI/0.9.0": {
+    "Fusee.Engine.GUI/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SQA0jDWMHdx6wzLs2Ts9oV1L8mNgH30eYJZSmFMTAvB2pbX5NLHbqyrow8QtvW6AqpdIKbkWv8qiphXXbk8qCg==",
-      "path": "fusee.engine.gui/0.9.0",
-      "hashPath": "fusee.engine.gui.0.9.0.nupkg.sha512"
+      "sha512": "sha512-PFFQGUKKLv3CTogY4IXWBabz60HMiMbBg5UVO8DJmVXbW5+NAcpiL9c+NiedJGP8zlcRof4SVX4TXQ+Rhwy7Xw==",
+      "path": "fusee.engine.gui/0.9.1",
+      "hashPath": "fusee.engine.gui.0.9.1.nupkg.sha512"
     },
-    "Fusee.Engine.Imp.Graphics.Desktop/0.9.0": {
+    "Fusee.Engine.Imp.Graphics.Desktop/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MTDyVU+Z8mtT1nGMx5APK7TIWcIeJN2UgVaW8+QpwBLqwqKMReYNFs5UseLpH7DhVyQbcCn2KnI2FkL4BNbgng==",
-      "path": "fusee.engine.imp.graphics.desktop/0.9.0",
-      "hashPath": "fusee.engine.imp.graphics.desktop.0.9.0.nupkg.sha512"
+      "sha512": "sha512-kHjQ25m8AG5SJRwQT1rPfN4YUGKjlKV65laxXnNVca20CLLhUheKxuGqCMysT7Gmdn9O1b7PuIzwmawuB3cLWw==",
+      "path": "fusee.engine.imp.graphics.desktop/0.9.1",
+      "hashPath": "fusee.engine.imp.graphics.desktop.0.9.1.nupkg.sha512"
     },
-    "Fusee.Jometri/0.9.0": {
+    "Fusee.Jometri/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tIre1EUm2k9VSz3NsLVQlHoUM3Akd+zCQIHqyQePtJgZwGBOoHjb8AsnwMT7OJQhZ5HIHyljJ3ra6fmpBTTq7w==",
-      "path": "fusee.jometri/0.9.0",
-      "hashPath": "fusee.jometri.0.9.0.nupkg.sha512"
+      "sha512": "sha512-0xm2Pb+MUHBC/Gx8oJxwPm/0m5GcmlSQUFr4lweb4pWTGZwAnRxArh8mfpqgPFFV+OXF2knNUQpmYfqv/X5wNw==",
+      "path": "fusee.jometri/0.9.1",
+      "hashPath": "fusee.jometri.0.9.1.nupkg.sha512"
     },
-    "Fusee.Math.Core/0.9.0": {
+    "Fusee.Math.Core/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AS4W49ZvVdjFxH37P/ZWbN/1pM+mwQbkcv++PCzVtP1krmSewhlCGkg3NLz+TSvzjIcSU1HLFO1AZ8yvgsCpmw==",
-      "path": "fusee.math.core/0.9.0",
-      "hashPath": "fusee.math.core.0.9.0.nupkg.sha512"
+      "sha512": "sha512-+FFwYOsEOTTj7hKuPC2KIQxxbdjHlEY0pmIWm/3xN/6Xeh+u0qcL0555xksaXLdXT9U2033T8+iU4CJxI3QxiQ==",
+      "path": "fusee.math.core/0.9.1",
+      "hashPath": "fusee.math.core.0.9.1.nupkg.sha512"
     },
-    "Fusee.Serialization/0.9.0": {
+    "Fusee.Serialization/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZPsPxPocMvd+3+xg6/m/oOJfqtq9PvI+l2V/8AJksBYiaPYwjILKuVlMQh2DtGLsvkDjeZ7aRfz0VQUpft4pGQ==",
-      "path": "fusee.serialization/0.9.0",
-      "hashPath": "fusee.serialization.0.9.0.nupkg.sha512"
+      "sha512": "sha512-0bxa5RV6HV/6XpIrfN6eC7C3137NNVifOABDCplF1VxkejCJLdfuizRqlC3lgx9TrlI7ZPYk+OoRhHi/+j+zvw==",
+      "path": "fusee.serialization/0.9.1",
+      "hashPath": "fusee.serialization.0.9.1.nupkg.sha512"
     },
-    "Fusee.Xene/0.9.0": {
+    "Fusee.Xene/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LBiQobJVhIa6JPvku2J8eGZySy3SPuvRaqXuHcZgtM2NaybO/P9Yaskll6zC+iBoJ9j37dPG7c9nyOu6npTNGg==",
-      "path": "fusee.xene/0.9.0",
-      "hashPath": "fusee.xene.0.9.0.nupkg.sha512"
+      "sha512": "sha512-gPiLalK0v1vEN9Hdg85L6SRNTagg7IgGF72nZ593eMkvUgWrzd1Y/JcA/A4oaMW9IHPSJ/TmxVpvgE0AWPjlTA==",
+      "path": "fusee.xene/0.9.1",
+      "hashPath": "fusee.xene.0.9.1.nupkg.sha512"
     },
-    "Fusee.Xirkit/0.9.0": {
+    "Fusee.Xirkit/0.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EjPdUpav2hDevCavCK/nmgCBJLNIXo+iv9vw1CgtjA9GwxDkgvYBDCCaKS7aYkKbayrTlZ6Sj5S/wMJ5vfvgmg==",
-      "path": "fusee.xirkit/0.9.0",
-      "hashPath": "fusee.xirkit.0.9.0.nupkg.sha512"
+      "sha512": "sha512-JW2vgvcsjd27z3ZNSqaodCRjQBAV9huDDvw90QKyQq4kDYsRhVs0kqPj16UYDDB1Xfg3hXrCyGx3b1hbHoAYBA==",
+      "path": "fusee.xirkit/0.9.1",
+      "hashPath": "fusee.xirkit.0.9.1.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",

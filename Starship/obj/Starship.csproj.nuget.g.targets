@@ -4,7 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)fusee.engine.core\0.9.0\build\Fusee.Engine.Core.targets" Condition="Exists('$(NuGetPackageRoot)fusee.engine.core\0.9.0\build\Fusee.Engine.Core.targets')" />
-    <Import Project="$(NuGetPackageRoot)fusee.engine.gui\0.9.0\build\Fusee.Engine.GUI.targets" Condition="Exists('$(NuGetPackageRoot)fusee.engine.gui\0.9.0\build\Fusee.Engine.GUI.targets')" />
+    <Import Project="$(NuGetPackageRoot)fusee.engine.core\0.9.1\build\Fusee.Engine.Core.targets" Condition="Exists('$(NuGetPackageRoot)fusee.engine.core\0.9.1\build\Fusee.Engine.Core.targets')" />
+    <Import Project="$(NuGetPackageRoot)fusee.engine.gui\0.9.1\build\Fusee.Engine.GUI.targets" Condition="Exists('$(NuGetPackageRoot)fusee.engine.gui\0.9.1\build\Fusee.Engine.GUI.targets')" />
   </ImportGroup>
 </Project>

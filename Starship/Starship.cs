@@ -50,46 +50,51 @@ namespace FuseeApp
 
         private Mesh _laserMesh;
 
+        private AABBf _laserBB;
+
         private AABBf _laserHitbox;
 
+        private float _laserBBYMin;
+        private float _laserBBYMax;
 
 
-        private float appStartTime;             //Die Zeit seit Start der Applikation
-        private float playTime;                 //Die Zeit seit drücken des Startknopfs (Leertaste)             wird später benutzt für das Leaderboard/aktive Anzeige ingame(?)
-        private bool start;
-        private double speed;
+
+        private float _appStartTime;             //Die Zeit seit Start der Applikation
+        private float _playTime;                 //Die Zeit seit drücken des Startknopfs (Leertaste)             wird später benutzt für das Leaderboard/aktive Anzeige ingame(?)
+        private bool _start;
+        private double _speed;
         private double _fasterSpeedIncr;
-        private bool d;
-        private bool laser;
+        private bool _d;
+        private bool _laser;
 
 
-        bool left;
-        bool mid = true;
-        bool right;
+        bool _left;
+        bool _mid = true;
+        bool _right;
 
 
-        int trenchCount;
+        int _trenchCount;
 
-        Random random;
+        Random _random;
 
-        SceneNode currentTrench;
-        SceneNode newTrench;
+        SceneNode _currentTrench;
+        SceneNode _newTrench;
 
-        SceneNode currentItemTrench;
-        SceneNode newItemTrench;
-
-
-        float currentTrenchTrans;
+        SceneNode _currentItemTrench;
+        SceneNode _newItemTrench;
 
 
-        float counterLR;//1sec
-        float counterUD;
+        float _currentTrenchTrans;
 
-        float3 oldPos;
-        float3 newPos;
 
-        float oldPosY;
-        float newPosY;
+        float _counterLR;//1sec
+        float _counterUD;
+
+        float3 _oldPos;
+        float3 _newPos;
+
+        float _oldPosY;
+        float _newPosY;
 
         //Kollisionsvariablen 
         private AABBf _shipBox;
@@ -107,9 +112,9 @@ namespace FuseeApp
         private SceneNode _currentItem;
 
 
-        List<SceneNode> TrenchesList;
+        List<SceneNode> _trenchesList;
 
-        List<SceneNode> ItemList;
+        List<SceneNode> _itemList;
 
 
         private readonly CanvasRenderMode _canvasRenderMode = CanvasRenderMode.Screen;
@@ -173,49 +178,62 @@ namespace FuseeApp
 
             _starShipMesh = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetMesh();
 
-            _laserbeam = AssetStorage.Get<SceneContainer>("Laserbeam.fus").ToSceneNode();
+            _laserbeam = AssetStorage.Get<SceneContainer>("Laserbeam2.fus").ToSceneNode();
 
             _laserTrans = _laserbeam.GetTransform();
 
             _laserMesh = _laserbeam.Children[0].GetMesh();
 
+            _laserBB = _laserbeam.Children[0].GetMesh().BoundingBox;
+
+            _laserBBYMin = _laserBB.min.y;
+            _laserBB.min.y = _laserBB.min.z;
+            _laserBB.min.z = _laserBBYMin;
+            _laserBB.min.z += _laserBB.Size.z / 2;
+
+            _laserBBYMax = _laserBB.max.y;
+            _laserBB.max.y = _laserBB.max.z;
+            _laserBB.max.z = _laserBBYMax;
+            _laserBB.max.z += _laserBB.Size.z / 2;
 
 
-            oldPos = _starshipTrans.Translation;
-            newPos = _starshipTrans.Translation;
-
-            oldPosY = _starshipTrans.Translation.y;
-            newPosY = _starshipTrans.Translation.y;
 
 
-            TrenchesList = new List<SceneNode>
+            _oldPos = _starshipTrans.Translation;
+            _newPos = _starshipTrans.Translation;
+
+            _oldPosY = _starshipTrans.Translation.y;
+            _newPosY = _starshipTrans.Translation.y;
+
+
+            _trenchesList = new List<SceneNode>
             {
                AssetStorage.Get<SceneContainer>("CubesOnly1.fus").ToSceneNode(),
                AssetStorage.Get<SceneContainer>("CubesOnly2.fus").ToSceneNode(),
                AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
             };
 
-            ItemList = new List<SceneNode>
+            _itemList = new List<SceneNode>
             {
                 AssetStorage.Get<SceneContainer>("ItemTrench1.fus").ToSceneNode(),
                 AssetStorage.Get<SceneContainer>("ItemTrench2.fus").ToSceneNode(),
             };
 
-            random = new Random();
-            trenchCount = TrenchesList.Count();
+            _random = new Random();
+            _trenchCount = _trenchesList.Count();
 
-            currentTrench = CopyNode(TrenchesList[0]);
-            newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
+            _currentTrench = CopyNode(_trenchesList[0]);
+            _newTrench = CopyNode(_trenchesList[_random.Next(0, _trenchCount)]);
 
-            currentItemTrench = CopyNode(ItemList[0]);
-            newItemTrench = CopyNode(ItemList[random.Next(0, ItemList.Count())]);
+            _currentItemTrench = CopyNode(_itemList[0]);
+            _newItemTrench = CopyNode(_itemList[_random.Next(0, _itemList.Count())]);
 
-            newTrench.GetTransform().Translation.z += newTrench.GetTransform().Scale.z;
+            _newTrench.GetTransform().Translation.z += _newTrench.GetTransform().Scale.z;
 
             _speedIncrItem = 1;
             _fasterSpeedIncr = 1;
 
-            laser = false;
+            _laser = false;
 
             TrenchParent = new SceneNode()
             {
@@ -224,14 +242,14 @@ namespace FuseeApp
 
             _starshipScene.Children.Add(TrenchParent);
 
-            TrenchParent.Children.Add(currentTrench);
-            TrenchParent.Children.Add(newTrench);
+            TrenchParent.Children.Add(_currentTrench);
+            TrenchParent.Children.Add(_newTrench);
 
-            TrenchParent.Children.Add(currentItemTrench);
-            TrenchParent.Children.Add(newItemTrench);
+            TrenchParent.Children.Add(_currentItemTrench);
+            TrenchParent.Children.Add(_newItemTrench);
 
 
-            currentTrenchTrans = currentTrench.GetTransform().Translation.z;
+            _currentTrenchTrans = _currentTrench.GetTransform().Translation.z;
 
 
             _sceneRenderer = new SceneRendererForward(_starshipScene);
@@ -255,18 +273,19 @@ namespace FuseeApp
 
 
             //Item Shenanigans
-            if (_itemTimer <= playTime && _itemOrbMesh != null)
+            if (_itemTimer <= _playTime && _itemOrbMesh != null)
             {
                 _itemOrbMesh.Active = true;
+                _itemOrbMesh.BoundingBox.min.y = -0.6f;
             }
-            if (_itemTimer <= playTime)
+            if (_itemTimer <= _playTime)
             {
                 _itemStatus = 0;
             }
 
             if(_itemStatus == 3)
             {
-                appStartTime -= 1;
+                _appStartTime -= 1;
             }
             else if (_itemStatus == 4)
             {
@@ -282,25 +301,25 @@ namespace FuseeApp
 
             if(_itemStatus == 5)
             {
-                if(laser == false)
+                if (_laser == false)
                 {
                     _starshipScene.Children.Add(_laserbeam);
-                    laser = true;
+                    _laser = true;
                 }
-                _laserTrans.Translation.y = _starshipTrans.Translation.y - 2;
+                _laserTrans.Translation.y = _starshipTrans.Translation.y - 0.5f;
                 _laserTrans.Translation.x = _starshipTrans.Translation.x;
 
 
 
 
-                if(_itemTimer <= playTime + 2 /*&& _starshipScene.Children.FindNodes(node => node.Name == "Laserbeam") != null*/)
+                if(_itemTimer <= _playTime + 2 /*&& _starshipScene.Children.FindNodes(node => node.Name == "Laserbeam") != null*/)
                 {
                     _starshipScene.Children.Remove(_laserbeam);
                 }
             }
             else
             {
-                laser = false;
+                _laser = false;
                 _starshipScene.Children.Remove(_laserbeam);
             }
 
@@ -328,114 +347,114 @@ namespace FuseeApp
 
 
 
-            if (playTime != 0)
+            if (_playTime != 0)
             {
-                if ((int)playTime % 20 == 0 && (int)playTime != 0 && d == true)
+                if ((int)_playTime % 20 == 0 && (int)_playTime != 0 && _d == true)
                 {
                     Faster();
-                    d = false;
+                    _d = false;
                 }
-                else if ((int)playTime % 20 != 0 && d == false)
+                else if ((int)_playTime % 20 != 0 && _d == false)
                 {
-                    d = true;
+                    _d = true;
                 }
             }
 
 
             //Trench Switches
-            if (newTrench.GetTransform().Translation.z <= currentTrenchTrans)
+            if (_newTrench.GetTransform().Translation.z <= _currentTrenchTrans)
             {
-                TrenchParent.Children.Remove(currentTrench);
-                TrenchParent.Children.Remove(newTrench);
+                TrenchParent.Children.Remove(_currentTrench);
+                TrenchParent.Children.Remove(_newTrench);
 
-                TrenchParent.Children.Remove(currentItemTrench);
-                TrenchParent.Children.Remove(newItemTrench);
+                TrenchParent.Children.Remove(_currentItemTrench);
+                TrenchParent.Children.Remove(_newItemTrench);
 
 
-                currentTrench = newTrench;
-                newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
-                newTrench.GetTransform().Translation.z = 99;
-                TrenchParent.Children.Add(currentTrench);
-                TrenchParent.Children.Add(newTrench);
+                _currentTrench = _newTrench;
+                _newTrench = CopyNode(_trenchesList[_random.Next(0, _trenchCount)]);
+                _newTrench.GetTransform().Translation.z = 99;
+                TrenchParent.Children.Add(_currentTrench);
+                TrenchParent.Children.Add(_newTrench);
 
-                currentItemTrench = newItemTrench;
-                newItemTrench = CopyNode(ItemList[random.Next(0, ItemList.Count())]);
-                newItemTrench.GetTransform().Translation.z = 99;
-                TrenchParent.Children.Add(currentItemTrench);
-                TrenchParent.Children.Add(newItemTrench);
-            }
+                _currentItemTrench = _newItemTrench;
+                _newItemTrench = CopyNode(_itemList[_random.Next(0, _itemList.Count())]);
+                _newItemTrench.GetTransform().Translation.z = 99;
+                TrenchParent.Children.Add(_currentItemTrench);
+                TrenchParent.Children.Add(_newItemTrench);
+            }       //wenn Trenches länger werden, hier magische Zahlen ändern!!
 
 
 
             //Steuerung links/rechts
             if (Keyboard.IsKeyDown(KeyCodes.Left) || Keyboard.IsKeyDown(KeyCodes.A))
             {
-                if (left)
+                if (_left)
                 {
-                    mid = false;
+                    _mid = false;
                 }
-                else if (mid)
+                else if (_mid)
                 {
-                    oldPos = newPos;
-                    newPos.x = -3;
-                    counterLR = 0.3f;
+                    _oldPos = _newPos;
+                    _newPos.x = -3;
+                    _counterLR = 0.3f;
 
-                    mid = false;
-                    left = true;
+                    _mid = false;
+                    _left = true;
 
                 }
-                else if (right)
+                else if (_right)
                 {
-                    oldPos = newPos;
-                    newPos.x = 0;
-                    counterLR = 0.3f;
+                    _oldPos = _newPos;
+                    _newPos.x = 0;
+                    _counterLR = 0.3f;
 
-                    right = false;
-                    mid = true;
+                    _right = false;
+                    _mid = true;
                 }
 
             }
             if (Keyboard.IsKeyDown(KeyCodes.Right) || Keyboard.IsKeyDown(KeyCodes.D))
             {
-                if (left)
+                if (_left)
                 {
-                    oldPos = newPos;
-                    newPos.x = 0;
-                    counterLR = 0.3f;
+                    _oldPos = _newPos;
+                    _newPos.x = 0;
+                    _counterLR = 0.3f;
 
-                    left = false;
-                    mid = true;
+                    _left = false;
+                    _mid = true;
                 }
-                else if (mid)
+                else if (_mid)
                 {
-                    oldPos = newPos;
-                    newPos.x = 3;
-                    counterLR = 0.3f;
+                    _oldPos = _newPos;
+                    _newPos.x = 3;
+                    _counterLR = 0.3f;
 
-                    mid = false;
-                    right = true;
+                    _mid = false;
+                    _right = true;
                 }
-                else if (right)
+                else if (_right)
                 {
-                    mid = false;
+                    _mid = false;
                 }
             }
 
 
             //oben / unten
-            if (Keyboard.IsKeyDown(KeyCodes.Up) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.W) && counterUD == 0)
-            {               
-                oldPosY = newPosY;
-                newPosY = 4.2039146f;
-                counterUD = 0.3f;
+            if (Keyboard.IsKeyDown(KeyCodes.Up) && _counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.W) && _counterUD == 0)
+            {
+                _oldPosY = _newPosY;
+                _newPosY = 4.2039146f;
+                _counterUD = 0.3f;
 
             }
 
-            if (Keyboard.IsKeyDown(KeyCodes.Down) && counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.S) && counterUD == 0)
-            {  
-                oldPosY = newPosY;
-                newPosY = -0.7960852f;
-                counterUD = 0.3f;
+            if (Keyboard.IsKeyDown(KeyCodes.Down) && _counterUD == 0 || Keyboard.IsKeyDown(KeyCodes.S) && _counterUD == 0)
+            {
+                _oldPosY = _newPosY;
+                _newPosY = -0.7960852f;
+                _counterUD = 0.3f;
             }
 
 
@@ -457,29 +476,31 @@ namespace FuseeApp
                     TryAgain();
                 }
             }
-            if(_itemStatus == 4 && _itemTimer == playTime + 3)
+            if(_itemStatus == 4 && _itemTimer == _playTime + 3)
             {
-                speed = ((double)DeltaTime * 20) *_speedIncrItem * _fasterSpeedIncr;
+                _speed = ((double)DeltaTime * 20) *_speedIncrItem * _fasterSpeedIncr;
             }
             else if(_itemStatus == 0)
             {
-                speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
+                _speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
             }
 
             //Bounding Boxes and collision detection
 
             //Boundind Box des Schiffs  
             _shipBox = _starshipTrans.Matrix() * _starShipMesh.BoundingBox;
+            //Console.WriteLine(_shipBox.max); //(4,339855; 1,9487817; 1,7474995)     (1,3398551; 1,9487817; 1,7474995)
+            //Console.WriteLine(_shipBox.min); //(1,6601449; 1,120019; -1,2371582)    (-1,3398551; 1,120019; -1,2371582)    
 
-            if (start)
+            if (_start)
             {
-                playTime = StartTimer(appStartTime);
+                _playTime = StartTimer(_appStartTime);
 
                 //Hier werden für Trenches sowie ihre jeweiligen obstacles Listen erstellt, die einzeln abgegangen werden, um nach einer Kollision zu prüfen
                 for (int j = 0; j < TrenchParent.Children.Count; j++)
                 {
                     var _trenchTrans = TrenchParent.Children.ElementAt(j).GetTransform();
-                    _trenchTrans.Translation.z -= (float)speed;         //Die Bewegung der Szene wird aktiviert
+                    _trenchTrans.Translation.z -= (float)_speed;         //Die Bewegung der Szene wird aktiviert
 
 
                     if (_trenchTrans != null)
@@ -500,19 +521,32 @@ namespace FuseeApp
 
                                 AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
 
-                                if (_itemStatus == 5)
+                                if (_itemStatus == 5 && _itemTimer >= _playTime + 2)
                                 {
-                                    _laserHitbox = _laserTrans.Matrix() * _laserMesh.BoundingBox;
+                                    _laserHitbox = _laserTrans.Matrix() * _laserBB;
+                                    //Console.WriteLine(_laserHitbox.max); //(0, 29645815; 26,065257; 0,2964581)        (-2, 6986864; 12,065257; 0,2964581)                 (3, 0589507; 12,065257; 0,2964581)
+                                    //Console.WriteLine(_laserHitbox.min); //(-0,304214; -23,796085; -0,29999983)         (-3, 2916024; -12,657428; -0,2964581)           (2, 4660347; -12,657428; -0,2964581)
+                                    //Console.WriteLine(_laserHitbox.Center); //(0; -0,29608536; 0)
+                                    //Console.WriteLine(_laserTrans.Translation); //(0,004635272; 1,207751; 0)
+                                    //Console.WriteLine(_laserMesh.BoundingBox.Size); //(0,59999967; 50; 0,59999967)
+
                                     LaserCollision(_laserHitbox, cubeHitbox);
+
+                                    Collision(_shipBox, cubeHitbox);
                                 }
 
-                                if (_itemStatus == 2) //Wenn Shield aktiv ist
+                                else if (_itemStatus == 2) //Wenn Shield aktiv ist
                                 {
                                     ShieldCollision(_shipBox, cubeHitbox);
                                 }
                                 else
                                 {
-                                    _cubeObstMesh.Active = true;
+
+                                    if(_itemTimer <= _playTime - 1)
+                                    {
+                                        _cubeObstMesh.Active = true;
+                                        _cubeObstMesh.BoundingBox.min.y = -1;
+                                    }
                                     Collision(_shipBox, cubeHitbox);
                                 }
                             }
@@ -537,76 +571,76 @@ namespace FuseeApp
             }
             else
             {
-                speed = 0;
+                _speed = 0;
             }
 
-            if (counterLR > 0)        //Bewegung und Tilt
+            if (_counterLR > 0)        //Bewegung und Tilt
             {
-                _starshipTrans.Translation = float3.Lerp(newPos, oldPos, M.SmootherStep((counterLR) / 0.3f));
-                if (newPos.x < oldPos.x)
+                _starshipTrans.Translation = float3.Lerp(_newPos, _oldPos, M.SmootherStep((_counterLR) / 0.3f));
+                if (_newPos.x < _oldPos.x)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(counterLR / 0.3f) * -0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(_counterLR / 0.3f) * -0.167f;
                 }
-                else if (newPos.x > oldPos.x)
+                else if (_newPos.x > _oldPos.x)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(counterLR / 0.3f) * 0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(_counterLR / 0.3f) * 0.167f;
                 }
 
-                counterLR -= DeltaTime;
+                _counterLR -= DeltaTime;
             }
-            else if (counterLR < 0)
+            else if (_counterLR < 0)
             {
-                counterLR = 0;
+                _counterLR = 0;
                 _starshipTrans.Rotation.x = 0;
             }
 
 
 
-            float3 newPosXY = new float3(_starshipTrans.Translation.x, newPosY, _starshipTrans.Translation.z);
-            float3 oldPosXY = new float3(_starshipTrans.Translation.x, oldPosY, _starshipTrans.Translation.z);
+            float3 newPosXY = new float3(_starshipTrans.Translation.x, _newPosY, _starshipTrans.Translation.z);
+            float3 oldPosXY = new float3(_starshipTrans.Translation.x, _oldPosY, _starshipTrans.Translation.z);
 
-            if (counterUD > 0)        //Bewegung und Tilt Oben/Unten
+            if (_counterUD > 0)        //Bewegung und Tilt Oben/Unten
             {
-                _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((counterUD) / 0.3f));
-                newPos.y = newPosY;
-                oldPos.y = newPosY;
-                if (newPosY < oldPosY)
+                _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((_counterUD) / 0.3f));
+                _newPos.y = _newPosY;
+                _oldPos.y = _newPosY;
+                if (_newPosY < _oldPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmootherStep(counterUD / 0.3f) * 1;//0.167f;
+                    _starshipTrans.Rotation.z = M.SmootherStep(_counterUD / 0.3f) * 1;//0.167f;
                 }
-                else if (newPosY > oldPosY)
+                else if (_newPosY > _oldPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmootherStep(counterUD / 0.3f) * -1; // 0.167f;
+                    _starshipTrans.Rotation.z = M.SmootherStep(_counterUD / 0.3f) * -1; // 0.167f;
                 }
 
-                counterUD -= DeltaTime;
+                _counterUD -= DeltaTime;
 
             }
-            else if (counterUD < 0 && counterUD > -0.2f)
+            else if (_counterUD < 0 && _counterUD > -0.2f)
             {
-                counterUD -= DeltaTime;
+                _counterUD -= DeltaTime;
             }
-            else if (counterUD < -0.2f && counterUD >= -0.5f)
+            else if (_counterUD < -0.2f && _counterUD >= -0.5f)
             {
-                _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((counterUD + 0.2f) / -0.3f));
+                _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((_counterUD + 0.2f) / -0.3f));
 
-                if (oldPosY < newPosY)
+                if (_oldPosY < _newPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmoothStep(-(counterUD + 0.2f) / 0.3f) * 0.5f;// 1.5f; //-0.167f;
+                    _starshipTrans.Rotation.z = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * 0.5f;// 1.5f; //-0.167f;
                 }
-                else if (oldPosY > newPosY)
+                else if (_oldPosY > _newPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmoothStep(-(counterUD + 0.2f) / 0.3f) * -0.7f; // 1.5f;//0.167f;
+                    _starshipTrans.Rotation.z = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * -0.7f; // 1.5f;//0.167f;
                 }
-                newPos.y = oldPosY;
-                oldPos.y = newPosY;
+                _newPos.y = _oldPosY;
+                _oldPos.y = _newPosY;
 
-                counterUD -= DeltaTime;
+                _counterUD -= DeltaTime;
             }
-            else if (counterUD < -0.5f)
+            else if (_counterUD < -0.5f)
             {
-                newPosY = oldPosY;
-                counterUD = 0;
+                _newPosY = _oldPosY;
+                _counterUD = 0;
                 _starshipTrans.Rotation.z = 0;
             }
 
@@ -626,7 +660,7 @@ namespace FuseeApp
             //Console.WriteLine(playTime.ToString());
 
 
-            _timerText.Text = playTime.ToString();
+            _timerText.Text = _playTime.ToString();
             //Console.WriteLine(speed);
             Console.WriteLine(_itemStatus);
 
@@ -839,9 +873,9 @@ namespace FuseeApp
         //Start des Spiels, also Beginn der Bewegung der Szene und des Zählers
         private void StartGame()
         {
-            start = true;
-            appStartTime = RealTimeSinceStart;
-            speed = (double)DeltaTime * 20;
+            _start = true;
+            _appStartTime = RealTimeSinceStart;
+            _speed = (double)DeltaTime * 20;
             _speedIncrItem = 1;
             _fasterSpeedIncr = 1;
             status = 1;
@@ -855,21 +889,23 @@ namespace FuseeApp
 
         private void ReloadScene()
         {
-            TrenchParent.Children.Remove(currentTrench);
-            TrenchParent.Children.Remove(newTrench);
+            TrenchParent.Children.Remove(_currentTrench);
+            TrenchParent.Children.Remove(_newTrench);
 
-            currentTrench = CopyNode(TrenchesList[0]);
-            newTrench = CopyNode(TrenchesList[random.Next(0, trenchCount)]);
+            _currentTrench = CopyNode(_trenchesList[0]);
+            _newTrench = CopyNode(_trenchesList[_random.Next(0, _trenchCount)]);
 
-            newTrench.GetTransform().Translation.z += newTrench.GetTransform().Scale.z;
-
-
-            TrenchParent.Children.Add(currentTrench);
-            TrenchParent.Children.Add(newTrench);
+            _newTrench.GetTransform().Translation.z += _newTrench.GetTransform().Scale.z;
 
 
-            currentTrenchTrans = currentTrench.GetTransform().Translation.z;
+            TrenchParent.Children.Add(_currentTrench);
+            TrenchParent.Children.Add(_newTrench);
+
+
+            _currentTrenchTrans = _currentTrench.GetTransform().Translation.z;
             _itemStatus = 0;
+            _cubeObstMesh.Active = true;
+            _cubeObstMesh.BoundingBox.min.y = -1;
         }
 
         //Timer wird gestartet
@@ -895,7 +931,7 @@ namespace FuseeApp
             if (_shipBox.Intersects(cubeHitbox))
             {
                 _cubeObstMesh.Active = false;
-                _itemTimer = playTime + 0.2f;
+                _itemTimer = _playTime + 0.2f;
             }
         }
 
@@ -904,6 +940,8 @@ namespace FuseeApp
             if (_laserHitbox.Intersects(cubeHitbox))
             {
                 _cubeObstMesh.Active = false;
+                _cubeObstMesh.BoundingBox.min.y = 7;
+                Console.WriteLine("Pew Pew!");
             }
         }
 
@@ -912,19 +950,20 @@ namespace FuseeApp
             if (itemHitbox.Intersects(_shipBox.Center))
             {               
                 _itemOrbMesh.Active = false;
-                random = new Random();
-                _itemStatus = random.Next(1, 6);    //hier random item 1-x
+                _itemOrbMesh.BoundingBox.min.y = 8;
+                _random = new Random();
+                _itemStatus = _random.Next(1, 6);    //hier random item 1-x
                 if(_itemStatus != 2 && _itemStatus != 3)
                 {
-                    _itemTimer = playTime + 3;//(float)speed * 60 / playTime;
+                    _itemTimer = _playTime + 3;//(float)speed * 60 / playTime;
                 }
                 else if (_itemStatus == 2)
                 {
-                    _itemTimer = playTime + 20;    //lange Zeit für Schild, Timer wird runtergesetzt bei Kollision
+                    _itemTimer = _playTime + 20;    //lange Zeit für Schild, Timer wird runtergesetzt bei Kollision
                 }
                 else if (_itemStatus == 3)
                 {
-                    _itemTimer = playTime + 1;
+                    _itemTimer = _playTime + 1;
                 }
                 
                 Console.WriteLine(_itemTimer);
@@ -934,17 +973,17 @@ namespace FuseeApp
 
         private void Death()
         {
-            currentScore = playTime;
+            currentScore = _playTime;
             Leaderboard();
-            start = false;
+            _start = false;
             status = 2;
             _ldrbrdText.Text = "Leaderboard";
             for (int m = 0; m < 10; m++)
             {
-                _ldrbrdText.Text += Environment.NewLine +  Math.Round((ScoresList[m].topTime), 3).ToString();
+                _ldrbrdText.Text += "\n" +  Math.Round((ScoresList[m].topTime), 3).ToString();
             }
+            
         }
-
 
 
         private SceneNode CopyNode(SceneNode insn)

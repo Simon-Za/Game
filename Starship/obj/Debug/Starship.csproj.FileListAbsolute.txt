@@ -118,3 +118,4 @@ C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemOr
 C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemTrench1.fus
 C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemTrench2.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Laserbeam.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Laserbeam2.fus
