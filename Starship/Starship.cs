@@ -171,12 +171,12 @@ namespace FuseeApp
             _sihD = new SceneInteractionHandler(_uiDeath);
 
 
-            _starshipScene = AssetStorage.Get<SceneContainer>("StarshipProto.fus");
+            _starshipScene = AssetStorage.Get<SceneContainer>("DeloreanV2.fus");
 
 
-            _starshipTrans = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetTransform();
+            _starshipTrans = _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetTransform();
 
-            _starShipMesh = _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetMesh();
+            _starShipMesh = _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetMesh();
 
             _laserbeam = AssetStorage.Get<SceneContainer>("Laserbeam2.fus").ToSceneNode();
 
@@ -208,9 +208,11 @@ namespace FuseeApp
 
             _trenchesList = new List<SceneNode>
             {
-               AssetStorage.Get<SceneContainer>("CubesOnly1.fus").ToSceneNode(),
-               AssetStorage.Get<SceneContainer>("CubesOnly2.fus").ToSceneNode(),
-               AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
+                AssetStorage.Get<SceneContainer>("TestCarTrench1v2.fus").ToSceneNode(),
+                AssetStorage.Get<SceneContainer>("TestCarTrench2v2.fus").ToSceneNode(),
+               //AssetStorage.Get<SceneContainer>("CarTrench1v1.fus").ToSceneNode(),
+               //AssetStorage.Get<SceneContainer>("CarTrench2v1.fus").ToSceneNode(),
+               //AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
             };
 
             _itemList = new List<SceneNode>
@@ -258,7 +260,7 @@ namespace FuseeApp
             _uiDeathRenderer = new SceneRendererForward(_uiDeath);
 
 
-            _color = (float4)_starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().GetFxParam<float4>("SurfaceInput.Albedo");
+            _color = (float4)_starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().GetFxParam<float4>("SurfaceInput.Albedo");
 
         }
 
@@ -326,23 +328,23 @@ namespace FuseeApp
 
             if (_itemStatus == 1)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 0, 1));
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 0, 1));
             }
             else if (_itemStatus == 2)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(1, 2, 3, 1));
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(1, 2, 3, 1));
             }
             else if (_itemStatus == 3)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 3, 1));
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 3, 1));
             }
             else if (_itemStatus == 4)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 1, 3, 1));
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 1, 3, 1));
             }
             else
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Ship")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", _color);
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", _color);
             };
 
 
@@ -505,19 +507,28 @@ namespace FuseeApp
 
                     if (_trenchTrans != null)
                     {
-                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("CubeObstacle")).ToList();
+                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("Car")).ToList();
+                        for(int q = 0; q < ObstaclesList.Count(); q++)
+                        {
+                            if (ObstaclesList[q].Name.Contains("Material"))
+                            {
+                                ObstaclesList.RemoveAt(q);
+                                q -= 1;
+                            }
+                        }
+                        
                         
                         List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
 
 
-                        if (_itemStatus != 1) //Wenn Invinvibility nicht aktiv ist
+                        if (_itemStatus != 1) //Wenn Invincvibility nicht aktiv ist
                         {
 
                             for (int i = 0; i < ObstaclesList.Count(); i++)
                             {
-                                _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetTransform();
+                                _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault()?.GetTransform();
 
-                                _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "CubeObstacle" + i)?.FirstOrDefault()?.GetMesh();
+                                _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault()?.GetMesh();
 
                                 AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
 
@@ -579,11 +590,11 @@ namespace FuseeApp
                 _starshipTrans.Translation = float3.Lerp(_newPos, _oldPos, M.SmootherStep((_counterLR) / 0.3f));
                 if (_newPos.x < _oldPos.x)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(_counterLR / 0.3f) * -0.167f;
+                    _starshipTrans.Rotation.y = M.SmootherStep(_counterLR / 0.3f) * -0.167f;
                 }
                 else if (_newPos.x > _oldPos.x)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(_counterLR / 0.3f) * 0.167f;
+                    _starshipTrans.Rotation.y = M.SmootherStep(_counterLR / 0.3f) * 0.167f;
                 }
 
                 _counterLR -= DeltaTime;
@@ -591,10 +602,10 @@ namespace FuseeApp
             else if (_counterLR < 0)
             {
                 _counterLR = 0;
-                _starshipTrans.Rotation.x = 0;
+                _starshipTrans.Rotation.y = 0;
             }
 
-
+            Console.WriteLine(_starshipTrans.Rotation);
 
             float3 newPosXY = new float3(_starshipTrans.Translation.x, _newPosY, _starshipTrans.Translation.z);
             float3 oldPosXY = new float3(_starshipTrans.Translation.x, _oldPosY, _starshipTrans.Translation.z);
@@ -606,11 +617,11 @@ namespace FuseeApp
                 _oldPos.y = _newPosY;
                 if (_newPosY < _oldPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmootherStep(_counterUD / 0.3f) * 1;//0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * 1;//0.167f;
                 }
                 else if (_newPosY > _oldPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmootherStep(_counterUD / 0.3f) * -1; // 0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * -1; // 0.167f;
                 }
 
                 _counterUD -= DeltaTime;
@@ -641,7 +652,7 @@ namespace FuseeApp
             {
                 _newPosY = _oldPosY;
                 _counterUD = 0;
-                _starshipTrans.Rotation.z = 0;
+                _starshipTrans.Rotation.z = M.PiOver2;
             }
 
 
@@ -688,7 +699,7 @@ namespace FuseeApp
         }
 
 
-        private SceneContainer CreateUIStart()      //UI für Start mit Enter
+        private SceneContainer CreateUIStart() //UI für Start mit Enter
         {
             var vsTex = AssetStorage.Get<string>("texture.vert");
             var psTex = AssetStorage.Get<string>("texture.frag");

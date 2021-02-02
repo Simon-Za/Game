@@ -119,3 +119,10 @@ C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemTr
 C:\Users\symz1\Desktop\Uni shit\Semester 3\Game\Starship\bin\Debug\Assets\ItemTrench2.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Laserbeam.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Laserbeam2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\Delorean.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\DeloreanV2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench1v1.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench2v1.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TestTrenchCar.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TestCarTrench1v2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TestCarTrench2v2.fus
