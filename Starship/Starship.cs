@@ -144,9 +144,6 @@ namespace FuseeApp
 
         private double currentScore;
 
-        //private string path = @"c:\temp\Leaderboard.txt";
-        private string path = @"C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Leaderboard.txt";
-
         private int _itemStatus; //0 = nichts, 1 = invincibility, 2 = ??
 
         private float _itemTimer;
@@ -171,7 +168,7 @@ namespace FuseeApp
             _sihD = new SceneInteractionHandler(_uiDeath);
 
 
-            _starshipScene = AssetStorage.Get<SceneContainer>("DeloreanV2.fus");
+            _starshipScene = AssetStorage.Get<SceneContainer>("DeloreanV2smol.fus");
 
 
             _starshipTrans = _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetTransform();
@@ -605,8 +602,6 @@ namespace FuseeApp
                 _starshipTrans.Rotation.y = 0;
             }
 
-            Console.WriteLine(_starshipTrans.Rotation);
-
             float3 newPosXY = new float3(_starshipTrans.Translation.x, _newPosY, _starshipTrans.Translation.z);
             float3 oldPosXY = new float3(_starshipTrans.Translation.x, _oldPosY, _starshipTrans.Translation.z);
 
@@ -615,13 +610,16 @@ namespace FuseeApp
                 _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((_counterUD) / 0.3f));
                 _newPos.y = _newPosY;
                 _oldPos.y = _newPosY;
+                Console.WriteLine("NewPosY: " + _newPosY);
                 if (_newPosY < _oldPosY)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * 1;//0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * 1 - M.PiOver2;//0.167f;
+                    Console.WriteLine("RotUp: " + _starshipTrans.Rotation.x);
                 }
                 else if (_newPosY > _oldPosY)
                 {
-                    _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * -1; // 0.167f;
+                    _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * -1 - M.PiOver2; // 0.167f;
+                    Console.WriteLine("RotDown: " + _starshipTrans.Rotation.x);
                 }
 
                 _counterUD -= DeltaTime;
@@ -637,11 +635,11 @@ namespace FuseeApp
 
                 if (_oldPosY < _newPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * 0.5f;// 1.5f; //-0.167f;
+                    _starshipTrans.Rotation.x = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * 1.57f -M.PiOver2;// 1.5f; //-0.167f;
                 }
                 else if (_oldPosY > _newPosY)
                 {
-                    _starshipTrans.Rotation.z = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * -0.7f; // 1.5f;//0.167f;
+                    _starshipTrans.Rotation.x = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * -0.7f - M.PiOver2; // 1.5f;//0.167f;
                 }
                 _newPos.y = _oldPosY;
                 _oldPos.y = _newPosY;
@@ -652,7 +650,8 @@ namespace FuseeApp
             {
                 _newPosY = _oldPosY;
                 _counterUD = 0;
-                _starshipTrans.Rotation.z = M.PiOver2;
+                _starshipTrans.Rotation.x = -M.PiOver2;
+                //_starshipTrans.Rotation.z = M.PiOver2;
             }
 
 
@@ -951,7 +950,7 @@ namespace FuseeApp
             if (_laserHitbox.Intersects(cubeHitbox))
             {
                 _cubeObstMesh.Active = false;
-                _cubeObstMesh.BoundingBox.min.y = 7;
+                //_cubeObstMesh.BoundingBox.min.y = 7;
                 Console.WriteLine("Pew Pew!");
             }
         }
