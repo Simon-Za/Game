@@ -155,7 +155,7 @@ namespace FuseeApp
 
         public override void Init()
         {
-            RC.ClearColor = new float4(0.3f, 0, 0.9f, 0);
+            RC.ClearColor = new float4(0, 0, 0.1f, 0);
 
 
             _uiStart = CreateUIStart();
@@ -266,16 +266,17 @@ namespace FuseeApp
         {
 
             // Clear the backbuffer
+            
+            
             RC.Clear(ClearFlags.Color | ClearFlags.Depth);
 
             RC.Viewport(0, 0, Width, Height);
 
 
             //Item Shenanigans
-            if (_itemTimer <= _playTime && _itemOrbMesh != null)
+            if (_itemTimer <= _playTime && _itemOrbMesh != null)        //playTime geht +3 bei item3, also funktioniert das nicht      Timer auf +4 gesetzt, aber keine Besserung?
             {
                 _itemOrbMesh.Active = true;
-                _itemOrbMesh.BoundingBox.min.y = -0.6f;
             }
             if (_itemTimer <= _playTime)
             {
@@ -284,17 +285,25 @@ namespace FuseeApp
 
             if(_itemStatus == 3)
             {
-                _appStartTime -= 1;
+                _appStartTime -= 3;
+                //_itemStatus = 6;    //???????????????????????????
             }
             else if (_itemStatus == 4)
             {
                 _speedIncrItem = 0.95f;
             }
+            else if(_itemStatus == 0)
+            {
+                _speedIncrItem = 1.0526f;
+                if (_itemOrbMesh != null)
+                {
+                    _itemOrbMesh.Active = true;
+                }
+            }
+
             else
             {
                 _speedIncrItem = 1.0526f;
-                if(_itemOrbMesh!= null)
-                _itemOrbMesh.Active = true;
             }
 
 
@@ -305,7 +314,7 @@ namespace FuseeApp
                     _starshipScene.Children.Add(_laserbeam);
                     _laser = true;
                 }
-                _laserTrans.Translation.y = _starshipTrans.Translation.y - 0.5f;
+                _laserTrans.Translation.y = _starshipTrans.Translation.y - 0.3f;
                 _laserTrans.Translation.x = _starshipTrans.Translation.x;
 
 
@@ -325,11 +334,11 @@ namespace FuseeApp
 
             if (_itemStatus == 1)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 3, 0, 1));
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(1, 1, 0, 1));
             }
             else if (_itemStatus == 2)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(1, 2, 3, 1));
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(0, 0.4f, 1, 1));
             }
             else if (_itemStatus == 3)
             {
@@ -337,8 +346,7 @@ namespace FuseeApp
             }
             else if (_itemStatus == 4)
             {
-                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(3, 1, 3, 1));
-            }
+                _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", new float4(1, 0, 1, 1));            }
             else
             {
                 _starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().SetFxParam("SurfaceInput.Albedo", _color);
@@ -359,8 +367,9 @@ namespace FuseeApp
                 }
             }
 
+            _speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
 
-            //Trench Switches
+            //Trench Switches       //wenn Trenches länger werden, hier magische Zahlen ändern!!
             if (_newTrench.GetTransform().Translation.z <= _currentTrenchTrans)
             {
                 TrenchParent.Children.Remove(_currentTrench);
@@ -381,7 +390,7 @@ namespace FuseeApp
                 _newItemTrench.GetTransform().Translation.z = 99;
                 TrenchParent.Children.Add(_currentItemTrench);
                 TrenchParent.Children.Add(_newItemTrench);
-            }       //wenn Trenches länger werden, hier magische Zahlen ändern!!
+            }      
 
 
 
@@ -458,7 +467,7 @@ namespace FuseeApp
 
 
 
-            //Start und Restart Button
+            //Start und Restart
 
             if (status == 0)
             {
@@ -475,14 +484,14 @@ namespace FuseeApp
                     TryAgain();
                 }
             }
-            if(_itemStatus == 4 && _itemTimer == _playTime + 3)
-            {
-                _speed = ((double)DeltaTime * 20) *_speedIncrItem * _fasterSpeedIncr;
-            }
-            else if(_itemStatus == 0)
-            {
-                _speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
-            }
+            //if(_itemStatus == 4 && _itemTimer == _playTime + 3)
+            //{
+            //    _speed = ((double)DeltaTime * 20) *_speedIncrItem * _fasterSpeedIncr;
+            //}
+            //else if(_itemStatus == 0)
+            //{
+            //    _speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
+            //}
 
             //Bounding Boxes and collision detection
 
@@ -518,7 +527,7 @@ namespace FuseeApp
                         List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
 
 
-                        if (_itemStatus != 1) //Wenn Invincvibility nicht aktiv ist
+                        if (_itemStatus != 1) //Wenn Invincibility nicht aktiv ist
                         {
 
                             for (int i = 0; i < ObstaclesList.Count(); i++)
@@ -540,7 +549,10 @@ namespace FuseeApp
 
                                     LaserCollision(_laserHitbox, cubeHitbox);
 
-                                    Collision(_shipBox, cubeHitbox);
+                                    if(_cubeObstMesh.Active == true)
+                                    {
+                                        Collision(_shipBox, cubeHitbox);
+                                    }
                                 }
 
                                 else if (_itemStatus == 2) //Wenn Shield aktiv ist
@@ -553,9 +565,12 @@ namespace FuseeApp
                                     if(_itemTimer <= _playTime - 1)
                                     {
                                         _cubeObstMesh.Active = true;
-                                        _cubeObstMesh.BoundingBox.min.y = -1;
+                                        //_cubeObstMesh.BoundingBox.min.y = -1;
                                     }
-                                    Collision(_shipBox, cubeHitbox);
+                                    if (_cubeObstMesh.Active == true)
+                                    {
+                                        Collision(_shipBox, cubeHitbox);
+                                    }
                                 }
                             }
                         }
@@ -610,16 +625,13 @@ namespace FuseeApp
                 _starshipTrans.Translation = float3.Lerp(newPosXY, oldPosXY, M.SmootherStep((_counterUD) / 0.3f));
                 _newPos.y = _newPosY;
                 _oldPos.y = _newPosY;
-                Console.WriteLine("NewPosY: " + _newPosY);
                 if (_newPosY < _oldPosY)
                 {
                     _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * 1 - M.PiOver2;//0.167f;
-                    Console.WriteLine("RotUp: " + _starshipTrans.Rotation.x);
                 }
                 else if (_newPosY > _oldPosY)
                 {
                     _starshipTrans.Rotation.x = M.SmootherStep(_counterUD / 0.3f) * -1 - M.PiOver2; // 0.167f;
-                    Console.WriteLine("RotDown: " + _starshipTrans.Rotation.x);
                 }
 
                 _counterUD -= DeltaTime;
@@ -673,8 +685,9 @@ namespace FuseeApp
             _timerText.Text = _playTime.ToString();
             //Console.WriteLine(speed);
             Console.WriteLine(_itemStatus);
+            Console.WriteLine(_speedIncrItem);
+            Console.WriteLine(_speed);
 
-         
             //verschiedene UIs werden gerendert
             if (status == 0)
             {
@@ -915,7 +928,6 @@ namespace FuseeApp
             _currentTrenchTrans = _currentTrench.GetTransform().Translation.z;
             _itemStatus = 0;
             _cubeObstMesh.Active = true;
-            _cubeObstMesh.BoundingBox.min.y = -1;
         }
 
         //Timer wird gestartet
@@ -960,7 +972,6 @@ namespace FuseeApp
             if (itemHitbox.Intersects(_shipBox.Center))
             {               
                 _itemOrbMesh.Active = false;
-                _itemOrbMesh.BoundingBox.min.y = 8;
                 _random = new Random();
                 _itemStatus = _random.Next(1, 6);    //hier random item 1-x
                 if(_itemStatus != 2 && _itemStatus != 3)
@@ -973,9 +984,9 @@ namespace FuseeApp
                 }
                 else if (_itemStatus == 3)
                 {
-                    _itemTimer = _playTime + 1;
+                    _itemTimer = _playTime + 4;
                 }
-                
+                Console.WriteLine("GOTCHA!");
                 Console.WriteLine(_itemTimer);
             }
         }

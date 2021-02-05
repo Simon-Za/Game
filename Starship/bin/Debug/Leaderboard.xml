@@ -2,16 +2,84 @@
 <Leaderboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Scores>
     <Score>
+      <topTime>241.93988037109375</topTime>
+      <time>2021-02-04T14:57:21.5002317+01:00</time>
+    </Score>
+    <Score>
+      <topTime>166.17807006835938</topTime>
+      <time>2021-02-04T15:27:43.6435733+01:00</time>
+    </Score>
+    <Score>
+      <topTime>149.36920166015625</topTime>
+      <time>2021-02-04T14:51:24.5837215+01:00</time>
+    </Score>
+    <Score>
+      <topTime>146.3406982421875</topTime>
+      <time>2021-02-04T14:55:27.611058+01:00</time>
+    </Score>
+    <Score>
+      <topTime>134.426513671875</topTime>
+      <time>2021-02-04T14:50:11.8154791+01:00</time>
+    </Score>
+    <Score>
+      <topTime>132.00901794433594</topTime>
+      <time>2021-02-04T12:12:24.5790016+01:00</time>
+    </Score>
+    <Score>
+      <topTime>122.5243148803711</topTime>
+      <time>2021-02-04T13:37:51.7052128+01:00</time>
+    </Score>
+    <Score>
+      <topTime>121.63088989257812</topTime>
+      <time>2021-02-04T13:40:14.7861097+01:00</time>
+    </Score>
+    <Score>
+      <topTime>121.48487854003906</topTime>
+      <time>2021-02-04T14:49:01.8600394+01:00</time>
+    </Score>
+    <Score>
       <topTime>119.38644409179688</topTime>
       <time>2021-01-12T14:05:10.866509+01:00</time>
+    </Score>
+    <Score>
+      <topTime>111.7650146484375</topTime>
+      <time>2021-02-04T14:47:00.4376032+01:00</time>
     </Score>
     <Score>
       <topTime>109.58941650390625</topTime>
       <time>2021-01-13T17:01:59.355373+01:00</time>
     </Score>
     <Score>
+      <topTime>109.02981567382812</topTime>
+      <time>2021-02-04T12:28:54.985896+01:00</time>
+    </Score>
+    <Score>
+      <topTime>106.80962371826172</topTime>
+      <time>2021-02-04T14:16:27.1512494+01:00</time>
+    </Score>
+    <Score>
+      <topTime>105.86354064941406</topTime>
+      <time>2021-02-04T14:11:58.1486609+01:00</time>
+    </Score>
+    <Score>
+      <topTime>105.30399322509766</topTime>
+      <time>2021-02-04T15:55:13.4850596+01:00</time>
+    </Score>
+    <Score>
+      <topTime>105.06443786621094</topTime>
+      <time>2021-02-04T14:05:32.6454301+01:00</time>
+    </Score>
+    <Score>
+      <topTime>103.2402572631836</topTime>
+      <time>2021-02-04T10:48:15.0031499+01:00</time>
+    </Score>
+    <Score>
       <topTime>103.05422973632812</topTime>
       <time>2021-01-12T13:59:52.1369096+01:00</time>
+    </Score>
+    <Score>
+      <topTime>102.93721008300781</topTime>
+      <time>2021-02-03T20:42:02.2466707+01:00</time>
     </Score>
     <Score>
       <topTime>102.62126159667969</topTime>
@@ -26,8 +94,28 @@
       <time>2021-01-12T13:52:40.3481831+01:00</time>
     </Score>
     <Score>
+      <topTime>100.69844055175781</topTime>
+      <time>2021-02-04T12:07:00.2431438+01:00</time>
+    </Score>
+    <Score>
+      <topTime>100.6595687866211</topTime>
+      <time>2021-02-04T10:41:12.5780063+01:00</time>
+    </Score>
+    <Score>
       <topTime>99.63558197021484</topTime>
       <time>2021-01-14T12:24:18.3093049+01:00</time>
+    </Score>
+    <Score>
+      <topTime>99.3611831665039</topTime>
+      <time>2021-02-04T12:19:34.1301956+01:00</time>
+    </Score>
+    <Score>
+      <topTime>98.90420532226562</topTime>
+      <time>2021-02-04T10:35:49.4745522+01:00</time>
+    </Score>
+    <Score>
+      <topTime>98.58863067626953</topTime>
+      <time>2021-02-04T14:35:28.2256319+01:00</time>
     </Score>
     <Score>
       <topTime>96.48681640625</topTime>
@@ -46,6 +134,10 @@
       <time>2021-01-14T12:49:39.5693313+01:00</time>
     </Score>
     <Score>
+      <topTime>91.68533325195312</topTime>
+      <time>2021-02-04T15:34:37.7697641+01:00</time>
+    </Score>
+    <Score>
       <topTime>91.67444610595703</topTime>
       <time>2021-02-03T14:33:33.8074502+01:00</time>
     </Score>
@@ -60,6 +152,30 @@
     <Score>
       <topTime>85.35353088378906</topTime>
       <time>2021-01-12T14:51:35.0846664+01:00</time>
+    </Score>
+    <Score>
+      <topTime>84.02920532226562</topTime>
+      <time>2021-02-04T15:58:15.5382433+01:00</time>
+    </Score>
+    <Score>
+      <topTime>83.42316436767578</topTime>
+      <time>2021-02-04T11:04:06.8210006+01:00</time>
+    </Score>
+    <Score>
+      <topTime>83.31246948242188</topTime>
+      <time>2021-02-04T14:28:26.14317+01:00</time>
+    </Score>
+    <Score>
+      <topTime>83.23797607421875</topTime>
+      <time>2021-02-04T14:45:12.7501863+01:00</time>
+    </Score>
+    <Score>
+      <topTime>82.7870101928711</topTime>
+      <time>2021-02-04T15:57:02.0642372+01:00</time>
+    </Score>
+    <Score>
+      <topTime>81.63737487792969</topTime>
+      <time>2021-02-04T12:14:15.7515771+01:00</time>
     </Score>
     <Score>
       <topTime>81.57026672363281</topTime>
@@ -78,6 +194,10 @@
       <time>2021-01-13T12:33:14.493249+01:00</time>
     </Score>
     <Score>
+      <topTime>77.85700988769531</topTime>
+      <time>2021-02-04T12:08:20.3053665+01:00</time>
+    </Score>
+    <Score>
       <topTime>77.47037506103516</topTime>
       <time>2021-01-11T12:42:24.5263045+01:00</time>
     </Score>
@@ -94,8 +214,20 @@
       <time>2021-01-13T16:08:28.8300545+01:00</time>
     </Score>
     <Score>
+      <topTime>74.38040161132812</topTime>
+      <time>2021-02-04T10:52:26.5148934+01:00</time>
+    </Score>
+    <Score>
+      <topTime>72.98472595214844</topTime>
+      <time>2021-02-04T13:46:35.2098468+01:00</time>
+    </Score>
+    <Score>
       <topTime>72.55340576171875</topTime>
       <time>2021-01-11T14:04:07.9788541+01:00</time>
+    </Score>
+    <Score>
+      <topTime>71.43610382080078</topTime>
+      <time>2021-02-04T14:42:03.2567431+01:00</time>
     </Score>
     <Score>
       <topTime>71.30279541015625</topTime>
@@ -104,6 +236,10 @@
     <Score>
       <topTime>70.36837768554688</topTime>
       <time>2021-01-12T11:07:04.108519+01:00</time>
+    </Score>
+    <Score>
+      <topTime>67.63899230957031</topTime>
+      <time>2021-02-04T10:53:42.1527576+01:00</time>
     </Score>
     <Score>
       <topTime>67.61917877197266</topTime>
@@ -116,6 +252,10 @@
     <Score>
       <topTime>65.36493682861328</topTime>
       <time>2021-01-11T14:41:35.3947504+01:00</time>
+    </Score>
+    <Score>
+      <topTime>64.99693298339844</topTime>
+      <time>2021-02-03T22:31:32.0895023+01:00</time>
     </Score>
     <Score>
       <topTime>64.81072998046875</topTime>
@@ -142,12 +282,24 @@
       <time>2021-01-13T15:32:58.7319736+01:00</time>
     </Score>
     <Score>
+      <topTime>60.346736907958984</topTime>
+      <time>2021-02-04T10:46:13.3648936+01:00</time>
+    </Score>
+    <Score>
       <topTime>59.969207763671875</topTime>
       <time>2021-01-14T12:50:43.3014403+01:00</time>
     </Score>
     <Score>
+      <topTime>59.40170669555664</topTime>
+      <time>2021-02-04T14:40:33.3968712+01:00</time>
+    </Score>
+    <Score>
       <topTime>59.250553131103516</topTime>
       <time>2021-01-12T11:58:01.2990906+01:00</time>
+    </Score>
+    <Score>
+      <topTime>58.38656997680664</topTime>
+      <time>2021-02-04T12:09:43.3191285+01:00</time>
     </Score>
     <Score>
       <topTime>57.48731994628906</topTime>
@@ -178,6 +330,10 @@
       <time>2021-01-13T17:14:18.6410441+01:00</time>
     </Score>
     <Score>
+      <topTime>53.605682373046875</topTime>
+      <time>2021-02-04T13:48:46.6838454+01:00</time>
+    </Score>
+    <Score>
       <topTime>52.398311614990234</topTime>
       <time>2021-01-11T12:52:36.5639764+01:00</time>
     </Score>
@@ -188,6 +344,10 @@
     <Score>
       <topTime>51.06910705566406</topTime>
       <time>2021-01-11T14:16:43.8994388+01:00</time>
+    </Score>
+    <Score>
+      <topTime>50.53466796875</topTime>
+      <time>2021-02-04T15:10:55.2877999+01:00</time>
     </Score>
     <Score>
       <topTime>50.469512939453125</topTime>
@@ -204,6 +364,14 @@
     <Score>
       <topTime>49.68572235107422</topTime>
       <time>2021-01-11T14:05:01.6294924+01:00</time>
+    </Score>
+    <Score>
+      <topTime>49.549530029296875</topTime>
+      <time>2021-02-04T10:54:43.0291991+01:00</time>
+    </Score>
+    <Score>
+      <topTime>48.72096252441406</topTime>
+      <time>2021-02-04T14:26:52.4396683+01:00</time>
     </Score>
     <Score>
       <topTime>48.56864547729492</topTime>
@@ -226,8 +394,20 @@
       <time>2021-01-13T15:25:25.5432437+01:00</time>
     </Score>
     <Score>
+      <topTime>45.822086334228516</topTime>
+      <time>2021-02-04T14:14:02.7368925+01:00</time>
+    </Score>
+    <Score>
+      <topTime>45.379364013671875</topTime>
+      <time>2021-02-04T14:17:17.4837694+01:00</time>
+    </Score>
+    <Score>
       <topTime>45.10008239746094</topTime>
       <time>2021-01-11T15:29:35.702731+01:00</time>
+    </Score>
+    <Score>
+      <topTime>45.05543518066406</topTime>
+      <time>2021-02-04T13:45:20.8607554+01:00</time>
     </Score>
     <Score>
       <topTime>44.60107421875</topTime>
@@ -262,12 +442,24 @@
       <time>2021-02-01T15:54:46.0903558+01:00</time>
     </Score>
     <Score>
+      <topTime>43.09001541137695</topTime>
+      <time>2021-02-03T15:23:56.2900636+01:00</time>
+    </Score>
+    <Score>
+      <topTime>42.68223571777344</topTime>
+      <time>2021-02-04T14:29:05.9835055+01:00</time>
+    </Score>
+    <Score>
       <topTime>42.485443115234375</topTime>
       <time>2021-01-13T16:57:23.5419877+01:00</time>
     </Score>
     <Score>
       <topTime>41.76567077636719</topTime>
       <time>2021-01-11T14:48:44.0370695+01:00</time>
+    </Score>
+    <Score>
+      <topTime>41.74653244018555</topTime>
+      <time>2021-02-04T10:42:23.7897441+01:00</time>
     </Score>
     <Score>
       <topTime>41.66823196411133</topTime>
@@ -286,6 +478,14 @@
       <time>2021-01-26T14:34:27.72309+01:00</time>
     </Score>
     <Score>
+      <topTime>41.35971450805664</topTime>
+      <time>2021-02-04T11:07:40.3049499+01:00</time>
+    </Score>
+    <Score>
+      <topTime>41.22589111328125</topTime>
+      <time>2021-02-04T15:55:50.1580097+01:00</time>
+    </Score>
+    <Score>
       <topTime>41.21842956542969</topTime>
       <time>2021-01-13T23:35:02.3532668+01:00</time>
     </Score>
@@ -298,6 +498,10 @@
       <time>2021-01-13T15:34:43.3544081+01:00</time>
     </Score>
     <Score>
+      <topTime>40.69850540161133</topTime>
+      <time>2021-02-04T10:43:02.4999479+01:00</time>
+    </Score>
+    <Score>
       <topTime>40.686248779296875</topTime>
       <time>2021-01-14T12:25:16.2147563+01:00</time>
     </Score>
@@ -308,6 +512,10 @@
     <Score>
       <topTime>39.80338668823242</topTime>
       <time>2021-01-28T11:12:23.6615297+01:00</time>
+    </Score>
+    <Score>
+      <topTime>39.68147277832031</topTime>
+      <time>2021-02-04T13:20:38.7289577+01:00</time>
     </Score>
     <Score>
       <topTime>39.666107177734375</topTime>
@@ -334,6 +542,10 @@
       <time>2021-01-12T13:58:14.3435149+01:00</time>
     </Score>
     <Score>
+      <topTime>38.374359130859375</topTime>
+      <time>2021-02-04T13:47:53.5168705+01:00</time>
+    </Score>
+    <Score>
       <topTime>38.20038604736328</topTime>
       <time>2021-01-11T14:46:09.3821315+01:00</time>
     </Score>
@@ -342,12 +554,24 @@
       <time>2021-01-18T15:41:18.7264846+01:00</time>
     </Score>
     <Score>
+      <topTime>37.86100769042969</topTime>
+      <time>2021-02-04T14:47:47.2421801+01:00</time>
+    </Score>
+    <Score>
       <topTime>37.701507568359375</topTime>
       <time>2021-01-13T23:37:39.7562967+01:00</time>
     </Score>
     <Score>
       <topTime>37.56834411621094</topTime>
       <time>2021-01-13T23:34:06.6298168+01:00</time>
+    </Score>
+    <Score>
+      <topTime>37.408233642578125</topTime>
+      <time>2021-02-04T10:49:50.5909728+01:00</time>
+    </Score>
+    <Score>
+      <topTime>37.3558464050293</topTime>
+      <time>2021-02-04T14:03:26.9868617+01:00</time>
     </Score>
     <Score>
       <topTime>37.198123931884766</topTime>
@@ -442,6 +666,10 @@
       <time>2021-01-12T13:48:42.4331753+01:00</time>
     </Score>
     <Score>
+      <topTime>31.480195999145508</topTime>
+      <time>2021-02-04T10:32:39.4339598+01:00</time>
+    </Score>
+    <Score>
       <topTime>31.35755157470703</topTime>
       <time>2021-01-12T11:20:40.2259388+01:00</time>
     </Score>
@@ -490,12 +718,20 @@
       <time>2021-01-13T23:39:19.6276055+01:00</time>
     </Score>
     <Score>
+      <topTime>27.99490737915039</topTime>
+      <time>2021-02-03T15:25:51.4436565+01:00</time>
+    </Score>
+    <Score>
       <topTime>27.966041564941406</topTime>
       <time>2021-01-12T13:12:28.1809309+01:00</time>
     </Score>
     <Score>
       <topTime>27.888322830200195</topTime>
       <time>2021-02-03T13:34:34.3955095+01:00</time>
+    </Score>
+    <Score>
+      <topTime>27.780174255371094</topTime>
+      <time>2021-02-04T12:10:12.3652313+01:00</time>
     </Score>
     <Score>
       <topTime>27.4484920501709</topTime>
@@ -520,6 +756,14 @@
     <Score>
       <topTime>26.7063045501709</topTime>
       <time>2021-02-02T16:14:10.6134465+01:00</time>
+    </Score>
+    <Score>
+      <topTime>25.961633682250977</topTime>
+      <time>2021-02-04T10:39:20.7349881+01:00</time>
+    </Score>
+    <Score>
+      <topTime>25.88861083984375</topTime>
+      <time>2021-02-04T12:03:22.1437264+01:00</time>
     </Score>
     <Score>
       <topTime>25.884552001953125</topTime>
@@ -562,6 +806,14 @@
       <time>2021-01-13T23:38:05.8239671+01:00</time>
     </Score>
     <Score>
+      <topTime>23.751220703125</topTime>
+      <time>2021-02-04T13:47:00.0000791+01:00</time>
+    </Score>
+    <Score>
+      <topTime>23.61709976196289</topTime>
+      <time>2021-02-03T15:27:18.1388083+01:00</time>
+    </Score>
+    <Score>
       <topTime>23.350616455078125</topTime>
       <time>2021-01-13T15:07:58.5763704+01:00</time>
     </Score>
@@ -576,6 +828,10 @@
     <Score>
       <topTime>22.268125534057617</topTime>
       <time>2021-01-21T15:39:30.6412746+01:00</time>
+    </Score>
+    <Score>
+      <topTime>22.17401123046875</topTime>
+      <time>2021-02-04T10:32:08.062518+01:00</time>
     </Score>
     <Score>
       <topTime>22.117630004882812</topTime>
@@ -638,6 +894,10 @@
       <time>2021-01-13T15:32:02.4087946+01:00</time>
     </Score>
     <Score>
+      <topTime>21.070018768310547</topTime>
+      <time>2021-02-04T14:14:45.406611+01:00</time>
+    </Score>
+    <Score>
       <topTime>21.0675048828125</topTime>
       <time>2021-01-13T23:36:36.9036899+01:00</time>
     </Score>
@@ -656,6 +916,14 @@
     <Score>
       <topTime>20.693096160888672</topTime>
       <time>2021-02-02T16:32:38.5902791+01:00</time>
+    </Score>
+    <Score>
+      <topTime>20.64594268798828</topTime>
+      <time>2021-02-04T14:03:48.5557894+01:00</time>
+    </Score>
+    <Score>
+      <topTime>20.47816276550293</topTime>
+      <time>2021-02-04T12:27:06.6730705+01:00</time>
     </Score>
     <Score>
       <topTime>20.331520080566406</topTime>
@@ -702,6 +970,10 @@
       <time>2021-01-11T15:36:06.5103692+01:00</time>
     </Score>
     <Score>
+      <topTime>19.220264434814453</topTime>
+      <time>2021-02-04T10:34:13.8791437+01:00</time>
+    </Score>
+    <Score>
       <topTime>19.171714782714844</topTime>
       <time>2021-01-26T14:36:56.4807847+01:00</time>
     </Score>
@@ -744,6 +1016,10 @@
     <Score>
       <topTime>18.014842987060547</topTime>
       <time>2021-01-13T15:16:08.9634204+01:00</time>
+    </Score>
+    <Score>
+      <topTime>17.835025787353516</topTime>
+      <time>2021-02-04T10:45:14.2892544+01:00</time>
     </Score>
     <Score>
       <topTime>17.600936889648438</topTime>
@@ -862,12 +1138,36 @@
       <time>2021-01-14T13:51:20.1592166+01:00</time>
     </Score>
     <Score>
+      <topTime>15.23554515838623</topTime>
+      <time>2021-02-04T14:33:43.6495325+01:00</time>
+    </Score>
+    <Score>
+      <topTime>15.207658767700195</topTime>
+      <time>2021-02-04T14:39:34.1995944+01:00</time>
+    </Score>
+    <Score>
+      <topTime>15.106430053710938</topTime>
+      <time>2021-02-04T14:27:06.7629123+01:00</time>
+    </Score>
+    <Score>
+      <topTime>15.092506408691406</topTime>
+      <time>2021-02-04T13:38:10.8808003+01:00</time>
+    </Score>
+    <Score>
       <topTime>14.93365478515625</topTime>
       <time>2021-01-13T23:36:15.1854879+01:00</time>
     </Score>
     <Score>
       <topTime>14.267187118530273</topTime>
       <time>2021-01-11T11:58:17.696061+01:00</time>
+    </Score>
+    <Score>
+      <topTime>14.162656784057617</topTime>
+      <time>2021-02-04T12:05:20.2241763+01:00</time>
+    </Score>
+    <Score>
+      <topTime>13.799331665039062</topTime>
+      <time>2021-02-04T13:47:14.6419224+01:00</time>
     </Score>
     <Score>
       <topTime>13.730669975280762</topTime>
@@ -970,6 +1270,10 @@
       <time>2021-01-21T15:30:02.5077231+01:00</time>
     </Score>
     <Score>
+      <topTime>11.926169395446777</topTime>
+      <time>2021-02-04T12:05:05.1293817+01:00</time>
+    </Score>
+    <Score>
       <topTime>11.833308219909668</topTime>
       <time>2021-01-19T11:23:16.2503256+01:00</time>
     </Score>
@@ -980,6 +1284,10 @@
     <Score>
       <topTime>11.781373023986816</topTime>
       <time>2021-01-14T13:51:04.1491779+01:00</time>
+    </Score>
+    <Score>
+      <topTime>11.731220245361328</topTime>
+      <time>2021-02-04T12:04:45.9903981+01:00</time>
     </Score>
     <Score>
       <topTime>11.653066635131836</topTime>
@@ -1034,6 +1342,10 @@
       <time>2021-01-13T16:19:15.6044587+01:00</time>
     </Score>
     <Score>
+      <topTime>10.848878860473633</topTime>
+      <time>2021-02-03T15:24:54.296385+01:00</time>
+    </Score>
+    <Score>
       <topTime>10.84854507446289</topTime>
       <time>2021-01-11T12:25:01.308826+01:00</time>
     </Score>
@@ -1072,6 +1384,10 @@
     <Score>
       <topTime>10.531597137451172</topTime>
       <time>2021-01-13T15:30:15.6486574+01:00</time>
+    </Score>
+    <Score>
+      <topTime>10.510722160339355</topTime>
+      <time>2021-02-04T13:18:28.2995925+01:00</time>
     </Score>
     <Score>
       <topTime>10.504828453063965</topTime>
@@ -1134,6 +1450,10 @@
       <time>2021-01-21T15:39:04.8566771+01:00</time>
     </Score>
     <Score>
+      <topTime>9.099235534667969</topTime>
+      <time>2021-02-04T10:39:30.9410727+01:00</time>
+    </Score>
+    <Score>
       <topTime>8.983413696289062</topTime>
       <time>2021-01-14T12:54:19.2118276+01:00</time>
     </Score>
@@ -1182,6 +1502,10 @@
       <time>2021-01-18T13:32:41.1205238+01:00</time>
     </Score>
     <Score>
+      <topTime>8.432507514953613</topTime>
+      <time>2021-02-04T10:33:53.7464991+01:00</time>
+    </Score>
+    <Score>
       <topTime>8.41689682006836</topTime>
       <time>2021-01-18T12:49:44.2935149+01:00</time>
     </Score>
@@ -1192,6 +1516,10 @@
     <Score>
       <topTime>8.34859848022461</topTime>
       <time>2021-02-03T14:39:17.4764277+01:00</time>
+    </Score>
+    <Score>
+      <topTime>8.232019424438477</topTime>
+      <time>2021-02-03T22:33:46.6666085+01:00</time>
     </Score>
     <Score>
       <topTime>8.182403564453125</topTime>
@@ -1216,6 +1544,10 @@
     <Score>
       <topTime>8.050220489501953</topTime>
       <time>2021-02-03T12:12:24.8842716+01:00</time>
+    </Score>
+    <Score>
+      <topTime>8.039573669433594</topTime>
+      <time>2021-02-03T22:31:55.5426259+01:00</time>
     </Score>
     <Score>
       <topTime>8.006906509399414</topTime>
@@ -1338,6 +1670,10 @@
       <time>2021-01-11T12:36:41.4406232+01:00</time>
     </Score>
     <Score>
+      <topTime>6.207295894622803</topTime>
+      <time>2021-02-04T13:18:16.9722503+01:00</time>
+    </Score>
+    <Score>
       <topTime>6.164242744445801</topTime>
       <time>2021-01-13T12:18:39.0004536+01:00</time>
     </Score>
@@ -1372,6 +1708,10 @@
     <Score>
       <topTime>5.9831085205078125</topTime>
       <time>2021-01-13T15:51:39.6376545+01:00</time>
+    </Score>
+    <Score>
+      <topTime>5.979294300079346</topTime>
+      <time>2021-02-04T13:19:58.2261071+01:00</time>
     </Score>
     <Score>
       <topTime>5.950103759765625</topTime>
@@ -1446,6 +1786,10 @@
       <time>2021-02-03T14:31:59.229848+01:00</time>
     </Score>
     <Score>
+      <topTime>5.653196334838867</topTime>
+      <time>2021-02-04T14:33:52.0977233+01:00</time>
+    </Score>
+    <Score>
       <topTime>5.650245666503906</topTime>
       <time>2021-01-18T15:10:58.9456882+01:00</time>
     </Score>
@@ -1460,6 +1804,10 @@
     <Score>
       <topTime>5.642702579498291</topTime>
       <time>2021-01-18T15:30:08.7026868+01:00</time>
+    </Score>
+    <Score>
+      <topTime>5.6305389404296875</topTime>
+      <time>2021-02-04T14:16:34.1044975+01:00</time>
     </Score>
     <Score>
       <topTime>5.59100341796875</topTime>
@@ -1534,12 +1882,20 @@
       <time>2021-01-18T15:05:46.1619378+01:00</time>
     </Score>
     <Score>
+      <topTime>4.673145294189453</topTime>
+      <time>2021-02-04T13:20:49.2797038+01:00</time>
+    </Score>
+    <Score>
       <topTime>4.593584060668945</topTime>
       <time>2021-02-03T12:11:56.1411871+01:00</time>
     </Score>
     <Score>
       <topTime>4.550470352172852</topTime>
       <time>2021-01-11T12:25:13.5909122+01:00</time>
+    </Score>
+    <Score>
+      <topTime>4.531782150268555</topTime>
+      <time>2021-02-03T22:33:26.4754523+01:00</time>
     </Score>
     <Score>
       <topTime>4.515031814575195</topTime>
@@ -1648,6 +2004,10 @@
     <Score>
       <topTime>3.6227569580078125</topTime>
       <time>2021-02-02T16:17:58.3284459+01:00</time>
+    </Score>
+    <Score>
+      <topTime>3.6217942237854004</topTime>
+      <time>2021-02-03T15:24:33.0252925+01:00</time>
     </Score>
     <Score>
       <topTime>3.5808489322662354</topTime>
@@ -1838,6 +2198,14 @@
       <time>2021-01-11T11:46:14.1567623+01:00</time>
     </Score>
     <Score>
+      <topTime>2.0063843727111816</topTime>
+      <time>2021-02-04T13:49:47.9262119+01:00</time>
+    </Score>
+    <Score>
+      <topTime>2.006260871887207</topTime>
+      <time>2021-02-04T13:50:10.9580951+01:00</time>
+    </Score>
+    <Score>
       <topTime>1.9753952026367188</topTime>
       <time>2021-02-02T16:17:51.7864393+01:00</time>
     </Score>
@@ -1846,8 +2214,16 @@
       <time>2021-02-03T12:11:59.0950997+01:00</time>
     </Score>
     <Score>
+      <topTime>1.9411087036132812</topTime>
+      <time>2021-02-04T14:12:06.3311603+01:00</time>
+    </Score>
+    <Score>
       <topTime>1.9324922561645508</topTime>
       <time>2021-02-02T15:55:27.6202024+01:00</time>
+    </Score>
+    <Score>
+      <topTime>1.866424560546875</topTime>
+      <time>2021-02-04T15:57:05.6009131+01:00</time>
     </Score>
     <Score>
       <topTime>1.8491328954696655</topTime>
@@ -2106,6 +2482,10 @@
       <time>2021-01-13T11:30:22.9800976+01:00</time>
     </Score>
     <Score>
+      <topTime>1.1611156463623047</topTime>
+      <time>2021-02-03T22:33:31.9931828+01:00</time>
+    </Score>
+    <Score>
       <topTime>1.1310138702392578</topTime>
       <time>2021-01-13T23:51:21.6441481+01:00</time>
     </Score>
@@ -2124,6 +2504,10 @@
     <Score>
       <topTime>1.0946764945983887</topTime>
       <time>2021-01-26T13:56:05.9590984+01:00</time>
+    </Score>
+    <Score>
+      <topTime>1.08160400390625</topTime>
+      <time>2021-02-04T15:57:08.9233951+01:00</time>
     </Score>
     <Score>
       <topTime>1.0814762115478516</topTime>
@@ -2152,6 +2536,14 @@
     <Score>
       <topTime>1.0806899070739746</topTime>
       <time>2021-01-08T11:01:40.5424397+01:00</time>
+    </Score>
+    <Score>
+      <topTime>1.0801715850830078</topTime>
+      <time>2021-02-03T22:33:28.9255017+01:00</time>
+    </Score>
+    <Score>
+      <topTime>1.0775226354599</topTime>
+      <time>2021-02-04T10:33:44.5063367+01:00</time>
     </Score>
     <Score>
       <topTime>1.0649336576461792</topTime>
@@ -2246,6 +2638,14 @@
       <time>2021-01-08T15:18:09.7824+01:00</time>
     </Score>
     <Score>
+      <topTime>0.9571394920349121</topTime>
+      <time>2021-02-04T13:19:51.2759565+01:00</time>
+    </Score>
+    <Score>
+      <topTime>0.9538345336914062</topTime>
+      <time>2021-02-04T14:33:45.4146567+01:00</time>
+    </Score>
+    <Score>
       <topTime>0.9498138427734375</topTime>
       <time>2021-01-18T11:45:23.4408019+01:00</time>
     </Score>
@@ -2268,6 +2668,10 @@
     <Score>
       <topTime>0.9480095505714417</topTime>
       <time>2021-01-13T15:05:46.9153574+01:00</time>
+    </Score>
+    <Score>
+      <topTime>0.9461822509765625</topTime>
+      <time>2021-02-04T13:38:12.7567438+01:00</time>
     </Score>
     <Score>
       <topTime>0.9248886108398438</topTime>
