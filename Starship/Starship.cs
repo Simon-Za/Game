@@ -103,6 +103,8 @@ namespace FuseeApp
 
         private Mesh _cubeObstMesh;
 
+        private SceneNode _cubeObst;
+
         private Transform _itemOrbTrans;
 
         private Mesh _itemOrbMesh;
@@ -207,6 +209,8 @@ namespace FuseeApp
             {
                 AssetStorage.Get<SceneContainer>("TestCarTrench1v2.fus").ToSceneNode(),
                 AssetStorage.Get<SceneContainer>("TestCarTrench2v2.fus").ToSceneNode(),
+                //AssetStorage.Get<SceneContainer>("JoinedMeshTestTrench.fus").ToSceneNode(),
+               
                //AssetStorage.Get<SceneContainer>("CarTrench1v1.fus").ToSceneNode(),
                //AssetStorage.Get<SceneContainer>("CarTrench2v1.fus").ToSceneNode(),
                //AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
@@ -274,7 +278,7 @@ namespace FuseeApp
 
 
             //Item Shenanigans
-            if (_itemTimer <= _playTime && _itemOrbMesh != null)        //playTime geht +3 bei item3, also funktioniert das nicht      Timer auf +4 gesetzt, aber keine Besserung?
+            if (_itemTimer <= _playTime && _itemOrbMesh != null)
             {
                 _itemOrbMesh.Active = true;
             }
@@ -286,7 +290,7 @@ namespace FuseeApp
             if(_itemStatus == 3)
             {
                 _appStartTime -= 3;
-                //_itemStatus = 6;    //???????????????????????????
+                _itemStatus = 6;    //Status 6 ist leer, nur da, dass 3 nicht mehrmals ausgeführt wird
             }
             else if (_itemStatus == 4)
             {
@@ -300,7 +304,6 @@ namespace FuseeApp
                     _itemOrbMesh.Active = true;
                 }
             }
-
             else
             {
                 _speedIncrItem = 1.0526f;
@@ -535,6 +538,8 @@ namespace FuseeApp
                                 _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault()?.GetTransform();
 
                                 _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault()?.GetMesh();
+                                _cubeObst = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault();
+
 
                                 AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
 
@@ -647,7 +652,7 @@ namespace FuseeApp
 
                 if (_oldPosY < _newPosY)
                 {
-                    _starshipTrans.Rotation.x = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) * 1.57f -M.PiOver2;// 1.5f; //-0.167f;
+                    _starshipTrans.Rotation.x = M.SmoothStep(-(_counterUD + 0.2f) / 0.3f) /** 1.57f*/ -M.PiOver2;// 1.5f; //-0.167f;
                 }
                 else if (_oldPosY > _newPosY)
                 {
@@ -953,8 +958,12 @@ namespace FuseeApp
             if (_shipBox.Intersects(cubeHitbox))
             {
                 _cubeObstMesh.Active = false;
+
+                DeactivateMesh(_cubeObst);
+
                 _itemTimer = _playTime + 0.2f;
-            }
+                
+            }     
         }
 
         private void LaserCollision(AABBf _laserHitbox, AABBf cubeHitbox)
@@ -962,16 +971,42 @@ namespace FuseeApp
             if (_laserHitbox.Intersects(cubeHitbox))
             {
                 _cubeObstMesh.Active = false;
+
+                DeactivateMesh(_cubeObst);
+
+
                 //_cubeObstMesh.BoundingBox.min.y = 7;
                 Console.WriteLine("Pew Pew!");
             }
         }
+
+        private void DeactivateMesh(SceneNode obstacle)
+        {
+            for(int m = 0; m < obstacle.Children.Count(); m++)
+            {
+                if(obstacle.Children.ElementAt(m).GetMesh() != null)
+                {
+                    obstacle.Children.ElementAt(m).GetMesh().Active = false;
+                }
+                if(obstacle.Children.ElementAt(m).Children.Count() > 0)
+                {
+                    DeactivateMesh(obstacle.Children.ElementAt(m));
+                }
+            }
+        }
+
+        private void ActivateMesh(SceneNode obstacle)
+        {
+            //GENAU DAS GLEICHE WIE BEI DEACTIVATE NUR = TRUE
+        }
+
 
         private void ObtainItem(AABBf _shipBox, AABBf itemHitbox)
         {
             if (itemHitbox.Intersects(_shipBox.Center))
             {               
                 _itemOrbMesh.Active = false;
+                
                 _random = new Random();
                 _itemStatus = _random.Next(1, 6);    //hier random item 1-x
                 if(_itemStatus != 2 && _itemStatus != 3)
