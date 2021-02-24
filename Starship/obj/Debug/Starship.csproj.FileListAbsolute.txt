@@ -128,3 +128,15 @@ C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TestCarTrench1v2.f
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\TestCarTrench2v2.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\DeloreanV2smol.fus
 C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\JoinedMeshTestTrench.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\BaustelleTrench1v1.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\BaustelleTrench1v2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench1v2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench2v2.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\BaustelleTrench1v1Test.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench1v2Test.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench2v2Test.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CityTrenchTest.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\city background.jpg
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\fog-overlay.png
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench1v3.fus
+C:\Users\symz1\Documents\FUSEE\Game\Starship\bin\Debug\Assets\CarTrench2v3.fus

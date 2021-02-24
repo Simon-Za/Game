@@ -44,6 +44,8 @@ namespace FuseeApp
 
         private SceneNode TrenchParent;
 
+        private SceneNode CarTrenchParent;
+
         private SceneNode _laserbeam;
 
         private Transform _laserTrans;
@@ -63,6 +65,7 @@ namespace FuseeApp
         private float _playTime;                 //Die Zeit seit drücken des Startknopfs (Leertaste)             wird später benutzt für das Leaderboard/aktive Anzeige ingame(?)
         private bool _start;
         private double _speed;
+        private double _carSpeed;
         private double _fasterSpeedIncr;
         private bool _d;
         private bool _laser;
@@ -73,18 +76,25 @@ namespace FuseeApp
         bool _right;
 
 
-        int _trenchCount;
+        int _carTrenchCount;
+        int _envTrenchCount;
 
-        Random _random;
+        Random _random0;
+        Random _random1;
 
-        SceneNode _currentTrench;
-        SceneNode _newTrench;
+        SceneNode _currentCarTrench;
+        SceneNode _newCarTrench;
+
+        SceneNode _currentEnvTrench;
+        SceneNode _newEnvTrench;
 
         SceneNode _currentItemTrench;
         SceneNode _newItemTrench;
 
 
-        float _currentTrenchTrans;
+        float _currentCarTrenchTrans;
+
+        float _currentEnvTrenchTrans;
 
 
         float _counterLR;//1sec
@@ -114,7 +124,8 @@ namespace FuseeApp
         private SceneNode _currentItem;
 
 
-        List<SceneNode> _trenchesList;
+        List<SceneNode> _carTrenchesList;
+        List<SceneNode> _environmentTrenchesList;
 
         List<SceneNode> _itemList;
 
@@ -146,11 +157,13 @@ namespace FuseeApp
 
         private double currentScore;
 
-        private int _itemStatus; //0 = nichts, 1 = invincibility, 2 = ??
+        private int _itemStatus; //0 = nichts, 1 = invincibility, 2 = Shield, 3 = Bonuspunkte, 4 = Timeslow, 5 = Laser
 
         private float _itemTimer;
 
         private float4 _color;
+
+        private int _div;
        
 
 
@@ -205,16 +218,17 @@ namespace FuseeApp
             _newPosY = _starshipTrans.Translation.y;
 
 
-            _trenchesList = new List<SceneNode>
+            _carTrenchesList = new List<SceneNode>
             {
-                AssetStorage.Get<SceneContainer>("TestCarTrench1v2.fus").ToSceneNode(),
-                AssetStorage.Get<SceneContainer>("TestCarTrench2v2.fus").ToSceneNode(),
-                //AssetStorage.Get<SceneContainer>("JoinedMeshTestTrench.fus").ToSceneNode(),
-               
-               //AssetStorage.Get<SceneContainer>("CarTrench1v1.fus").ToSceneNode(),
-               //AssetStorage.Get<SceneContainer>("CarTrench2v1.fus").ToSceneNode(),
-               //AssetStorage.Get<SceneContainer>("CubesOnly3.fus").ToSceneNode()
+                AssetStorage.Get<SceneContainer>("CarTrench1v3.fus").ToSceneNode(),
+                //AssetStorage.Get<SceneContainer>("CarTrench2v3.fus").ToSceneNode(),
+                //AssetStorage.Get<SceneContainer>("BaustelleTrench1v1.fus").ToSceneNode(),
             };
+            _environmentTrenchesList = new List<SceneNode>
+            {
+                AssetStorage.Get<SceneContainer>("CityTrenchTest.fus").ToSceneNode(),
+            };
+
 
             _itemList = new List<SceneNode>
             {
@@ -222,16 +236,24 @@ namespace FuseeApp
                 AssetStorage.Get<SceneContainer>("ItemTrench2.fus").ToSceneNode(),
             };
 
-            _random = new Random();
-            _trenchCount = _trenchesList.Count();
+            _random0 = new Random();
+            _random1 = new Random();
+            _carTrenchCount = _carTrenchesList.Count();
 
-            _currentTrench = CopyNode(_trenchesList[0]);
-            _newTrench = CopyNode(_trenchesList[_random.Next(0, _trenchCount)]);
+            _envTrenchCount = _environmentTrenchesList.Count();
+
+
+            _currentCarTrench = CopyNode(_carTrenchesList[0]);
+            _newCarTrench = CopyNode(_carTrenchesList[_random0.Next(0, _carTrenchCount)]);
+
+            _currentEnvTrench = CopyNode(_environmentTrenchesList[0]);
+            _newEnvTrench = CopyNode(_environmentTrenchesList[_random1.Next(0, _envTrenchCount)]);
 
             _currentItemTrench = CopyNode(_itemList[0]);
-            _newItemTrench = CopyNode(_itemList[_random.Next(0, _itemList.Count())]);
+            _newItemTrench = CopyNode(_itemList[_random0.Next(0, _itemList.Count())]);
 
-            _newTrench.GetTransform().Translation.z += _newTrench.GetTransform().Scale.z;
+
+            _newCarTrench.GetTransform().Translation.z += _newCarTrench.GetTransform().Scale.z;     //?????????????????????????????????????????????????????
 
             _speedIncrItem = 1;
             _fasterSpeedIncr = 1;
@@ -243,16 +265,29 @@ namespace FuseeApp
                 Name = "TrenchParent"
             };
 
-            _starshipScene.Children.Add(TrenchParent);
+            CarTrenchParent = new SceneNode()
+            {
+                Name = "CarTrenchParent"
+            };
 
-            TrenchParent.Children.Add(_currentTrench);
-            TrenchParent.Children.Add(_newTrench);
+            _starshipScene.Children.Add(TrenchParent);
+            _starshipScene.Children.Add(CarTrenchParent);
+
+            TrenchParent.Children.Add(_currentCarTrench);
+            TrenchParent.Children.Add(_newCarTrench);
+            CarTrenchParent.Children.Add(_currentCarTrench);
+            CarTrenchParent.Children.Add(_newCarTrench);
+
+            TrenchParent.Children.Add(_currentEnvTrench);
+            TrenchParent.Children.Add(_newEnvTrench);
 
             TrenchParent.Children.Add(_currentItemTrench);
             TrenchParent.Children.Add(_newItemTrench);
 
 
-            _currentTrenchTrans = _currentTrench.GetTransform().Translation.z;
+            _currentCarTrenchTrans = _currentCarTrench.GetTransform().Translation.z;
+
+            _currentEnvTrenchTrans = _currentEnvTrench.GetTransform().Translation.z;
 
 
             _sceneRenderer = new SceneRendererForward(_starshipScene);
@@ -263,6 +298,7 @@ namespace FuseeApp
 
             _color = (float4)_starshipScene.Children.FindNodes(node => node.Name == "Chassis")?.FirstOrDefault()?.GetComponent<DefaultSurfaceEffect>().GetFxParam<float4>("SurfaceInput.Albedo");
 
+            _div = 5;
         }
 
 
@@ -317,7 +353,7 @@ namespace FuseeApp
                     _starshipScene.Children.Add(_laserbeam);
                     _laser = true;
                 }
-                _laserTrans.Translation.y = _starshipTrans.Translation.y - 0.3f;
+                _laserTrans.Translation.y = _starshipTrans.Translation.y; //- 0.3f;
                 _laserTrans.Translation.x = _starshipTrans.Translation.x;
 
 
@@ -371,29 +407,49 @@ namespace FuseeApp
             }
 
             _speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
+            _carSpeed = (double)_speed / 20;
 
             //Trench Switches       //wenn Trenches länger werden, hier magische Zahlen ändern!!
-            if (_newTrench.GetTransform().Translation.z <= _currentTrenchTrans)
+            if (_newCarTrench.GetTransform().Translation.z <= _currentCarTrenchTrans)
             {
-                TrenchParent.Children.Remove(_currentTrench);
-                TrenchParent.Children.Remove(_newTrench);
+                TrenchParent.Children.Remove(_currentCarTrench);
+                TrenchParent.Children.Remove(_newCarTrench);
+                CarTrenchParent.Children.Remove(_currentCarTrench);
+                CarTrenchParent.Children.Remove(_newCarTrench);
 
                 TrenchParent.Children.Remove(_currentItemTrench);
                 TrenchParent.Children.Remove(_newItemTrench);
 
 
-                _currentTrench = _newTrench;
-                _newTrench = CopyNode(_trenchesList[_random.Next(0, _trenchCount)]);
-                _newTrench.GetTransform().Translation.z = 99;
-                TrenchParent.Children.Add(_currentTrench);
-                TrenchParent.Children.Add(_newTrench);
+                _currentCarTrench = _newCarTrench;
+
+
+                _newCarTrench = CopyNode(_carTrenchesList[_random0.Next(0, _carTrenchCount)]);
+                _newCarTrench.GetTransform().Translation.z = 99;
+                TrenchParent.Children.Add(_currentCarTrench);
+                TrenchParent.Children.Add(_newCarTrench);
+                CarTrenchParent.Children.Add(_currentCarTrench);
+                CarTrenchParent.Children.Add(_newCarTrench);
 
                 _currentItemTrench = _newItemTrench;
-                _newItemTrench = CopyNode(_itemList[_random.Next(0, _itemList.Count())]);
+                _newItemTrench = CopyNode(_itemList[_random0.Next(0, _itemList.Count())]);
                 _newItemTrench.GetTransform().Translation.z = 99;
                 TrenchParent.Children.Add(_currentItemTrench);
                 TrenchParent.Children.Add(_newItemTrench);
-            }      
+            }    
+            
+            if(_newEnvTrench.GetTransform().Translation.z <= _currentEnvTrenchTrans)
+            {
+                TrenchParent.Children.Remove(_currentEnvTrench);
+                TrenchParent.Children.Remove(_newEnvTrench);
+
+                _currentEnvTrench = _newEnvTrench;
+
+                _newEnvTrench = CopyNode(_environmentTrenchesList[_random1.Next(0, _envTrenchCount)]);
+                _newEnvTrench.GetTransform().Translation.z = 200;
+                TrenchParent.Children.Add(_currentEnvTrench);
+                TrenchParent.Children.Add(_newEnvTrench);
+            }
 
 
 
@@ -487,113 +543,220 @@ namespace FuseeApp
                     TryAgain();
                 }
             }
-            //if(_itemStatus == 4 && _itemTimer == _playTime + 3)
-            //{
-            //    _speed = ((double)DeltaTime * 20) *_speedIncrItem * _fasterSpeedIncr;
-            //}
-            //else if(_itemStatus == 0)
-            //{
-            //    _speed = ((double)DeltaTime * 20) * _speedIncrItem * _fasterSpeedIncr;
-            //}
+
 
             //Bounding Boxes and collision detection
 
             //Boundind Box des Schiffs  
             _shipBox = _starshipTrans.Matrix() * _starShipMesh.BoundingBox;
-            //Console.WriteLine(_shipBox.max); //(4,339855; 1,9487817; 1,7474995)     (1,3398551; 1,9487817; 1,7474995)
-            //Console.WriteLine(_shipBox.min); //(1,6601449; 1,120019; -1,2371582)    (-1,3398551; 1,120019; -1,2371582)    
+
 
             if (_start)
             {
                 _playTime = StartTimer(_appStartTime);
 
                 //Hier werden für Trenches sowie ihre jeweiligen obstacles Listen erstellt, die einzeln abgegangen werden, um nach einer Kollision zu prüfen
-                for (int j = 0; j < TrenchParent.Children.Count; j++)
+                for (int j = 0; j < TrenchParent.Children.Count(); j++)
                 {
-                    var _trenchTrans = TrenchParent.Children.ElementAt(j).GetTransform();
-                    _trenchTrans.Translation.z -= (float)_speed;         //Die Bewegung der Szene wird aktiviert
+                    var trenchTrans = TrenchParent.Children.ElementAt(j).GetTransform();
+                    trenchTrans.Translation.z -= (float)_speed;         //Die Bewegung der Szene wird aktiviert
 
 
-                    if (_trenchTrans != null)
+                    if (trenchTrans != null)
                     {
-                        List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("Car")).ToList();
-                        for(int q = 0; q < ObstaclesList.Count(); q++)
-                        {
-                            if (ObstaclesList[q].Name.Contains("Material"))
+                        //Bewegung von stehenden Objekten
+
+                        //List<SceneNode> MovablesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("Leitpfosten")).ToList();
+                        //MovablesList.AddRange(TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("Baustelle")).ToList());
+
+
+                        //for (int r = 0; r < MovablesList.Count(); r++)
+                        //{
+                        //    if (MovablesList[r].Name.Contains("Material"))
+                        //    {
+                        //        MovablesList.RemoveAt(r);
+                        //        r -= 1;
+                        //    }
+                        //    var movablesTrans = MovablesList.ElementAt(r).GetTransform();
+                        //    movablesTrans.Translation.z += (float)_speed * 0.05f;
+                        //}
+
+
+                        //Bewegung Autos
+
+                        //List<SceneNode> CarsList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("Car")).ToList(); //funktioniert theoretisch,  wahrscheinlich sind nur Trenches zu kurz
+
+                        //for (int r = 0; r < CarsList.Count(); r++)
+                        //{
+                        //    if (CarsList[r].Name.Contains("Material"))
+                        //    {
+                        //        CarsList.RemoveAt(r);
+                        //        r -= 1;
+                        //    }
+                        //    var carTrans = CarsList.ElementAt(r).GetTransform();
+                        //    carTrans.Translation.z -= (float)_carSpeed;
+                        //}
+
+                       for(int k = 0; k < CarTrenchParent.Children.Count(); k++)
+                       {
+                            var carTrenchTrans = CarTrenchParent.Children.ElementAt(k).GetTransform();
+                            carTrenchTrans.Translation.z -= (float)_speed * 0.25f;       //?????????????????????????
+
+                            List<SceneNode> ObstaclesList = CarTrenchParent.Children.ElementAt(k).Children.FindNodes(node => node.Name.Contains("Obstacle")).ToList();
+                            for (int q = 0; q < ObstaclesList.Count(); q++)
                             {
-                                ObstaclesList.RemoveAt(q);
-                                q -= 1;
+                                if (ObstaclesList[q].Name.Contains("Material"))
+                                {
+                                    ObstaclesList.RemoveAt(q);
+                                    q -= 1;
+                                }
                             }
-                        }
-                        
-                        
-                        List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
-
-
-                        if (_itemStatus != 1) //Wenn Invincibility nicht aktiv ist
-                        {
 
                             for (int i = 0; i < ObstaclesList.Count(); i++)
                             {
-                                _cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault()?.GetTransform();
+                                _cubeObstTrans = ObstaclesList.ElementAt(i).GetTransform();
 
-                                _cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault()?.GetMesh();
-                                _cubeObst = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Car" + i)?.FirstOrDefault();
-
-
-                                AABBf cubeHitbox = _trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
-
-                                if (_itemStatus == 5 && _itemTimer >= _playTime + 2)
+                                if (_itemStatus != 1) //Wenn Invincibility nicht aktiv ist
                                 {
-                                    _laserHitbox = _laserTrans.Matrix() * _laserBB;
-                                    //Console.WriteLine(_laserHitbox.max); //(0, 29645815; 26,065257; 0,2964581)        (-2, 6986864; 12,065257; 0,2964581)                 (3, 0589507; 12,065257; 0,2964581)
-                                    //Console.WriteLine(_laserHitbox.min); //(-0,304214; -23,796085; -0,29999983)         (-3, 2916024; -12,657428; -0,2964581)           (2, 4660347; -12,657428; -0,2964581)
-                                    //Console.WriteLine(_laserHitbox.Center); //(0; -0,29608536; 0)
-                                    //Console.WriteLine(_laserTrans.Translation); //(0,004635272; 1,207751; 0)
-                                    //Console.WriteLine(_laserMesh.BoundingBox.Size); //(0,59999967; 50; 0,59999967)
 
-                                    LaserCollision(_laserHitbox, cubeHitbox);
 
-                                    if(_cubeObstMesh.Active == true)
+
+                                    //if (ObstaclesList.ElementAt(i).Name.Contains("Begrenzung "))
+                                    //{
+                                    //    for (int q = 0; q < ObstaclesList.ElementAt(i).Children.Count(); q++)
+                                    //    {
+                                    //        _cubeObstMesh = ObstaclesList.ElementAt(i).Children.ElementAt(q).GetMesh();
+                                    //    }
+                                    //}
+                                    //else
+                                    //{
+                                    _cubeObstMesh = ObstaclesList.ElementAt(i).GetMesh();
+                                    //}
+
+                                    _cubeObst = ObstaclesList.ElementAt(i);
+                                    //_cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Obstacle" + i)?.FirstOrDefault()?.GetTransform();
+                                    //_cubeObstMesh = CarTrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Obstacle" + i)?.FirstOrDefault()?.GetMesh();
+                                    //_cubeObst = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Obstacle" + i)?.FirstOrDefault();
+
+
+                                    AABBf cubeHitbox = trenchTrans.Matrix() * /*carTrenchTrans.Matrix() **/ _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
+
+                                    if (_itemStatus == 5 && _itemTimer >= _playTime + 2)
                                     {
-                                        Collision(_shipBox, cubeHitbox);
+                                        _laserHitbox = _laserTrans.Matrix() * _laserBB;
+
+                                        LaserCollision(_laserHitbox, cubeHitbox);
+
+                                        if (_cubeObstMesh.Active == true)
+                                        {
+                                            Collision(_shipBox, cubeHitbox);
+                                        }
                                     }
-                                }
 
-                                else if (_itemStatus == 2) //Wenn Shield aktiv ist
-                                {
-                                    ShieldCollision(_shipBox, cubeHitbox);
-                                }
-                                else
-                                {
-
-                                    if(_itemTimer <= _playTime - 1)
+                                    else if (_itemStatus == 2) //Wenn Shield aktiv ist
                                     {
-                                        _cubeObstMesh.Active = true;
-                                        //_cubeObstMesh.BoundingBox.min.y = -1;
+                                        ShieldCollision(_shipBox, cubeHitbox);
                                     }
-                                    if (_cubeObstMesh.Active == true)
+                                    else
                                     {
-                                        Collision(_shipBox, cubeHitbox);
+                                        if (_itemTimer <= _playTime - 1)
+                                        {
+                                            ActivateMesh(_cubeObst);
+                                        }
+                                        if (_cubeObstMesh.Active == true)
+                                        {
+                                            Collision(_shipBox, cubeHitbox);
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        for (int i = 0; i < ItemList.Count(); i++)
-                        {
+                            //List<SceneNode> ObstaclesList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("Obstacle")).ToList();
+                            //for(int q = 0; q < ObstaclesList.Count(); q++)
+                            //{
+                            //    if (ObstaclesList[q].Name.Contains("Material"))
+                            //    {
+                            //        ObstaclesList.RemoveAt(q);
+                            //        q -= 1;
+                            //    }
+                            //}
 
-                            _currentItem = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault();
-                            _itemOrbTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault()?.GetTransform();
-                            _itemOrbMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault()?.GetMesh();
 
-                            AABBf itemHitbox = _trenchTrans.Matrix() * _itemOrbTrans.Matrix() * _itemOrbMesh.BoundingBox;
+                            //if (_itemStatus != 1) //Wenn Invincibility nicht aktiv ist
+                            //{
 
-                            if (_itemOrbMesh.Active == true)
+                            //    for (int i = 0; i < ObstaclesList.Count(); i++)
+                            //    {
+                            //        _cubeObstTrans = ObstaclesList.ElementAt(i).GetTransform();
+
+                            //        if(ObstaclesList.ElementAt(i).Name.Contains("Begrenzung "))
+                            //        {
+                            //            for (int q = 0; q < ObstaclesList.ElementAt(i).Children.Count(); q++)
+                            //            {
+                            //                _cubeObstMesh = ObstaclesList.ElementAt(i).Children.ElementAt(q).GetMesh();
+                            //            }
+                            //        }
+                            //        else
+                            //        {
+                            //            _cubeObstMesh = ObstaclesList.ElementAt(i).GetMesh();
+                            //        }
+
+                            //        _cubeObst = ObstaclesList.ElementAt(i);
+                            //        //_cubeObstTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Obstacle" + i)?.FirstOrDefault()?.GetTransform();
+                            //        //_cubeObstMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Obstacle" + i)?.FirstOrDefault()?.GetMesh();
+                            //        //_cubeObst = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "Obstacle" + i)?.FirstOrDefault();
+
+
+                            //        AABBf cubeHitbox = trenchTrans.Matrix() * _cubeObstTrans.Matrix() * _cubeObstMesh.BoundingBox;
+
+                            //        if (_itemStatus == 5 && _itemTimer >= _playTime + 2)
+                            //        {
+                            //            _laserHitbox = _laserTrans.Matrix() * _laserBB;
+
+                            //            LaserCollision(_laserHitbox, cubeHitbox);
+
+                            //            if(_cubeObstMesh.Active == true)
+                            //            {
+                            //                Collision(_shipBox, cubeHitbox);
+                            //            }
+                            //        }
+
+                            //        else if (_itemStatus == 2) //Wenn Shield aktiv ist
+                            //        {
+                            //            ShieldCollision(_shipBox, cubeHitbox);
+                            //        }
+                            //        else
+                            //        {
+
+                            //            if(_itemTimer <= _playTime - 1)
+                            //            {
+                            //                ActivateMesh(_cubeObst);
+                            //            }
+                            //            if (_cubeObstMesh.Active == true)
+                            //            {
+                            //                Collision(_shipBox, cubeHitbox);
+                            //            }
+                            //        }
+                            //    }
+                            //}
+
+                            List<SceneNode> ItemList = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name.Contains("ItemOrb")).ToList();
+
+                            for (int i = 0; i < ItemList.Count(); i++)
                             {
-                                ObtainItem(_shipBox, itemHitbox);
+
+                                _currentItem = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault();
+                                _itemOrbTrans = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault()?.GetTransform();
+                                _itemOrbMesh = TrenchParent.Children.ElementAt(j).Children.FindNodes(node => node.Name == "ItemOrb" + i)?.FirstOrDefault()?.GetMesh();
+
+                                AABBf itemHitbox = trenchTrans.Matrix() * _itemOrbTrans.Matrix() * _itemOrbMesh.BoundingBox;
+
+                                if (_itemOrbMesh.Active == true)
+                                {
+                                    ObtainItem(_shipBox, itemHitbox);
+                                }
                             }
-                        }
+                       }
                     }
                 }
             }
@@ -684,14 +847,13 @@ namespace FuseeApp
 
             RC.Projection = orthographic;
 
-            //Console.WriteLine(playTime.ToString());
 
 
             _timerText.Text = _playTime.ToString();
-            //Console.WriteLine(speed);
-            Console.WriteLine(_itemStatus);
-            Console.WriteLine(_speedIncrItem);
-            Console.WriteLine(_speed);
+            //Console.WriteLine(_itemStatus);
+            //Console.WriteLine(_speedIncrItem);
+            //Console.WriteLine(_speed);
+            //Console.WriteLine(_fasterSpeedIncr);
 
             //verschiedene UIs werden gerendert
             if (status == 0)
@@ -907,6 +1069,7 @@ namespace FuseeApp
             _speedIncrItem = 1;
             _fasterSpeedIncr = 1;
             status = 1;
+            _div = 5;
         }
 
         private void TryAgain()
@@ -917,22 +1080,36 @@ namespace FuseeApp
 
         private void ReloadScene()
         {
-            TrenchParent.Children.Remove(_currentTrench);
-            TrenchParent.Children.Remove(_newTrench);
+            CarTrenchParent.Children.Remove(_currentCarTrench);
+            CarTrenchParent.Children.Remove(_newCarTrench);
 
-            _currentTrench = CopyNode(_trenchesList[0]);
-            _newTrench = CopyNode(_trenchesList[_random.Next(0, _trenchCount)]);
-
-            _newTrench.GetTransform().Translation.z += _newTrench.GetTransform().Scale.z;
+            TrenchParent.Children.Remove(_currentEnvTrench);
+            TrenchParent.Children.Remove(_newEnvTrench);
 
 
-            TrenchParent.Children.Add(_currentTrench);
-            TrenchParent.Children.Add(_newTrench);
+            _currentCarTrench = CopyNode(_carTrenchesList[0]);
+            _newCarTrench = CopyNode(_carTrenchesList[_random0.Next(0, _carTrenchCount)]);
+
+            _currentEnvTrench = CopyNode(_environmentTrenchesList[0]);
+            _newEnvTrench = CopyNode(_environmentTrenchesList[_random1.Next(0, _envTrenchCount)]);
 
 
-            _currentTrenchTrans = _currentTrench.GetTransform().Translation.z;
+            _newCarTrench.GetTransform().Translation.z += _newCarTrench.GetTransform().Scale.z;       //??????????????????????????????????????????
+
+
+            CarTrenchParent.Children.Add(_currentCarTrench);
+            CarTrenchParent.Children.Add(_newCarTrench);
+
+            TrenchParent.Children.Add(_currentEnvTrench);
+            TrenchParent.Children.Add(_newEnvTrench);
+
+
+            _currentCarTrenchTrans = _currentCarTrench.GetTransform().Translation.z;
+            _currentEnvTrenchTrans = _currentEnvTrench.GetTransform().Translation.z; //ist das nötig????
+
+
             _itemStatus = 0;
-            _cubeObstMesh.Active = true;
+            ActivateMesh(_cubeObst);
         }
 
         //Timer wird gestartet
@@ -957,7 +1134,6 @@ namespace FuseeApp
         {
             if (_shipBox.Intersects(cubeHitbox))
             {
-                _cubeObstMesh.Active = false;
 
                 DeactivateMesh(_cubeObst);
 
@@ -970,10 +1146,7 @@ namespace FuseeApp
         {
             if (_laserHitbox.Intersects(cubeHitbox))
             {
-                _cubeObstMesh.Active = false;
-
                 DeactivateMesh(_cubeObst);
-
 
                 //_cubeObstMesh.BoundingBox.min.y = 7;
                 Console.WriteLine("Pew Pew!");
@@ -982,7 +1155,9 @@ namespace FuseeApp
 
         private void DeactivateMesh(SceneNode obstacle)
         {
-            for(int m = 0; m < obstacle.Children.Count(); m++)
+            _cubeObstMesh.Active = false;
+
+            for (int m = 0; m < obstacle.Children.Count(); m++)
             {
                 if(obstacle.Children.ElementAt(m).GetMesh() != null)
                 {
@@ -997,7 +1172,19 @@ namespace FuseeApp
 
         private void ActivateMesh(SceneNode obstacle)
         {
-            //GENAU DAS GLEICHE WIE BEI DEACTIVATE NUR = TRUE
+            for (int m = 0; m < obstacle.Children.Count(); m++)
+            {
+                _cubeObstMesh.Active = true;
+
+                if (obstacle.Children.ElementAt(m).GetMesh() != null)
+                {
+                    obstacle.Children.ElementAt(m).GetMesh().Active = true;
+                }
+                if (obstacle.Children.ElementAt(m).Children.Count() > 0)
+                {
+                    ActivateMesh(obstacle.Children.ElementAt(m));
+                }
+            }
         }
 
 
@@ -1007,8 +1194,8 @@ namespace FuseeApp
             {               
                 _itemOrbMesh.Active = false;
                 
-                _random = new Random();
-                _itemStatus = _random.Next(1, 6);    //hier random item 1-x
+                _random0 = new Random();
+                _itemStatus = _random0.Next(1, 6);    //hier random item 1-x
                 if(_itemStatus != 2 && _itemStatus != 3)
                 {
                     _itemTimer = _playTime + 3;//(float)speed * 60 / playTime;
@@ -1046,18 +1233,45 @@ namespace FuseeApp
         {
             SceneNode outsn = new SceneNode();
 
+
             outsn.Name = insn.Name;
-            outsn.Components.Add(new Transform()); 
-            outsn.Children = insn.Children;
+            outsn.Components.Add(new Transform());
+            //List<ChildList> outsnChildren = null;
+            for (int i = 0; i < insn.Children.Count(); i++)
+            {
+                if (insn.Children.ElementAt(i).GetTransform() != null)
+                {
+                    insn.Children.ElementAt(i).GetTransform().Translation.z += calcZMov();
+                }
+                else
+                {
+                    for(int j = 0; j < insn.Children.ElementAt(i).Children.Count(); j++)
+                    {
+
+                    }
+                }
+                outsn.Children = insn.Children;
+                //insn.Children.ElementAt(i).GetTransform().
+            }
 
             //var c = MakeEffect.Default;       Standard Shader
 
             return outsn;
         }
 
+        private float calcZMov()
+        {
+
+            float zTransReset = 9.5f * (float)_carSpeed;
+
+            return zTransReset;
+        }
+
         private void Faster()
         {
-            _fasterSpeedIncr *= 1.2f; 
+            _fasterSpeedIncr *= ((double)1 + (double)(1/ (double)(_div)));
+            //_fasterSpeedIncr *= 1.2f;
+            _div++;
         }
 
         private void Leaderboard()
